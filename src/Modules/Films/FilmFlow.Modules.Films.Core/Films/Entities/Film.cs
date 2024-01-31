@@ -1,4 +1,8 @@
 using FilmFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
+using FilmFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
+using FilmFlow.Shared.Abstractions.Kernel.ValueObjects.Rating;
+using FilmFlow.Shared.Abstractions.Kernel.ValueObjects.ReleaseYear;
+using FilmFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
 using FilmFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
 
 namespace FilmFlow.Modules.Films.Core.Films.Entities;
@@ -6,10 +10,10 @@ namespace FilmFlow.Modules.Films.Core.Films.Entities;
 internal sealed class Film
 {
     public Guid Id { get; init; }
-    internal string Title { get;  set; }
-    internal string Description { get; set; }
-    internal int ReleaseYear { get; set; }
-    internal double Rating { get; set; }
+    internal Title Title { get;  set; }
+    internal Description Description { get; set; }
+    internal ReleaseYear ReleaseYear { get; set; }
+    internal Rating Rating { get; set; }
     private CreatedAt CreatedAt { get; init; }
     private UpdatedAt? UpdatedAt { get; set; } = default;
     
