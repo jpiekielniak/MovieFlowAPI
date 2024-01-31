@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4E8256F2-7B10-4C13-BEA3-36533F864BB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrapper", "{55FCD767-A154-4FD4-8D11-261571F39484}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{46EE2FA7-0F91-4155-8F55-35D068CDF96A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFlow.Bootstrapper", "src\Bootstrapper\FilmFlow.Bootstrapper\FilmFlow.Bootstrapper.csproj", "{E27E812D-1E30-417C-B51D-4B9DFE4CBC74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFlow.Shared.Infrastructure", "src\Shared\FilmFlow.Shared.Infrastructure\FilmFlow.Shared.Infrastructure.csproj", "{C7055246-1440-4A8D-86B2-CA027C1F0370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFlow.Shared.Abstractions", "src\Shared\FilmFlow.Shared.Abstractions\FilmFlow.Shared.Abstractions.csproj", "{97AE7CBE-7FC5-4266-8FD3-60B8AFD6A013}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{734DE087-7376-43D7-803F-4846F0985035}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Films", "Films", "{A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFlow.Modules.Films.Api", "src\Modules\Films\FilmFlow.Modules.Films.Api\FilmFlow.Modules.Films.Api.csproj", "{09EEFCB7-0677-40EB-92B9-499AB5F920E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFlow.Modules.Films.Application", "src\Modules\Films\FilmFlow.Modules.Films.Application\FilmFlow.Modules.Films.Application.csproj", "{1DB1885A-702A-4658-8C46-D5CF035D1014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFlow.Modules.Films.Core", "src\Modules\Films\FilmFlow.Modules.Films.Core\FilmFlow.Modules.Films.Core.csproj", "{C6CACF9C-46AB-422C-9F3E-6BBF5BD6A7F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFlow.Modules.Films.Infrastructure", "src\Modules\Films\FilmFlow.Modules.Films.Infrastructure\FilmFlow.Modules.Films.Infrastructure.csproj", "{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E27E812D-1E30-417C-B51D-4B9DFE4CBC74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27E812D-1E30-417C-B51D-4B9DFE4CBC74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27E812D-1E30-417C-B51D-4B9DFE4CBC74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27E812D-1E30-417C-B51D-4B9DFE4CBC74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7055246-1440-4A8D-86B2-CA027C1F0370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7055246-1440-4A8D-86B2-CA027C1F0370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7055246-1440-4A8D-86B2-CA027C1F0370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7055246-1440-4A8D-86B2-CA027C1F0370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97AE7CBE-7FC5-4266-8FD3-60B8AFD6A013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97AE7CBE-7FC5-4266-8FD3-60B8AFD6A013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97AE7CBE-7FC5-4266-8FD3-60B8AFD6A013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97AE7CBE-7FC5-4266-8FD3-60B8AFD6A013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09EEFCB7-0677-40EB-92B9-499AB5F920E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EEFCB7-0677-40EB-92B9-499AB5F920E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09EEFCB7-0677-40EB-92B9-499AB5F920E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09EEFCB7-0677-40EB-92B9-499AB5F920E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB1885A-702A-4658-8C46-D5CF035D1014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB1885A-702A-4658-8C46-D5CF035D1014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB1885A-702A-4658-8C46-D5CF035D1014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB1885A-702A-4658-8C46-D5CF035D1014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6CACF9C-46AB-422C-9F3E-6BBF5BD6A7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6CACF9C-46AB-422C-9F3E-6BBF5BD6A7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6CACF9C-46AB-422C-9F3E-6BBF5BD6A7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6CACF9C-46AB-422C-9F3E-6BBF5BD6A7F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
+		{46EE2FA7-0F91-4155-8F55-35D068CDF96A} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
+		{E27E812D-1E30-417C-B51D-4B9DFE4CBC74} = {55FCD767-A154-4FD4-8D11-261571F39484}
+		{C7055246-1440-4A8D-86B2-CA027C1F0370} = {46EE2FA7-0F91-4155-8F55-35D068CDF96A}
+		{97AE7CBE-7FC5-4266-8FD3-60B8AFD6A013} = {46EE2FA7-0F91-4155-8F55-35D068CDF96A}
+		{734DE087-7376-43D7-803F-4846F0985035} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
+		{A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC} = {734DE087-7376-43D7-803F-4846F0985035}
+		{09EEFCB7-0677-40EB-92B9-499AB5F920E4} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
+		{1DB1885A-702A-4658-8C46-D5CF035D1014} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
+		{C6CACF9C-46AB-422C-9F3E-6BBF5BD6A7F9} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
+		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
+	EndGlobalSection
+EndGlobal
