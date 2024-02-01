@@ -1,0 +1,9 @@
+global using System;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Swashbuckle.AspNetCore.Annotations;
+global using Ardalis.ApiEndpoints;
+global using FilmFlow.Shared.Abstractions.Exceptions.Errors;
+global using MediatR;

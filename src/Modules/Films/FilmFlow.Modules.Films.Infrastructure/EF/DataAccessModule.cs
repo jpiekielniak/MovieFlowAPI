@@ -1,4 +1,6 @@
-﻿using FilmFlow.Modules.Films.Infrastructure.EF.Context;
+﻿using FilmFlow.Modules.Films.Core.Films.Repositories;
+using FilmFlow.Modules.Films.Infrastructure.EF.Context;
+using FilmFlow.Modules.Films.Infrastructure.EF.Films.Repositories;
 using FilmFlow.Shared.Infrastructure.Postgres;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +12,9 @@ internal static class DataAccessModule
     {
         services
             .AddPostgres<FilmsWriteDbContext>();
+
+        services
+            .AddScoped<IFilmRepository, FilmRepository>();
         
         return services;
     }

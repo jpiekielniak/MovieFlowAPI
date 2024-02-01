@@ -10,13 +10,4 @@
       <ProjectReference Include="..\FilmFlow.Modules.Films.Infrastructure\FilmFlow.Modules.Films.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="module.films.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="module.films.development.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
 </Project>
