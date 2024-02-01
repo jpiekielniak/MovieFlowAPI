@@ -1,4 +1,5 @@
 using FilmFlow.Modules.Films.Core.Films.Entities;
+using FilmFlow.Modules.Films.Core.Films.Exceptions;
 using FilmFlow.Modules.Films.Core.Films.Repositories;
 using FilmFlow.Shared.Abstractions.Time;
 using MediatR;

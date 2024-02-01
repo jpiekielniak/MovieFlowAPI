@@ -11,7 +11,8 @@ internal static class DataAccessModule
     internal static IServiceCollection AddDataAccess(this IServiceCollection services)
     {
         services
-            .AddPostgres<FilmsWriteDbContext>();
+            .AddPostgres<FilmsWriteDbContext>()
+            .AddPostgres<FilmsReadDbContext>();
 
         services
             .AddScoped<IFilmRepository, FilmRepository>();
