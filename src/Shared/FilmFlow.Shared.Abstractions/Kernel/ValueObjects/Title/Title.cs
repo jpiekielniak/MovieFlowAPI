@@ -6,7 +6,7 @@ public class Title : ValueObject
 {
     private const int MaxTitleLength = 100;
     private const int MinTitleLength = 3;
-    private string Value { get; }   
+    public string Value { get; }   
     
     public Title(string value)
     {

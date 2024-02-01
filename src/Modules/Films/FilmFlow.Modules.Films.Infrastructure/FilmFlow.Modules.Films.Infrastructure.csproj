@@ -11,4 +11,8 @@
       <ProjectReference Include="..\FilmFlow.Modules.Films.Application\FilmFlow.Modules.Films.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="EF\Migrations\" />
+    </ItemGroup>
+
 </Project>

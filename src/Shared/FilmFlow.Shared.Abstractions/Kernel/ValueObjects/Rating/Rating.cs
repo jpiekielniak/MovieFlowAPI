@@ -6,9 +6,9 @@ public class Rating : ValueObject
 {
     private const double MaxRating = 10.0;
     private const double MinRating = 0.0;
-    private double Value { get; }
+    public double Value { get; }
 
-    private Rating(double value)
+    public Rating(double value)
     {
         if(value is < MinRating or > MaxRating)
             throw new InvalidRatingException(value);

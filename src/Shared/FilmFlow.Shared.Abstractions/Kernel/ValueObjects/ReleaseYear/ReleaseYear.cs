@@ -5,9 +5,9 @@ public class ReleaseYear : ValueObject
     private const int MinReleaseYear = 1900;
     private int MaxReleaseYear = DateTime.Now.Year;
 
-    private int Value { get; }
+    public int Value { get; }
 
-    private ReleaseYear(int value)
+    public ReleaseYear(int value)
     {
         if (value < MinReleaseYear || value > MaxReleaseYear)
             throw new InvalidReleaseYearException(value);

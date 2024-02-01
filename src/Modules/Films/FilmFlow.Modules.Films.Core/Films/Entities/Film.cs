@@ -10,13 +10,17 @@ namespace FilmFlow.Modules.Films.Core.Films.Entities;
 internal sealed class Film
 {
     public Guid Id { get; init; }
-    internal Title Title { get;  set; }
-    internal Description Description { get; set; }
-    internal ReleaseYear ReleaseYear { get; set; }
-    internal Rating Rating { get; set; }
+    internal Title Title { get;  private set; }
+    internal Description Description { get; private set; }
+    internal ReleaseYear ReleaseYear { get; private set; }
+    internal Rating Rating { get; private set; }
     private CreatedAt CreatedAt { get; init; }
     private UpdatedAt? UpdatedAt { get; set; } = default;
-    
+
+    private Film() // for EF
+    {
+    }
+
     private Film(string title, string description, int releaseYear, double rating)
     {
         Id = Guid.NewGuid();

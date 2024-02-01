@@ -6,9 +6,9 @@ public class Description : ValueObject
 {
     private const int MaxDescriptionLength = 1500;
     private const int MinDescriptionLength = 3;
-    private string Value { get; }
+    public string Value { get; }
 
-    private Description(string value)
+    public Description(string value)
     {
         if(string.IsNullOrWhiteSpace(value))
             throw new InvalidDescriptionException(value);
