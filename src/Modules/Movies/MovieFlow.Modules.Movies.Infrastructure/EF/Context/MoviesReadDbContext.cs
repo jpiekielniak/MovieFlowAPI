@@ -11,7 +11,7 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("Movies");
+        modelBuilder.HasDefaultSchema("movies");
         modelBuilder.ApplyConfiguration(new MovieReadConfiguration());
     }
 }

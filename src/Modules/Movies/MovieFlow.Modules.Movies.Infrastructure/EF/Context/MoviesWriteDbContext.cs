@@ -15,7 +15,7 @@ internal class MoviesWriteDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("Movies");
+        modelBuilder.HasDefaultSchema("movies");
         modelBuilder.ApplyConfiguration(new MovieWriteConfiguration());
     }
 
