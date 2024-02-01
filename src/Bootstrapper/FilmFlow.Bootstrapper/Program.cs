@@ -7,7 +7,7 @@ builder.Host.ConfigureModules();
 
 builder.Services.AddModules();
 
-builder.Services.AddInfrastructure(true);
+builder.Services.AddInfrastructure();
 
 builder.Services.AddControllers();
 
