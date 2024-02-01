@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
+      <ProjectReference Include="..\MovieFlow.Modules.Movies.Application\MovieFlow.Modules.Movies.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="EF\Migrations\" />
+    </ItemGroup>
+
+</Project>
