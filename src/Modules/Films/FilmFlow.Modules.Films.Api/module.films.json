@@ -1,8 +1,0 @@
-{
-  "films": {
-    "module": {
-      "name": "Films",
-      "enabled": true
-    }
-  }
-}
