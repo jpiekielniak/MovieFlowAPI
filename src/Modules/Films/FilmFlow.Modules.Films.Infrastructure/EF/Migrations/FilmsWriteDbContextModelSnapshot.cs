@@ -29,8 +29,8 @@ namespace FilmFlow.Modules.Films.Infrastructure.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone")
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedAt");
 
                     b.Property<string>("Description")
@@ -51,8 +51,8 @@ namespace FilmFlow.Modules.Films.Infrastructure.EF.Migrations
                         .HasColumnType("text")
                         .HasColumnName("Title");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp without time zone")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("UpdatedAt");
 
                     b.HasKey("Id");

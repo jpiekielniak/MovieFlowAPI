@@ -6,11 +6,7 @@ namespace FilmFlow.Modules.Films.Infrastructure.EF.Context;
 
 internal class FilmsWriteDbContext : DbContext
 {
-    public required DbSet<Film> Films { get; set; }
-
-    public FilmsWriteDbContext()
-    {
-    }
+    public DbSet<Film> Films { get; set; }
     
     public FilmsWriteDbContext(DbContextOptions<FilmsWriteDbContext> options) 
         : base(options)

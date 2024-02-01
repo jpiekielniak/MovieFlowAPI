@@ -24,8 +24,8 @@ namespace FilmFlow.Modules.Films.Infrastructure.EF.Migrations
                     Description = table.Column<string>(type: "text", nullable: false),
                     ReleaseYear = table.Column<int>(type: "integer", nullable: false),
                     Rating = table.Column<double>(type: "double precision", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {

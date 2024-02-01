@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FilmFlow.Modules.Films.Infrastructure.EF.Migrations
 {
     [DbContext(typeof(FilmsWriteDbContext))]
-    [Migration("20240201115836_InitialMigration")]
+    [Migration("20240201134053_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -32,8 +32,8 @@ namespace FilmFlow.Modules.Films.Infrastructure.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone")
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedAt");
 
                     b.Property<string>("Description")
@@ -54,8 +54,8 @@ namespace FilmFlow.Modules.Films.Infrastructure.EF.Migrations
                         .HasColumnType("text")
                         .HasColumnName("Title");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp without time zone")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("UpdatedAt");
 
                     b.HasKey("Id");

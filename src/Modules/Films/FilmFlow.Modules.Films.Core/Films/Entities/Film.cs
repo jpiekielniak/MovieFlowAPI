@@ -21,16 +21,16 @@ internal sealed class Film
     {
     }
 
-    private Film(string title, string description, int releaseYear, double rating)
+    private Film(Title title, Description description, ReleaseYear releaseYear, Rating rating, CreatedAt createdAt)
     {
         Id = Guid.NewGuid();
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
         Rating = rating;
-        CreatedAt = DateTime.UtcNow;
+        CreatedAt = createdAt;
     }
     
-    public static Film Create(string title, string description, int releaseYear, double rating)
-        => new(title, description, releaseYear, rating);
+    public static Film Create(string title, string description, int releaseYear, double rating, DateTimeOffset createdAt)
+        => new(title, description, releaseYear, rating, createdAt);
 }
