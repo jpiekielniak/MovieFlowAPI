@@ -1,15 +1,23 @@
 using MovieFlow.Modules.Movies.Application.Movies.Queries.Browse.DTO;
+using MovieFlow.Modules.Movies.Application.Movies.Queries.Get.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries;
 
 internal static class Extensions
 {
-    public static MovieDto AsMovieDto(this MovieReadModel Movie)
+    public static MovieDto AsMovieDto(this MovieReadModel movie)
         => new(
-            Movie.Id,
-            Movie.Title,
-            Movie.ReleaseYear,
-            Movie.Rating,
-            Movie.Description);
+            movie.Id,
+            movie.Title
+        );
+
+    public static MovieDetailsDto AsMovieDetailsDto(this MovieReadModel movie)
+        => new(
+            movie.Id,
+            movie.Title,
+            movie.Rating,
+            movie.ReleaseYear,
+            movie.Description
+        );
 }
