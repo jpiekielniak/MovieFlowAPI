@@ -1,14 +1,11 @@
 using MediatR;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using MovieFlow.Shared.Abstractions.Time;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
 
 internal sealed class ChangeMovieInformationHandler(
-    IMovieRepository movieRepository,
-    IClock clock
-) : IRequestHandler<ChangeMovieInformationCommand>
+    IMovieRepository movieRepository) : IRequestHandler<ChangeMovieInformationCommand>
 {
     public async Task Handle(
         ChangeMovieInformationCommand command,
@@ -23,10 +20,9 @@ internal sealed class ChangeMovieInformationHandler(
             command.Title,
             command.Description,
             command.ReleaseYear,
-            command.Rating,
-            clock.CurrentDateTimeOffset()
+            command.Rating
         );
-        
+
         await movieRepository.UpdateAsync(movie, cancellationToken);
         await movieRepository.CommitAsync(cancellationToken);
     }
