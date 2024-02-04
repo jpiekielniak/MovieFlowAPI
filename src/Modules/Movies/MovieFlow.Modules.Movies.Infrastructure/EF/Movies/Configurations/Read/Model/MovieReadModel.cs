@@ -7,6 +7,4 @@ internal sealed class MovieReadModel
     public string Description { get; init; }
     public int ReleaseYear { get; init; }
     public double Rating { get; init; }
-    public DateTimeOffset CreatedAt { get; init; }
-    public DateTimeOffset? UpdatedAt { get; init; }
 }
