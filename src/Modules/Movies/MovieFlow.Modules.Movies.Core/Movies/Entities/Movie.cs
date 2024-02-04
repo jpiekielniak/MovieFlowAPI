@@ -1,48 +1,44 @@
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
+using MovieFlow.Shared.Abstractions.Kernel;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Rating;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.ReleaseYear;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
 
 namespace MovieFlow.Modules.Movies.Core.Movies.Entities;
 
-internal sealed class Movie
+internal sealed class Movie : Entity
 {
-    public Guid Id { get; init; }
     internal Title Title { get; private set; }
     internal Description Description { get; private set; }
     internal ReleaseYear ReleaseYear { get; private set; }
     internal Rating Rating { get; private set; }
-    private CreatedAt CreatedAt { get; init; }
-    private UpdatedAt? UpdatedAt { get; set; } = default;
 
     private Movie() // for EF
     {
     }
 
     private Movie(Title title, Description description,
-        ReleaseYear releaseYear, Rating rating, CreatedAt createdAt)
+        ReleaseYear releaseYear, Rating rating, EntityState entityState)
     {
         Id = Guid.NewGuid();
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
         Rating = rating;
-        CreatedAt = createdAt;
+        State = entityState;
     }
 
-    public static Movie Create(string title, string description, int releaseYear,
-        double rating, DateTimeOffset createdAt)
-        => new(title, description, releaseYear, rating, createdAt);
+    public static Movie Create(string title, string description,
+        int releaseYear, double rating)
+        => new(title, description, releaseYear, rating, EntityState.Added);
 
     internal void ChangeInformation(Title title, Description description,
-        ReleaseYear releaseYear, Rating rating, UpdatedAt updatedAt)
+        ReleaseYear releaseYear, Rating rating)
     {
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
         Rating = rating;
-        UpdatedAt = updatedAt;
+        State = EntityState.Modified;
     }
 }
