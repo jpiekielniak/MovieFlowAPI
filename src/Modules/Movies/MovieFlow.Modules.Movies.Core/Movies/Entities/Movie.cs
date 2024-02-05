@@ -12,6 +12,7 @@ internal sealed class Movie : Entity
     internal Description Description { get; private set; }
     internal ReleaseYear ReleaseYear { get; private set; }
     internal Rating Rating { get; private set; }
+    internal ICollection<Genre> Genres { get;  set; }
 
     private Movie() // for EF
     {
