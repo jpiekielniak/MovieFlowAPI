@@ -27,7 +27,7 @@ public static class Extensions
             swagger.CustomSchemaIds(x => x.FullName?.Replace("+", ".")); 
             swagger.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "MovieFLow API",
+                Title = "MovieFlow API",
                 Version = "v1"
             });
         });

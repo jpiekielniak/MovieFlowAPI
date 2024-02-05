@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
@@ -8,10 +9,12 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
     : DbContext(options)
 {
     public DbSet<MovieReadModel> Movies { get; set; }
+    public DbSet<GenreReadModel> Genres { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("movies");
         modelBuilder.ApplyConfiguration(new MovieReadConfiguration());
+        modelBuilder.ApplyConfiguration(new GenreReadConfiguration());
     }
 }
