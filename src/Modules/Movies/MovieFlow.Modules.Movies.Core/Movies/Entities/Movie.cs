@@ -19,7 +19,7 @@ internal sealed class Movie : Entity
     }
 
     private Movie(Title title, Description description,
-        ReleaseYear releaseYear, Rating rating, EntityState entityState)
+        ReleaseYear releaseYear, Rating rating, EntityState entityState, ICollection<Genre> genres)
     {
         Id = Guid.NewGuid();
         Title = title;
@@ -27,11 +27,12 @@ internal sealed class Movie : Entity
         ReleaseYear = releaseYear;
         Rating = rating;
         State = entityState;
+        Genres = genres;
     }
 
     public static Movie Create(string title, string description,
-        int releaseYear, double rating)
-        => new(title, description, releaseYear, rating, EntityState.Added);
+        int releaseYear, double rating, ICollection<Genre> genres)
+        => new(title, description, releaseYear, rating, EntityState.Added, genres);
 
     internal void ChangeInformation(Title title, Description description,
         ReleaseYear releaseYear, Rating rating)

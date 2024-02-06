@@ -15,7 +15,8 @@ internal static class DataAccessModule
             .AddPostgres<MoviesReadDbContext>();
 
         services
-            .AddScoped<IMovieRepository, MovieRepository>();
+            .AddScoped<IMovieRepository, MovieRepository>()
+            .AddScoped<IGenreRepository, GenreRepository>();
         
         return services;
     }

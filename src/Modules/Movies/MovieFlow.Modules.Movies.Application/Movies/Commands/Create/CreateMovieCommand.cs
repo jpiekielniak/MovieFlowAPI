@@ -7,4 +7,7 @@ internal record CreateMovieCommand(
     string Title,
     string Description,
     double Rating,
-    int ReleaseYear) : IRequest<CreateMovieResponse>;
+    int ReleaseYear,
+    List<GenreDto> Genres) : IRequest<CreateMovieResponse>;
+
+internal record GenreDto(Guid Id);

@@ -1,5 +1,6 @@
 using MediatR;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions;
+using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
