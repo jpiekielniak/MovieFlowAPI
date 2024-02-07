@@ -17,6 +17,14 @@ internal sealed class BrowseMoviesHandler(
             .Movies
             .Include(x => x.Genres)
             .AsQueryable();
+        
+        if (!string.IsNullOrWhiteSpace(query.Genre))
+        {
+            var search = $"%{query.Genre}%";
+            movies = movies.Where(
+                f => f.Genres.Any(g => Microsoft.EntityFrameworkCore.EF.Functions.ILike(
+                    g.Name, search)));
+        }
 
         if (!string.IsNullOrWhiteSpace(query.Title))
         {
