@@ -51,6 +51,11 @@ internal class MovieWriteConfiguration : IEntityTypeConfiguration<Movie>
             .HasColumnName("State")
             .IsRequired();
 
+        builder.HasMany(x => x.Genres)
+            .WithMany(x => x.Movies)
+            .UsingEntity(j => j.ToTable("MovieGenres_Mapping"));
+        
+
         builder.ToTable("Movies");
     }
 }

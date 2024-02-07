@@ -7,4 +7,5 @@ internal sealed class MovieReadModel
     public string Description { get; init; }
     public int ReleaseYear { get; init; }
     public double Rating { get; init; }
+    public IReadOnlyCollection<GenreReadModel> Genres { get; init; }
 }

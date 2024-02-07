@@ -15,6 +15,7 @@ internal sealed class BrowseMoviesHandler(
     {
         var movies = readDbContext
             .Movies
+            .Include(x => x.Genres)
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(query.Title))

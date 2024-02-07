@@ -9,6 +9,6 @@ internal class GenreRepository(MoviesWriteDbContext dbContext) : IGenreRepositor
 {
     private readonly DbSet<Genre> _genres = dbContext.Genres;
 
-    public async Task<Genre?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<Genre?> GetAsync(Guid id, CancellationToken cancellationToken)
         => await _genres.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 }

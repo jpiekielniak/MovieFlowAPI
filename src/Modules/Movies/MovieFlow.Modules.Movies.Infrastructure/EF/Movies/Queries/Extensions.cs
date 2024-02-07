@@ -9,7 +9,8 @@ internal static class Extensions
     public static MovieDto AsMovieDto(this MovieReadModel movie)
         => new(
             movie.Id,
-            movie.Title
+            movie.Title,
+            movie.Genres.Select(x => x.Name).ToList()
         );
 
     public static MovieDetailsDto AsMovieDetailsDto(this MovieReadModel movie)

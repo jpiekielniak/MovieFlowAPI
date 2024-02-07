@@ -4,5 +4,5 @@ namespace MovieFlow.Modules.Movies.Core.Movies.Repositories;
 
 internal interface IGenreRepository
 {
-    Task<Genre?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<Genre?> GetAsync(Guid id, CancellationToken cancellationToken);
 }

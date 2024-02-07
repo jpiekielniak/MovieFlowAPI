@@ -23,7 +23,7 @@ internal sealed class CreateMovieHandler(
         var genres = new List<Genre>();
         foreach (var genre in command.Genres)
         {
-            var genreEntity = await genreRepository.GetByIdAsync(genre.Id, cancellationToken);
+            var genreEntity = await genreRepository.GetAsync(genre.Id, cancellationToken);
 
             if (genreEntity is null)
                 throw new GenreNotFoundException(genre.Id);
