@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using MovieFlow.Modules.Movies.Application.Movies.Queries.Browse;
 using MovieFlow.Modules.Movies.Application.Movies.Queries.Browse.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
+using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries.BrowseMoviesHandler;
 
 internal sealed class BrowseMoviesHandler(
-    MoviesReadDbContext readDbContext)
+    MoviesReadDbContext readDbContext,
+    IMovieService movieService)
     : IRequestHandler<BrowseMoviesQuery, List<MovieDto>>
 {
     public async Task<List<MovieDto>> Handle(BrowseMoviesQuery query,
@@ -17,25 +19,10 @@ internal sealed class BrowseMoviesHandler(
             .Movies
             .Include(x => x.Genres)
             .AsQueryable();
-        
-        if (!string.IsNullOrWhiteSpace(query.Genre))
-        {
-            var search = $"%{query.Genre}%";
-            movies = movies.Where(
-                f => f.Genres.Any(g => Microsoft.EntityFrameworkCore.EF.Functions.ILike(
-                    g.Name, search)));
-        }
 
-        if (!string.IsNullOrWhiteSpace(query.Title))
-        {
-            var search = $"%{query.Title}%";
-            movies = movies.Where(
-                f => Microsoft.EntityFrameworkCore.EF.Functions.ILike(
-                    f.Title, search));
-        }
-
-        if (query.ReleaseYear is > 0)
-            movies = movies.Where(f => f.ReleaseYear == query.ReleaseYear);
+        movies = await movieService.FilterByTitleAsync(movies, query.Title, cancellationToken);
+        movies = await movieService.FilterByGenreAsync(movies, query.Genre, cancellationToken);
+        movies = await movieService.FilterByReleaseYearAsync(movies, query.ReleaseYear, cancellationToken);
 
         return await movies
             .AsNoTracking()
