@@ -10,9 +10,6 @@ internal sealed class DirectorReadConfiguration : IEntityTypeConfiguration<Direc
     {
         builder.HasKey(x => x.Id);
 
-        builder.HasMany(x => x.Movies)
-            .WithOne();
-
         builder.ToTable("Directors");
     }
 }
