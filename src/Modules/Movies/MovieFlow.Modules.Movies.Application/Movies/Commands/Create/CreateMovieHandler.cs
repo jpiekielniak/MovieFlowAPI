@@ -1,10 +1,8 @@
 using MediatR;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
-using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Genres;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.Create;
 
@@ -28,19 +26,9 @@ internal sealed class CreateMovieHandler(
         if (director is null)
             throw new DirectorNotFoundException(command.DirectorId);
 
-        var genreIds = command.Genres.Select(genre => genre.Id).ToList();
-        var genreEntities = await genreRepository.GetByIdsAsync(genreIds, cancellationToken);
-
-        var missingGenreIds = genreIds
-            .Except(genreEntities.Select(genre => genre.Id))
-            .FirstOrDefault();
-
-        if (missingGenreIds != Guid.Empty)
-            throw new GenreNotFoundException(missingGenreIds);
-
-        var genres = new List<Genre>();
-        genres.AddRange(genreEntities);
-
+        var genreIds = command.Genres.Select(x => x.Id).ToList();
+        var genres = await genreRepository.GetByIdsAsync(genreIds, cancellationToken);
+        
         var movie = Movie.Create(
             command.Title,
             command.Description,
