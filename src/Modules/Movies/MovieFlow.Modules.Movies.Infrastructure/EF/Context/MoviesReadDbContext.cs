@@ -10,11 +10,13 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
 {
     public DbSet<MovieReadModel> Movies { get; set; }
     public DbSet<GenreReadModel> Genres { get; set; }
+    public DbSet<DirectorReadModel> Directors { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("movies");
         modelBuilder.ApplyConfiguration(new MovieReadConfiguration());
         modelBuilder.ApplyConfiguration(new GenreReadConfiguration());
+        modelBuilder.ApplyConfiguration(new DirectorReadConfiguration());
     }
 }

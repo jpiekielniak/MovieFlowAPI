@@ -30,12 +30,21 @@ internal sealed class CreateMovieHandler(
 
             genres.Add(genreEntity);
         }
+        
+        // Data temporary
+        var director =  Director.Create(
+            "Andrzejja",
+            "Wajda",
+            new DateTime(1926, 3, 6),
+            "Poland"
+        );
 
         var movie = Movie.Create(
             command.Title,
             command.Description,
             command.ReleaseYear,
             command.Rating,
+            director,
             genres
         );
 

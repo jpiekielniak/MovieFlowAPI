@@ -13,6 +13,7 @@ internal class MoviesWriteDbContext : DbContext
 {
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Genre> Genres { get; set; }
+    public DbSet<Director> Directors { get; set; }
     private readonly IClock _clock;
     
     public MoviesWriteDbContext(DbContextOptions<MoviesWriteDbContext> options, IClock clock) 
@@ -26,6 +27,7 @@ internal class MoviesWriteDbContext : DbContext
         modelBuilder.HasDefaultSchema("movies");
         modelBuilder.ApplyConfiguration(new MovieWriteConfiguration());
         modelBuilder.ApplyConfiguration(new GenreWriteConfiguration());
+        modelBuilder.ApplyConfiguration(new DirectorWriteConfiguration());
     }
     
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())

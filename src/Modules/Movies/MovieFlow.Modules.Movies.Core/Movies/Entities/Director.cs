@@ -11,18 +11,24 @@ internal class Director : Entity
     internal LastName LastName { get; set; }
     internal DateTime DateOfBirth { get; set; }
     internal Country Country { get; set; }
+    internal ICollection<Movie> Movies { get; set; }
+    
+    private Director() // for EF
+    {
+    }
 
     private Director(FirstName firstName, LastName lastName,
-        DateTime dateOfBirth, Country country)
+        DateTime dateOfBirth, Country country, EntityState entityState)
     {
         Id = Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
         DateOfBirth = dateOfBirth;
         Country = country;
+        State = entityState;
     }
 
     public static Director Create(FirstName firstName, LastName lastName,
         DateTime dateOfBirth, Country country)
-        => new(firstName, lastName, dateOfBirth, country);
+        => new(firstName, lastName, dateOfBirth, country, EntityState.Added);
 }

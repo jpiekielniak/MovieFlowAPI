@@ -10,6 +10,11 @@ internal sealed class MovieReadConfiguration : IEntityTypeConfiguration<MovieRea
     {
         builder.HasKey(x => x.Id);
 
+        builder.HasOne(x => x.Director)
+            .WithMany()
+            .HasForeignKey(x => x.Director)
+            .IsRequired();
+
         builder.HasMany(x => x.Genres)
             .WithMany(x => x.Movies)
             .UsingEntity(j => j.ToTable("MovieGenres_Mapping"));

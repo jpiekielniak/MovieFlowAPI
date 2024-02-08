@@ -12,27 +12,31 @@ internal sealed class Movie : Entity
     internal Description Description { get; private set; }
     internal ReleaseYear ReleaseYear { get; private set; }
     internal Rating Rating { get; private set; }
-    internal ICollection<Genre> Genres { get;  set; }
+    internal Guid DirectorId { get; private set; }
+    internal Director Director { get; private set; }
+    internal ICollection<Genre> Genres { get; set; }
 
     private Movie() // for EF
     {
     }
 
     private Movie(Title title, Description description,
-        ReleaseYear releaseYear, Rating rating, EntityState entityState, ICollection<Genre> genres)
+        ReleaseYear releaseYear, Rating rating,
+        Director director, ICollection<Genre> genres, EntityState entityState)
     {
         Id = Guid.NewGuid();
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
         Rating = rating;
-        State = entityState;
+        Director = director;
         Genres = genres;
+        State = entityState;
     }
 
     public static Movie Create(string title, string description,
-        int releaseYear, double rating, ICollection<Genre> genres)
-        => new(title, description, releaseYear, rating, EntityState.Added, genres);
+        int releaseYear, double rating, Director director, ICollection<Genre> genres)
+        => new(title, description, releaseYear, rating, director, genres, EntityState.Added);
 
     internal void ChangeInformation(Title title, Description description,
         ReleaseYear releaseYear, Rating rating)
