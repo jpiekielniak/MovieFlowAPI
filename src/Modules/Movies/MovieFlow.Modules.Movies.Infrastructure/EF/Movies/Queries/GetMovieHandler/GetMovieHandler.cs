@@ -6,16 +6,18 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries.GetMovieHand
 
 internal sealed class GetMovieHandler(
     MoviesReadDbContext readDbContext
-    ) : IRequestHandler<GetMovieQuery, MovieDetailsDto>
+) : IRequestHandler<GetMovieQuery, MovieDetailsDto>
 {
     public async Task<MovieDetailsDto> Handle(
-        GetMovieQuery query, 
+        GetMovieQuery query,
         CancellationToken cancellationToken)
     {
         var movie = await readDbContext.Movies
             .AsNoTracking()
-            .SingleOrDefaultAsync(x => x.Id == query.Id, cancellationToken);
-        
+            .Include(x => x.Director)
+            .Include(x => x.Genres)
+            .SingleOrDefaultAsync(x => x.Id == query.MovieId, cancellationToken);
+
         return movie?.AsMovieDetailsDto();
     }
 }

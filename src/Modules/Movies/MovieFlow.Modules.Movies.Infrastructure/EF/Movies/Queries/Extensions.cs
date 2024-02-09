@@ -19,6 +19,16 @@ internal static class Extensions
             movie.Title,
             movie.Rating,
             movie.ReleaseYear,
-            movie.Description
+            movie.Description,
+            movie.Genres.Select(x => new GenreNameDto(x.Name)).ToList(),
+            movie.Director.AsDirectorDto()
         );
+
+    private static DirectorDto AsDirectorDto(this DirectorReadModel director)
+        => new(
+            director.Id,
+            director.FirstName,
+            director.LastName,
+            director.DateOfBirth,
+            director.Country);
 }

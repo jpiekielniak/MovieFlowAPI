@@ -5,4 +5,6 @@ internal record MovieDetailsDto(
     string Title,
     double Rating,
     int ReleaseYear,
-    string Description);
+    string Description,
+    List<GenreNameDto> Genres,
+    DirectorDto Director);
