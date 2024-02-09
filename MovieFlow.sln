@@ -24,6 +24,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.Infrastructure", "src\Modules\Movies\MovieFlow.Modules.Movies.Infrastructure\MovieFlow.Modules.Movies.Infrastructure.csproj", "{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{E5894FFA-535A-4E9C-B34F-CA5644A98AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Users.Api", "src\Modules\Users\MovieFlow.Modules.Users.Api\MovieFlow.Modules.Users.Api.csproj", "{8363E73A-B305-44F9-8E23-B9A9E106810C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Users.Application", "src\Modules\Users\MovieFlow.Modules.Users.Application\MovieFlow.Modules.Users.Application.csproj", "{BA395AB5-8A90-4300-BC16-9B7FA2E6D7F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Users.Core", "src\Modules\Users\MovieFlow.Modules.Users.Core\MovieFlow.Modules.Users.Core.csproj", "{8E29E24F-6A97-4ED1-ABA7-14EF603595E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Users.Infrastructure", "src\Modules\Users\MovieFlow.Modules.Users.Infrastructure\MovieFlow.Modules.Users.Infrastructure.csproj", "{DE3A33DB-E239-4980-89E6-D6AE533F5F64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +68,22 @@ Global
 		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8363E73A-B305-44F9-8E23-B9A9E106810C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8363E73A-B305-44F9-8E23-B9A9E106810C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8363E73A-B305-44F9-8E23-B9A9E106810C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8363E73A-B305-44F9-8E23-B9A9E106810C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA395AB5-8A90-4300-BC16-9B7FA2E6D7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA395AB5-8A90-4300-BC16-9B7FA2E6D7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA395AB5-8A90-4300-BC16-9B7FA2E6D7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA395AB5-8A90-4300-BC16-9B7FA2E6D7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E29E24F-6A97-4ED1-ABA7-14EF603595E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E29E24F-6A97-4ED1-ABA7-14EF603595E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E29E24F-6A97-4ED1-ABA7-14EF603595E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E29E24F-6A97-4ED1-ABA7-14EF603595E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3A33DB-E239-4980-89E6-D6AE533F5F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3A33DB-E239-4980-89E6-D6AE533F5F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3A33DB-E239-4980-89E6-D6AE533F5F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3A33DB-E239-4980-89E6-D6AE533F5F64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
@@ -71,5 +97,10 @@ Global
 		{1DB1885A-702A-4658-8C46-D5CF035D1014} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
 		{C6CACF9C-46AB-422C-9F3E-6BBF5BD6A7F9} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
 		{1D0938C8-F1B0-4DA0-AB22-BFF8DFCB0634} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
+		{E5894FFA-535A-4E9C-B34F-CA5644A98AE6} = {734DE087-7376-43D7-803F-4846F0985035}
+		{8363E73A-B305-44F9-8E23-B9A9E106810C} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
+		{BA395AB5-8A90-4300-BC16-9B7FA2E6D7F7} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
+		{8E29E24F-6A97-4ED1-ABA7-14EF603595E9} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
+		{DE3A33DB-E239-4980-89E6-D6AE533F5F64} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
 	EndGlobalSection
 EndGlobal
