@@ -16,11 +16,13 @@ internal sealed class BrowseMoviesHandler(
         var movies = readDbContext
             .Movies
             .Include(x => x.Genres)
+            .Include(x => x.Director)
             .AsQueryable();
 
-        movies = await movieService.FilterByTitleAsync(movies, query.Title, cancellationToken);
-        movies = await movieService.FilterByGenreAsync(movies, query.Genre, cancellationToken);
-        movies = await movieService.FilterByReleaseYearAsync(movies, query.ReleaseYear, cancellationToken);
+        movies = movieService.FilterByTitle(movies, query.Title);
+        movies = movieService.FilterByGenre(movies, query.Genre);
+        movies = movieService.FilterByReleaseYear(movies, query.ReleaseYear);
+        movies = movieService.FilterByDirector(movies, query.Director);
 
         return await movies
             .AsNoTracking()

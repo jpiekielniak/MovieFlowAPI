@@ -4,41 +4,48 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;
 
 internal sealed class MovieService : IMovieService
 {
-    public async Task<IQueryable<MovieReadModel>> FilterByTitleAsync(IQueryable<MovieReadModel> movies, string title,
-        CancellationToken cancellationToken)
+    public IQueryable<MovieReadModel> FilterByTitle(IQueryable<MovieReadModel> movies, string title)
     {
         if (string.IsNullOrWhiteSpace(title))
-            return await Task.FromResult(movies);
+            return movies;
 
         var search = $"%{title}%";
         movies = movies.Where(
             f => Microsoft.EntityFrameworkCore.EF.Functions.ILike(
                 f.Title, search));
 
-        return await Task.FromResult(movies);
+        return movies;
     }
 
-    public async Task<IQueryable<MovieReadModel>> FilterByGenreAsync(IQueryable<MovieReadModel> movies, string genre,
-        CancellationToken cancellationToken)
+    public IQueryable<MovieReadModel> FilterByGenre(IQueryable<MovieReadModel> movies, string genre)
     {
         if (string.IsNullOrWhiteSpace(genre))
-            return await Task.FromResult(movies);
+            return movies;
 
         var search = $"%{genre}%";
         movies = movies.Where(
             f => f.Genres.Any(g => Microsoft.EntityFrameworkCore.EF.Functions.ILike(
                 g.Name, search)));
 
-        return await Task.FromResult(movies);
+        return movies;
     }
 
-    public async Task<IQueryable<MovieReadModel>> FilterByReleaseYearAsync(IQueryable<MovieReadModel> movies, int releaseYear, CancellationToken cancellationToken)
+    public IQueryable<MovieReadModel> FilterByReleaseYear(IQueryable<MovieReadModel> movies, int releaseYear)
     {
-        if (releaseYear <= 0)
-            return await Task.FromResult(movies);
+        return releaseYear <= 0 ? movies : movies.Where(f => f.ReleaseYear == releaseYear);
+    }
 
-        movies = movies.Where(f => f.ReleaseYear == releaseYear);
+    public IQueryable<MovieReadModel> FilterByDirector(IQueryable<MovieReadModel> movies, string director)
+    {
+        if (string.IsNullOrWhiteSpace(director))
+            return movies;
 
-        return await Task.FromResult(movies);
+        var search = $"%{director}%";
+
+
+        return movies.Where(f =>
+            Microsoft.EntityFrameworkCore.EF.Functions.ILike(
+                f.Director.FirstName + " " + f.Director.LastName, search)
+        );
     }
 }
