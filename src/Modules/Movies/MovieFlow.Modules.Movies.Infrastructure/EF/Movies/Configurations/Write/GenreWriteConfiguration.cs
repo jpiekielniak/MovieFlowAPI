@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.JavaScript;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
@@ -15,13 +16,11 @@ internal class GenreWriteConfiguration : IEntityTypeConfiguration<Genre>
             .HasColumnName("Name")
             .IsRequired();
         
-        builder.Property<CreatedAt>("CreatedAt")
-            .HasConversion(x => x.Value, x => new CreatedAt(x))
+        builder.Property<DateTimeOffset>("CreatedAt")
             .HasColumnName("CreatedAt")
             .IsRequired();
         
-        builder.Property<UpdatedAt>("UpdatedAt")
-            .HasConversion(x => x.Value, x => new UpdatedAt(x))
+        builder.Property<DateTimeOffset?>("UpdatedAt")
             .HasColumnName("UpdatedAt")
             .IsRequired(false);
 

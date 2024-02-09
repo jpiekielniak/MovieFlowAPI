@@ -35,13 +35,11 @@ internal class MovieWriteConfiguration : IEntityTypeConfiguration<Movie>
             .HasColumnName("Rating")
             .IsRequired();
 
-        builder.Property<CreatedAt>("CreatedAt")
-            .HasConversion(x => x.Value, x => new CreatedAt(x))
+        builder.Property<DateTimeOffset>("CreatedAt")
             .HasColumnName("CreatedAt")
             .IsRequired();
         
-        builder.Property<UpdatedAt>("UpdatedAt")
-            .HasConversion(x => x.Value, x => new UpdatedAt(x))
+        builder.Property<DateTimeOffset?>("UpdatedAt")
             .HasColumnName("UpdatedAt")
             .IsRequired(false);
 
