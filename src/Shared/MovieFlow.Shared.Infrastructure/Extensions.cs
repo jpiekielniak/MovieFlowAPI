@@ -1,3 +1,5 @@
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using MovieFlow.Shared.Abstractions.RenderView;
 using MovieFlow.Shared.Abstractions.Time;
 using MovieFlow.Shared.Infrastructure.Api;
@@ -10,15 +12,18 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MovieFlow.Shared.Abstractions.Modules;
+using MovieFlow.Shared.Infrastructure.Auth;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
+[assembly: InternalsVisibleTo("MovieFlow.Bootstrapper")]
 namespace MovieFlow.Shared.Infrastructure;
 
 public static class Extensions
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+        IList<Assembly> assemblies, IList<IModule> modules)
     {
 
         services.AddSwaggerGen(swagger =>
@@ -36,7 +41,7 @@ public static class Extensions
         services.AddRazorPages();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSingleton<IJsonSerializer, SystemTextJsonSerializer>();
-        
+        services.AddAuth(modules);
         services.AddErrorHandling();
         services.AddPostgres();
         services.AddSingleton<IClock, Clock>();
@@ -61,6 +66,7 @@ public static class Extensions
             c.DocExpansion(DocExpansion.None);
         });
         
+        app.UseAuthentication();
         app.UseRouting();
         app.UseAuthorization();
         
@@ -80,24 +86,15 @@ public static class Extensions
         configuration.GetSection(sectionName).Bind(options);
         return options;
     }
-    
-    public static IHostBuilder ConfigureModules(this IHostBuilder builder)
-        => builder.ConfigureAppConfiguration((ctx, cfg) =>
-        {
-            foreach (var settings in GetSettings("*"))
-            {
-                cfg.AddJsonFile(settings);
-            }
 
-            foreach (var settings in
-                     GetSettings($"*.{ctx.HostingEnvironment.EnvironmentName}"))
-            {
-                cfg.AddJsonFile(settings);
-            }
+    public static string GetModuleName(this Type type)
+    {
+        if (type?.Namespace is null)
+            return string.Empty;
 
-            IEnumerable<string> GetSettings(string pattern)
-                => Directory.EnumerateFiles(ctx.HostingEnvironment.ContentRootPath,
-                    $"module.{pattern}.json", SearchOption.AllDirectories);
-        });
+        return type.Namespace.StartsWith("MovieFlow.Modules.")
+            ? type.Namespace.Split(".")[2].ToLowerInvariant()
+            : string.Empty;
+    }
     
 }
