@@ -1,4 +1,3 @@
-using FluentValidation;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
 

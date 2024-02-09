@@ -1,5 +1,3 @@
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using MovieFlow.Modules.Movies.Application.Movies.Queries.Get;
 using MovieFlow.Modules.Movies.Application.Movies.Queries.Get.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;

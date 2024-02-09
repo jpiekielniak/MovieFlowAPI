@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
 
 internal record ChangeMovieInformationCommand(

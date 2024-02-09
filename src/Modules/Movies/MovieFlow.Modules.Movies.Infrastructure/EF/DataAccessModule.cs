@@ -1,6 +1,5 @@
 ﻿using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 using MovieFlow.Shared.Infrastructure.Postgres;
-using Microsoft.Extensions.DependencyInjection;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Repositories;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;

@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.Create;
 
 internal sealed class CreateMovieValidator : AbstractValidator<CreateMovieCommand>

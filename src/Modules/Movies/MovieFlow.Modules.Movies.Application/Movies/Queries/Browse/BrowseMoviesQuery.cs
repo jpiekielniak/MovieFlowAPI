@@ -1,4 +1,3 @@
-using MediatR;
 using MovieFlow.Modules.Movies.Application.Movies.Queries.Browse.DTO;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Queries.Browse;

@@ -1,6 +1,4 @@
 
-using MediatR;
-
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.Create;
 
 internal record CreateMovieCommand(

@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Country;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;

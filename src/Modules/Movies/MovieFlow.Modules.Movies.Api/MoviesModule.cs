@@ -1,8 +1,6 @@
-using System.Reflection;
 using MovieFlow.Modules.Movies.Application;
 using MovieFlow.Modules.Movies.Core;
 using MovieFlow.Modules.Movies.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace MovieFlow.Modules.Movies.Api;
 

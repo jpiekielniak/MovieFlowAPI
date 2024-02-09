@@ -1,4 +1,3 @@
-using MediatR;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Genres;
