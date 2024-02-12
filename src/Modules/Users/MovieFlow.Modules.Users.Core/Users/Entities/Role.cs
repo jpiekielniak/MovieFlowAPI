@@ -1,6 +1,6 @@
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 
-namespace MovieFlow.Modules.Users.Core.Entities;
+namespace MovieFlow.Modules.Users.Core.Users.Entities;
 
 internal class Role
 {

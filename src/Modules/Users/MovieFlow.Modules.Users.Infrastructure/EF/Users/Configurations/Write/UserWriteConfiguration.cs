@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MovieFlow.Modules.Users.Core.Entities;
+using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Email;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Password;

@@ -11,8 +11,4 @@
       <ProjectReference Include="..\MovieFlow.Modules.Users.Application\MovieFlow.Modules.Users.Application.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="EF\Users\" />
-    </ItemGroup>
-
 </Project>

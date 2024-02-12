@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MovieFlow.Modules.Users.Core.Entities;
+using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 using MovieFlow.Shared.Infrastructure;

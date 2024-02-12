@@ -3,7 +3,7 @@ using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Email;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Password;
 
-namespace MovieFlow.Modules.Users.Core.Entities;
+namespace MovieFlow.Modules.Users.Core.Users.Entities;
 
 internal sealed class User : Entity
 {

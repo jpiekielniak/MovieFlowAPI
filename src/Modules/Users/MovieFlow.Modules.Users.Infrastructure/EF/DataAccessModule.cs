@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using MovieFlow.Modules.Users.Core.Entities;
+using MovieFlow.Modules.Users.Core.Users.Entities;
+using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Modules.Users.Infrastructure.EF.Users.Configurations.DataInitializer;
+using MovieFlow.Modules.Users.Infrastructure.EF.Users.Repositories;
 using MovieFlow.Shared.Infrastructure;
 using MovieFlow.Shared.Infrastructure.Postgres;
 
@@ -14,6 +16,10 @@ internal static class DataAccessModule
     {
         services
             .AddPostgres<UsersWriteDbContext>();
+        
+        services
+            .AddScoped<IRoleRepository, RoleRepository>()
+            .AddScoped<IUserRepository, UserRepository>();
         
         services
             .AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>();
