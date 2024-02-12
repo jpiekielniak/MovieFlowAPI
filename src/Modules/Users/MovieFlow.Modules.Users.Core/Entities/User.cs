@@ -1,11 +1,13 @@
 using MovieFlow.Shared.Abstractions.Kernel;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Email;
+using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Password;
 
 namespace MovieFlow.Modules.Users.Core.Entities;
 
 internal sealed class User : Entity
 {
+    public Name Name { get; private set; }
     public Email Email { get; private set; }
     private bool EmailConfirmed { get; set; } = false;
     private DateTimeOffset? EmailConfirmedAt { get; set; }
@@ -19,15 +21,16 @@ internal sealed class User : Entity
     {
     }
 
-    private User(Email email, Password password, Role role, EntityState state)
+    private User(Name name, Email email, Password password, Role role, EntityState state)
     {
         Id = Guid.NewGuid();
+        Name = name;
         Email = email;
         Password = password;
         Role = role;
         State = state;
     }
 
-    public static User Create(Email email, Password password, Role role)
-        => new(email, password, role, EntityState.Added);
+    public static User Create(Name name,Email email, Password password, Role role)
+        => new(name, email, password, role, EntityState.Added);
 }

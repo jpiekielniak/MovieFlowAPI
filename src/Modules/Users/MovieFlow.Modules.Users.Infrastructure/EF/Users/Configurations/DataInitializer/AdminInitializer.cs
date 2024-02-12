@@ -10,28 +10,32 @@ namespace MovieFlow.Modules.Users.Infrastructure.EF.Users.Configurations.DataIni
 
 internal sealed class AdminInitializer(
     UsersWriteDbContext writeDbContext,
-    ILogger<UsersWriteDbContext> logger, 
+    ILogger<UsersWriteDbContext> logger,
     IPasswordHasher<User> passwordHasher) : IInitializer
 {
-    private const string AdminEmail = "admin@movieflow.com";
-    private const string AdminPassword = "admin123";
-    private const string AdminRole = "Admin";
+    private const string Name = "ADMIN";
+    private const string Email = "admin@movieflow.com";
+    private const string Password = "admin123";
+    private const string Role = "Admin";
 
     public async Task InitDataAsync()
     {
-        if (!await writeDbContext.Users.AnyAsync(x => x.Email == AdminEmail))
+        if (!await AdminExist())
         {
-            var role = await writeDbContext.Roles.SingleOrDefaultAsync(x => x.Name == AdminRole);
+            var role = await writeDbContext.Roles.SingleOrDefaultAsync(x => x.Name == Role);
 
             if (role is null)
-                throw new RoleNotFoundException(AdminRole);
+                throw new RoleNotFoundException(Role);
 
-            var password = passwordHasher.HashPassword(default, AdminPassword);
-            var admin = User.Create(AdminEmail, password, role);
+            var password = passwordHasher.HashPassword(default, Password);
+            var admin = User.Create(Name, Email, password, role);
 
             await writeDbContext.AddAsync(admin);
             await writeDbContext.SaveChangesAsync();
             logger.Log(LogLevel.Information, "Admin initialized");
         }
     }
+
+    private async Task<bool> AdminExist()
+        => await writeDbContext.Users.AnyAsync(x => x.Email == Email && x.Name == Name);
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MovieFlow.Modules.Users.Core.Entities;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Email;
+using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Password;
 using EntityState = MovieFlow.Shared.Abstractions.Kernel.EntityState;
 
@@ -12,6 +13,16 @@ internal class UserWriteConfiguration : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.HasKey(x => x.Id);
+
+        builder.HasIndex(x => x.Name)
+            .IsUnique();
+        
+        builder.Property<Name>("Name")
+            .HasConversion(
+                x => x.Value,
+                x => new Name(x))
+            .HasColumnName("Name")
+            .IsRequired();
 
         builder.HasIndex(x => x.Email)
             .IsUnique();
