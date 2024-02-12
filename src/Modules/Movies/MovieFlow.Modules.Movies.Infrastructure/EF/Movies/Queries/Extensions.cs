@@ -20,7 +20,7 @@ internal static class Extensions
             movie.Rating,
             movie.ReleaseYear,
             movie.Description,
-            movie.Genres.Select(x => new GenreNameDto(x.Name)).ToList(),
+            movie.Genres.Select(x => x.Name).ToList(),
             movie.Director.AsDirectorDto()
         );
 
@@ -28,7 +28,6 @@ internal static class Extensions
         => new(
             director.Id,
             director.FirstName,
-            director.LastName,
-            director.DateOfBirth,
-            director.Country);
+            director.LastName
+        );
 }

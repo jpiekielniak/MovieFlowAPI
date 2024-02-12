@@ -8,7 +8,7 @@ internal sealed class GetMovieEndpoint(IMediator mediator) : EndpointBaseAsync
     .WithRequest<GetMovieQuery>
     .WithActionResult<MovieDetailsDto>
 {
-    [HttpGet("{MovieId:guid}")]
+    [HttpGet("{movieId:guid}")]
     [SwaggerOperation(
         Summary = "Get a movie by id",
         Tags = [MoviesEndpoint.Tag]
