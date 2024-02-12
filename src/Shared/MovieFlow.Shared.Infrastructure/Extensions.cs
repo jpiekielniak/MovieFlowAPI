@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using MovieFlow.Shared.Abstractions.Modules;
 using MovieFlow.Shared.Infrastructure.Auth;
+using MovieFlow.Shared.Infrastructure.Services;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 [assembly: InternalsVisibleTo("MovieFlow.Bootstrapper")]
@@ -22,6 +23,9 @@ namespace MovieFlow.Shared.Infrastructure;
 
 public static class Extensions
 {
+    public static IServiceCollection AddInitializer<T>(this IServiceCollection services)
+        where T : class, IInitializer
+        => services.AddTransient<IInitializer, T>();
     public static IServiceCollection AddInfrastructure(this IServiceCollection services,
         IList<Assembly> assemblies, IList<IModule> modules)
     {
@@ -45,7 +49,7 @@ public static class Extensions
         services.AddErrorHandling();
         services.AddPostgres();
         services.AddSingleton<IClock, Clock>();
-
+        services.AddHostedService<AppInitializer>();
         services.AddControllers()
             .ConfigureApplicationPartManager(manager =>
             {

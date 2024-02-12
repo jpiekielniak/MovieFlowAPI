@@ -14,13 +14,13 @@ internal class MoviesWriteDbContext : DbContext
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Director> Directors { get; set; }
     private readonly IClock _clock;
-    
-    public MoviesWriteDbContext(DbContextOptions<MoviesWriteDbContext> options, IClock clock) 
+
+    public MoviesWriteDbContext(DbContextOptions<MoviesWriteDbContext> options, IClock clock)
         : base(options)
     {
         _clock = clock;
     }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("movies");
@@ -28,20 +28,18 @@ internal class MoviesWriteDbContext : DbContext
         modelBuilder.ApplyConfiguration(new GenreWriteConfiguration());
         modelBuilder.ApplyConfiguration(new DirectorWriteConfiguration());
     }
-    
+
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
         foreach (var entry in ChangeTracker.Entries<Entity>())
         {
             if (entry.State == EntityState.Added)
-                entry.Property<CreatedAt>("CreatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
-            
-            if (entry.State == EntityState.Modified)
-                entry.Property<UpdatedAt>("UpdatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
+                entry.Property<DateTimeOffset>("CreatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
 
+            if (entry.State is EntityState.Modified or EntityState.Deleted)
+                entry.Property<DateTimeOffset>("UpdatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
         }
-        
+
         return base.SaveChangesAsync(cancellationToken);
     }
-
 }

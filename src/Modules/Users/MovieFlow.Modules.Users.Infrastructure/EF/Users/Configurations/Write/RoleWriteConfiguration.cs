@@ -11,6 +11,9 @@ internal class RoleWriteConfiguration : IEntityTypeConfiguration<Role>
     public void Configure(EntityTypeBuilder<Role> builder)
     {
         builder.HasKey(x => x.Id);
+        
+        builder.HasIndex(x => x.Name)
+            .IsUnique();
 
         builder.Property<Name>("Name")
             .HasConversion(

@@ -10,4 +10,13 @@ internal sealed class Genre : Entity
     private Genre() //for EF
     {
     }
+
+    private Genre(string name)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+        State = EntityState.Added;
+    }
+
+    public static Genre Create(string name) => new(name);
 }

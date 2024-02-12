@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MovieFlow.Modules.Users.Core.Entities;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Email;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Password;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
 using EntityState = MovieFlow.Shared.Abstractions.Kernel.EntityState;
 
 namespace MovieFlow.Modules.Users.Infrastructure.EF.Users.Configurations.Write;

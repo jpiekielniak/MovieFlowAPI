@@ -2,8 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using MovieFlow.Modules.Users.Core.Entities;
 using MovieFlow.Modules.Users.Infrastructure.EF.Users.Configurations.Write;
 using MovieFlow.Shared.Abstractions.Kernel;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
 using MovieFlow.Shared.Abstractions.Time;
 using EntityState = Microsoft.EntityFrameworkCore.EntityState;
 
@@ -34,10 +32,10 @@ internal class UsersWriteDbContext : DbContext
         foreach (var entry in ChangeTracker.Entries<Entity>())
         {
             if (entry.State == EntityState.Added)
-                entry.Property<CreatedAt>("CreatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
+                entry.Property<DateTimeOffset>("CreatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
 
-            if (entry.State == EntityState.Modified)
-                entry.Property<UpdatedAt>("UpdatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
+            if (entry.State is EntityState.Modified or EntityState.Deleted)
+                entry.Property<DateTimeOffset>("UpdatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
         }
 
         return base.SaveChangesAsync(cancellationToken);
