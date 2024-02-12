@@ -29,9 +29,6 @@ namespace MovieFlow.Modules.Users.Infrastructure.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -40,13 +37,10 @@ namespace MovieFlow.Modules.Users.Infrastructure.EF.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("State")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTimeOffset?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Roles", "users");
                 });
