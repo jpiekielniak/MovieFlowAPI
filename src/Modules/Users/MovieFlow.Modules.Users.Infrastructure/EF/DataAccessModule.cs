@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using MovieFlow.Modules.Users.Core.Users.Entities;
+﻿using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Modules.Users.Infrastructure.EF.Users.Configurations.DataInitializer;

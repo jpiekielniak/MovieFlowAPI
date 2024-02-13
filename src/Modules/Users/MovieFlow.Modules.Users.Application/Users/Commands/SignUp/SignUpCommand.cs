@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
 
 internal record SignUpCommand(

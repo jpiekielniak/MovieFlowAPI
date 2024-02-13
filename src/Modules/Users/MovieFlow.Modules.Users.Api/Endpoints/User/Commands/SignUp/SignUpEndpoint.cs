@@ -1,10 +1,4 @@
-using Ardalis.ApiEndpoints;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace MovieFlow.Modules.Users.Api.Endpoints.User.Commands.SignUp;
 

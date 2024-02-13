@@ -1,5 +1,3 @@
-using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using MovieFlow.Modules.Users.Application;
 using MovieFlow.Modules.Users.Core;
 using MovieFlow.Modules.Users.Infrastructure;

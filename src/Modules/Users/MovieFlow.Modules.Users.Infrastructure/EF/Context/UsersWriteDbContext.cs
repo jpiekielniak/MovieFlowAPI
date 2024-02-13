@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Infrastructure.EF.Users.Configurations.Write;
 using MovieFlow.Shared.Abstractions.Kernel;

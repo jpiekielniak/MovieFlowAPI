@@ -1,6 +1,3 @@
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Users.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Users.Infrastructure")]

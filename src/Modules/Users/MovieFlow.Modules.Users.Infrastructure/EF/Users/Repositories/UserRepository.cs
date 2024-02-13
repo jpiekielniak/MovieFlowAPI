@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;

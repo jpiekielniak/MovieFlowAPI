@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 

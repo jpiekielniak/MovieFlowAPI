@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MovieFlow.Modules.Users.Application.Users.Commands.SignIn;
 
 internal sealed class SignInValidator : AbstractValidator<SignInCommand>

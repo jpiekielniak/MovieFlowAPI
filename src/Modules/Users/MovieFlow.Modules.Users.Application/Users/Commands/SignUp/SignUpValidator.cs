@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
 
 internal sealed class SignUpValidator : AbstractValidator<SignUpCommand>

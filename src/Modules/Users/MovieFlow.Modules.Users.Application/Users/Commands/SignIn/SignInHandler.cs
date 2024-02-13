@@ -1,5 +1,3 @@
-using MediatR;
-using Microsoft.AspNetCore.Identity;
 using MovieFlow.Modules.Users.Core.Users.Exceptions;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Shared.Abstractions;
