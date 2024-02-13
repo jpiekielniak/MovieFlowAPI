@@ -21,4 +21,8 @@ internal sealed class UserRepository(
 
     public async Task CommitAsync(CancellationToken cancellationToken)
         => await dbContext.SaveChangesAsync(cancellationToken);
+
+    public async Task<User> GetByEmailAsync(string email)
+        => await _users.Include(x => x.Role).SingleOrDefaultAsync(u => u.Email == email);
+    
 }

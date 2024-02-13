@@ -8,4 +8,5 @@ internal interface IUserRepository
     Task AddAsync(User user, CancellationToken cancellationToken);
     Task CommitAsync(CancellationToken cancellationToken);
 
+    Task<User> GetByEmailAsync(string commandEmail);
 }

@@ -3,26 +3,26 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
+using MovieFlow.Modules.Users.Application.Users.Commands.SignIn;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace MovieFlow.Modules.Users.Api.Endpoints.User.Commands.SignUp;
+namespace MovieFlow.Modules.Users.Api.Endpoints.User.Commands.SignIn;
 
 [Route(UsersEndpoint.Url)]
-internal sealed class SignUpEndpoint(
+internal sealed class SignInEndpoint(
     IMediator mediator) : EndpointBaseAsync
-    .WithRequest<SignUpCommand>
-    .WithActionResult<SignUpResponse>
+    .WithRequest<SignInCommand>
+    .WithActionResult<SignInResponse>
 {
     [AllowAnonymous]
-    [HttpPost("sign-up")]
+    [HttpPost("sign-in")]
     [SwaggerOperation(
-        Summary = "Sign up",
+        Summary = "Sign in",
         Tags = [UsersEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public override async Task<ActionResult<SignUpResponse>> HandleAsync(SignUpCommand command,
+    public override async Task<ActionResult<SignInResponse>> HandleAsync(SignInCommand command,
         CancellationToken cancellationToken = new())
         => Ok(await mediator.Send(command, cancellationToken));
 }
