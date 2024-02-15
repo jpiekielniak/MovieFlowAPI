@@ -23,7 +23,6 @@ internal sealed class User : Entity
 
     private User(Name name, Email email, Password password, Role role, EntityState state)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Email = email;
         Password = password;

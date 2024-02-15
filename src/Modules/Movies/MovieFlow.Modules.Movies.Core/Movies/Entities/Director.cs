@@ -20,7 +20,6 @@ internal class Director : Entity
     private Director(FirstName firstName, LastName lastName,
         DateTime dateOfBirth, Country country, EntityState entityState)
     {
-        Id = Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
         DateOfBirth = dateOfBirth;
