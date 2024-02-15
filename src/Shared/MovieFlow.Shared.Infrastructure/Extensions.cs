@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using MovieFlow.Shared.Abstractions.Modules;
 using MovieFlow.Shared.Infrastructure.Auth;
+using MovieFlow.Shared.Infrastructure.Contexts;
 using MovieFlow.Shared.Infrastructure.Services;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
@@ -70,6 +71,7 @@ public static class Extensions
         services.AddScoped<IRazorViewRenderer, RazorViewRenderer>();
         services.AddRazorPages();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddTransient(sp => sp.GetRequiredService<IContextFactory>().Create());
         services.AddSingleton<IJsonSerializer, SystemTextJsonSerializer>();
         services.AddAuth(modules);
         services.AddErrorHandling();
