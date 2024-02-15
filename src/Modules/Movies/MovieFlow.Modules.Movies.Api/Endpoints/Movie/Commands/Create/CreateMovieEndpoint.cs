@@ -10,9 +10,9 @@ internal sealed class CreateMovieEndpoint(IMediator mediator) : EndpointBaseAsyn
 {
     [Authorize]
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(CreateMovieResponse))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [SwaggerOperation(
         Summary = "Create Movie",
         Tags = [MoviesEndpoint.Tag]

@@ -13,9 +13,9 @@ internal sealed class ChangeMovieInformationEndpoint(
         Summary = "Change movie information",
         Tags = [MoviesEndpoint.Tag]
     )]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(typeof(ErrorsResponse), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(void))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(void))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     public override async Task HandleAsync(
         [FromRequestSource] ChangeMovieInformationRequest request,
         CancellationToken cancellationToken = new())

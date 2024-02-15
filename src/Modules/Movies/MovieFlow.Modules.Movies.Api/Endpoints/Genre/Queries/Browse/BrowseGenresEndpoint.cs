@@ -14,7 +14,7 @@ internal sealed class BrowseGenresEndpoint(
         Summary = "Browse Genres",
         Tags = [GenresEndpoint.Tag]
     )]
-    [SwaggerResponse(StatusCodes.Status200OK)]
+    [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(List<BrowseGenresDto>))]
     public override async Task<ActionResult<List<BrowseGenresDto>>> HandleAsync(
         CancellationToken cancellationToken = new())
         => Ok(await mediator.Send(new BrowseGenresQuery(), cancellationToken));

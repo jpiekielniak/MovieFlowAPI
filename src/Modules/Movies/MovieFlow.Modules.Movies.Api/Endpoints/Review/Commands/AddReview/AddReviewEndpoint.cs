@@ -15,9 +15,9 @@ internal sealed class AddReviewEndpoint(IMediator mediator) : EndpointBaseAsync
         Summary = "Add review to movie",
         Tags = [MoviesEndpoint.Tag]
     )]
-    [ProducesResponseType( StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ErrorsResponse),StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(AddReviewResponse))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     public override async Task<ActionResult<AddReviewResponse>> HandleAsync(
         [FromRequestSource] AddReviewEndpointRequest request,
         CancellationToken cancellationToken = new())

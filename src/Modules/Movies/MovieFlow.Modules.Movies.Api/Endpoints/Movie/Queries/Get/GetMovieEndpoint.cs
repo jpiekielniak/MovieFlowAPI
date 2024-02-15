@@ -14,7 +14,7 @@ internal sealed class GetMovieEndpoint(IMediator mediator) : EndpointBaseAsync
         Tags = [MoviesEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(MovieDetailsDto))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(void))]
     public override async Task<ActionResult<MovieDetailsDto>> HandleAsync(
         [FromRoute] GetMovieQuery query,
         CancellationToken cancellationToken = new())

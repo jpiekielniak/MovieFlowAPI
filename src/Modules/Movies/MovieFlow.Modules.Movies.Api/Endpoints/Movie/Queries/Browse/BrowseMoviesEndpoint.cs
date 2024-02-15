@@ -13,7 +13,7 @@ internal sealed class BrowseMoviesEndpoint(IMediator mediator) : EndpointBaseAsy
         Summary = "Browse Movies",
         Tags = [MoviesEndpoint.Tag]
     )]
-    [SwaggerResponse(StatusCodes.Status200OK)]
+    [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(List<MovieDto>))]
     public override async Task<ActionResult<List<MovieDto>>> HandleAsync(
         [FromQuery] BrowseMoviesQuery query,
         CancellationToken cancellationToken = default)
