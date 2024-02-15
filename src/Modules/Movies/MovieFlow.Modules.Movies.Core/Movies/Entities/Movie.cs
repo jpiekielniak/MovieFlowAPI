@@ -15,6 +15,7 @@ internal sealed class Movie : Entity
     internal Guid DirectorId { get; private set; }
     internal Director Director { get; private set; }
     internal ICollection<Genre> Genres { get; set; }
+    internal ICollection<Review> Reviews { get; set; }
 
     private Movie() // for EF
     {
@@ -24,13 +25,13 @@ internal sealed class Movie : Entity
         ReleaseYear releaseYear, Rating rating,
         Director director, ICollection<Genre> genres, EntityState entityState)
     {
-        Id = Guid.NewGuid();
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
         Rating = rating;
         Director = director;
         Genres = genres;
+        Reviews = new List<Review>();
         State = entityState;
     }
 

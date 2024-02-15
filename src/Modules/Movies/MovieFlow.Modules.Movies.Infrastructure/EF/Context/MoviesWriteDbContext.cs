@@ -1,8 +1,6 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Write;
 using MovieFlow.Shared.Abstractions.Kernel;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
 using MovieFlow.Shared.Abstractions.Time;
 using EntityState = Microsoft.EntityFrameworkCore.EntityState;
 
@@ -13,13 +11,11 @@ internal class MoviesWriteDbContext : DbContext
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Director> Directors { get; set; }
+    public DbSet<Review> Reviews { get; set; }
     private readonly IClock _clock;
 
     public MoviesWriteDbContext(DbContextOptions<MoviesWriteDbContext> options, IClock clock)
-        : base(options)
-    {
-        _clock = clock;
-    }
+        : base(options) => _clock = clock;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,6 +23,7 @@ internal class MoviesWriteDbContext : DbContext
         modelBuilder.ApplyConfiguration(new MovieWriteConfiguration());
         modelBuilder.ApplyConfiguration(new GenreWriteConfiguration());
         modelBuilder.ApplyConfiguration(new DirectorWriteConfiguration());
+        modelBuilder.ApplyConfiguration(new ReviewWriteConfiguration());
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
