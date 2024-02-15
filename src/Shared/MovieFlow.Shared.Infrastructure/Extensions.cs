@@ -70,6 +70,7 @@ public static class Extensions
 
         services.AddScoped<IRazorViewRenderer, RazorViewRenderer>();
         services.AddRazorPages();
+        services.AddSingleton<IContextFactory, ContextFactory>();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddTransient(sp => sp.GetRequiredService<IContextFactory>().Create());
         services.AddSingleton<IJsonSerializer, SystemTextJsonSerializer>();

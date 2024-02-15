@@ -20,19 +20,19 @@ internal sealed class Review : Entity
     {
     }
 
-    private Review(Title title, Content content, Rating rating, Likes likes, Movie movie, Guid userId,
+    private Review(Title title, Content content, Rating rating, Movie movie, Guid userId,
         EntityState entityState)
     {
         Title = title;
         Content = content;
         Rating = rating;
-        Likes = likes;
+        Likes = new Likes();
         Movie = movie;
         UserId = userId;
         State = entityState;
     }
 
-    public static Review Create(Title title, Content content, Rating rating, Likes likes,
+    public static Review Create(Title title, Content content, Rating rating, 
         Movie movie, Guid userId)
-        => new(title, content, rating, likes, movie, userId, EntityState.Added);
+        => new(title, content, rating, movie, userId, EntityState.Added);
 }
