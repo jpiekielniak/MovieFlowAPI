@@ -14,7 +14,7 @@ internal class ExceptionToResponseMapper : IExceptionToResponseMapper
 
     public ExceptionResponse Map(Exception exception) => exception switch
     {
-        MovieFlowException ex => GetExceptionResponse(ex), 
+        MovieFlowException ex => GetExceptionResponse(ex),
         ValidationException ex => GetExceptionResponse(ex),
         _ => GetExceptionResponse()
     };
@@ -28,22 +28,8 @@ internal class ExceptionToResponseMapper : IExceptionToResponseMapper
 
     private static ExceptionResponse GetExceptionResponse(MovieFlowException ex)
     {
-        var exceptionType = ex.GetType();
-        var propertiesToMap = exceptionType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-        var properties = new List<ErrorProperty>();
-        foreach (var property in propertiesToMap)
-        {
-            var propertyName = property.Name;
-            var propertyValue = property.GetValue(ex)?.ToString(); 
+        var error = new Error(GetErrorCode(ex), ex.Message);
 
-            if (!string.IsNullOrEmpty(propertyValue))
-            {
-                properties.Add(new ErrorProperty(propertyName, propertyValue)); 
-            }
-        }
-        
-        var error = new Error(GetErrorCode(ex), ex.Message, Properties: properties);
-        
         var response = new ErrorsResponse(error);
 
         var exceptionResponse = new ExceptionResponse(response, HttpStatusCode.BadRequest);
@@ -54,19 +40,13 @@ internal class ExceptionToResponseMapper : IExceptionToResponseMapper
     private static ExceptionResponse GetExceptionResponse(ValidationException ex)
     {
         var errors = ex.Errors
-            .Select(q => new Error(q.ErrorCode, q.ErrorMessage, q.PropertyName, MapFormattedValues(q.FormattedMessagePlaceholderValues)))
+            .Select(q => new Error(q.ErrorCode, q.ErrorMessage))
             .ToArray();
 
         var response = new ErrorsResponse(errors);
 
         return new ExceptionResponse(response, HttpStatusCode.BadRequest);
     }
-
-    private static List<ErrorProperty> MapFormattedValues(Dictionary<string, object> formattedValues)
-    {
-        return formattedValues?.Select(kv => new ErrorProperty(kv.Key, kv.Value)).ToList();
-    }
-    
 
     private static ExceptionResponse GetExceptionResponse()
     {
