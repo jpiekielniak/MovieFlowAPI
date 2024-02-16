@@ -32,7 +32,15 @@ internal sealed class Review : Entity
         State = entityState;
     }
 
-    public static Review Create(Title title, Content content, Rating rating, 
+    public static Review Create(Title title, Content content, Rating rating,
         Movie movie, Guid userId)
         => new(title, content, rating, movie, userId, EntityState.Added);
+
+    public void Change(Title title, Content content, Rating rating)
+    {
+        Title = title;
+        Content = content;
+        Rating = rating;
+        State = EntityState.Modified;
+    }
 }

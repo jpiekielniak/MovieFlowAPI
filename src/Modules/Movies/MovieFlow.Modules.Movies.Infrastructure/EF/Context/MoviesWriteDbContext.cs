@@ -34,7 +34,7 @@ internal class MoviesWriteDbContext : DbContext
                 entry.Property<DateTimeOffset>("CreatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
 
             if (entry.State is EntityState.Modified or EntityState.Deleted)
-                entry.Property<DateTimeOffset>("UpdatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
+                entry.Property<DateTimeOffset?>("UpdatedAt").CurrentValue = _clock.CurrentDateTimeOffset();
         }
 
         return base.SaveChangesAsync(cancellationToken);
