@@ -1,15 +1,16 @@
-using MovieFlow.Modules.Movies.Core.Movies.Entities;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
 internal class ReviewReadModel
 {
-    public Guid Id { get; }
-    public string Title { get; }
-    public string Content { get; }
-    public IReadOnlyCollection<Like>? Likes { get; }
-    public int PositiveLikes => Likes?.Count(x => x.IsPositive) ?? 0;
-    public int NegativeLikes => Likes?.Count(x => !x.IsPositive) ?? 0;
-    public MovieReadModel Movie { get; }
-    public Guid UserId { get; }
+    public Guid Id { get; init; }
+    public string Title { get; init; }
+    public string Content { get; init; }
+    public double Rating { get; init; }
+    public IReadOnlyCollection<LikeReadModel> Likes { get; }
+    public int PositiveLikes => Likes.Count(x => x.IsPositive);
+    public int NegativeLikes => Likes.Count(x => !x.IsPositive);
+    public Guid MovieId { get; init; }
+    public MovieReadModel Movie { get; init; }
+    public Guid UserId { get; init; }
 }
