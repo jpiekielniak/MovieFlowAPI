@@ -1,6 +1,5 @@
 using MovieFlow.Shared.Abstractions.Kernel;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Content;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Likes;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Rating;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
 
@@ -11,7 +10,9 @@ internal sealed class Review : Entity
     internal Title Title { get; private set; }
     internal Content Content { get; private set; }
     internal Rating Rating { get; private set; }
-    internal Likes Likes { get; private set; }
+    internal ICollection<Like> Likes { get; } = new List<Like>();
+    internal int PositiveLikes => Likes.Count(x => x.IsPositive);
+    internal int NegativeLikes => Likes.Count(x => !x.IsPositive);
     internal Guid MovieId { get; }
     internal Movie Movie { get; }
     internal Guid UserId { get; }
@@ -26,7 +27,6 @@ internal sealed class Review : Entity
         Title = title;
         Content = content;
         Rating = rating;
-        Likes = new Likes();
         Movie = movie;
         UserId = userId;
         State = entityState;
@@ -43,4 +43,7 @@ internal sealed class Review : Entity
         Rating = rating;
         State = EntityState.Modified;
     }
+
+    public void AddLike(Like like)
+        => Likes.Add(like);
 }

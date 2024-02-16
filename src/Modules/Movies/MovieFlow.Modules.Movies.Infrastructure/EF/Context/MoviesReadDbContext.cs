@@ -10,6 +10,7 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
     public DbSet<GenreReadModel> Genres { get; set; }
     public DbSet<DirectorReadModel> Directors { get; set; }
     public DbSet<ReviewReadModel> Reviews { get; set; }
+    public DbSet<LikeReadModel> Likes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -18,5 +19,6 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
         modelBuilder.ApplyConfiguration(new GenreReadConfiguration());
         modelBuilder.ApplyConfiguration(new DirectorReadConfiguration());
         modelBuilder.ApplyConfiguration(new ReviewReadConfiguration());
+        modelBuilder.ApplyConfiguration(new LikeReadConfiguration());
     }
 }

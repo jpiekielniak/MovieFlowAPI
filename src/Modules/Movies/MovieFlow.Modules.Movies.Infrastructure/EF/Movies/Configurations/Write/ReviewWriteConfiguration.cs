@@ -27,17 +27,6 @@ internal sealed class ReviewWriteConfiguration : IEntityTypeConfiguration<Review
             .HasColumnName("Rating")
             .IsRequired();
 
-        builder.OwnsOne(x => x.Likes, x =>
-        {
-            x.Property<uint>("PositiveLikes")
-                .HasColumnName("PositiveLikes")
-                .IsRequired();
-
-            x.Property<uint>("NegativeLikes")
-                .HasColumnName("NegativeLikes")
-                .IsRequired();
-        });
-
         builder.Property<Guid>("UserId")
             .HasColumnName("UserId")
             .IsRequired();

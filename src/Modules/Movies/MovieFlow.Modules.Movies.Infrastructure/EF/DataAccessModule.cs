@@ -1,4 +1,5 @@
-﻿using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
+﻿using MovieFlow.Modules.Movies.Application.Reviews.Commands.AddLikes;
+using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 using MovieFlow.Shared.Infrastructure.Postgres;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.DataInitializer;
@@ -20,7 +21,8 @@ internal static class DataAccessModule
             .AddScoped<IMovieRepository, MovieRepository>()
             .AddScoped<IGenreRepository, GenreRepository>()
             .AddScoped<IDirectorRepository, DirectorRepository>()
-            .AddScoped<IReviewRepository, ReviewRepository>();
+            .AddScoped<IReviewRepository, ReviewRepository>()
+            .AddScoped<ILikeRepository, LikeRepository>();
 
         services
             .AddScoped<IMovieService, MovieService>();

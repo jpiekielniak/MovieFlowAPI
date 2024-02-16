@@ -18,7 +18,7 @@ internal sealed class ReviewRepository(MoviesWriteDbContext dbContext) : IReview
         => await dbContext.SaveChangesAsync(cancellationToken);
 
     public async Task<Review> GetAsync(Guid reviewId, CancellationToken cancellationToken)
-        => await _reviews.SingleOrDefaultAsync(x => x.Id == reviewId, cancellationToken);
+        => await _reviews.Include(x => x.Likes).SingleOrDefaultAsync(x => x.Id == reviewId, cancellationToken);
 
     public async Task UpdateAsync(Review review, CancellationToken cancellationToken)
     {
