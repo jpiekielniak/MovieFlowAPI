@@ -1,4 +1,3 @@
-using MediatR;
 using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
 using MovieFlow.Modules.Users.Application.Users.Queries.GetUser;
 using MovieFlow.Modules.Users.Core.Users.Exceptions;
