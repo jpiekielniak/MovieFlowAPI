@@ -4,7 +4,7 @@ using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;
 
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.AddReview;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.Add;
 
 internal sealed class AddReviewHandler(
     IContext context,

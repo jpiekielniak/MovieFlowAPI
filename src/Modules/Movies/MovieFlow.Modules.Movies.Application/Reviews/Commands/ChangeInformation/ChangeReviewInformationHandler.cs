@@ -5,14 +5,14 @@ using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;
 
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeReview;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeInformation;
 
-internal sealed class ChangeReviewHandler(
+internal sealed class ChangeReviewInformationHandler(
     IMovieRepository movieRepository,
     IReviewRepository reviewRepository,
-    IContext context) : IRequestHandler<ChangeReviewCommand>
+    IContext context) : IRequestHandler<ChangeReviewInformationCommand>
 {
-    public async Task Handle(ChangeReviewCommand command, CancellationToken cancellationToken)
+    public async Task Handle(ChangeReviewInformationCommand command, CancellationToken cancellationToken)
     {
         await movieRepository.GetAsync(command.MovieId, cancellationToken)
             .NotNull(() => new MovieDoesNotExistException(command.MovieId));

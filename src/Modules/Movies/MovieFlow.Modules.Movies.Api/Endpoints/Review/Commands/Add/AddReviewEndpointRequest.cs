@@ -1,6 +1,6 @@
-using MovieFlow.Modules.Movies.Application.Reviews.Commands.AddReview;
+using MovieFlow.Modules.Movies.Application.Reviews.Commands.Add;
 
-namespace MovieFlow.Modules.Movies.Api.Endpoints.Review.Commands.AddReview;
+namespace MovieFlow.Modules.Movies.Api.Endpoints.Review.Commands.Add;
 
 internal sealed class AddReviewEndpointRequest
 {

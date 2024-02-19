@@ -1,6 +1,6 @@
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeReview;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeInformation;
 
-internal record ChangeReviewCommand(
+internal record ChangeReviewInformationCommand(
     string Title,
     string Content,
     double Rating) : IRequest

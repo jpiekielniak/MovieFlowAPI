@@ -1,8 +1,8 @@
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeReview;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeInformation;
 
-internal sealed class ChangeReviewValidator : AbstractValidator<ChangeReviewCommand>
+internal sealed class ChangeReviewInformationValidator : AbstractValidator<ChangeReviewInformationCommand>
 {
-    public ChangeReviewValidator()
+    public ChangeReviewInformationValidator()
     {
         RuleFor(x => x.Title)
             .NotEmpty()

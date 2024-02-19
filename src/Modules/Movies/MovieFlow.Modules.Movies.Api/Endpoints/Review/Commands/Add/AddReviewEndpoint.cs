@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
-using MovieFlow.Modules.Movies.Application.Reviews.Commands.AddReview;
+using MovieFlow.Modules.Movies.Application.Reviews.Commands.Add;
 using MovieFlow.Shared.Infrastructure.Api.Attributes;
 
-namespace MovieFlow.Modules.Movies.Api.Endpoints.Review.Commands.AddReview;
+namespace MovieFlow.Modules.Movies.Api.Endpoints.Review.Commands.Add;
 
 [Route(MoviesEndpoint.Url)]
 internal sealed class AddReviewEndpoint(IMediator mediator) : EndpointBaseAsync
@@ -13,7 +13,7 @@ internal sealed class AddReviewEndpoint(IMediator mediator) : EndpointBaseAsync
     [HttpPost("{movieId:Guid}/reviews")]
     [SwaggerOperation(
         Summary = "Add review to movie",
-        Tags = [MoviesEndpoint.Tag]
+        Tags = [ReviewsEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(AddReviewResponse))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]

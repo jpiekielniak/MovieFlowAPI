@@ -1,4 +1,4 @@
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.AddReview;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.Add;
 
 internal sealed class AddReviewValidator : AbstractValidator<AddReviewCommand>
 {
