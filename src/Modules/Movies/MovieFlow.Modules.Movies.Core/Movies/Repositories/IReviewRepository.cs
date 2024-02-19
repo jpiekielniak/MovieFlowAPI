@@ -9,4 +9,5 @@ internal interface IReviewRepository
     Task<Review> GetAsync(Guid reviewId, CancellationToken cancellationToken);
     Task UpdateAsync(Review review, CancellationToken cancellationToken);
     Task DeleteAsync(Review review, CancellationToken cancellationToken);
+    Task<List<Review>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken);
 }

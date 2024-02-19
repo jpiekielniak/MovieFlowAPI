@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\Movies\MovieFlow.Modules.Movies.Shared\MovieFlow.Modules.Movies.Shared.csproj" />
       <ProjectReference Include="..\MovieFlow.Modules.Users.Core\MovieFlow.Modules.Users.Core.csproj" />
     </ItemGroup>
 

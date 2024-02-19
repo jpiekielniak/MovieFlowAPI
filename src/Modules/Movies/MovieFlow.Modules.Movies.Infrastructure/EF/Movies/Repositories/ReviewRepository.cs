@@ -1,3 +1,4 @@
+using System.Linq.Dynamic.Core;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
@@ -31,4 +32,12 @@ internal sealed class ReviewRepository(MoviesWriteDbContext dbContext) : IReview
         _reviews.Remove(review);
         await CommitAsync(cancellationToken);
     }
+
+    public async Task<List<Review>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken)
+        => await _reviews
+            .AsNoTracking()
+            .Include(x => x.Likes)
+            .Include(x => x.Movie)
+            .Where(x => x.UserId == userId)
+            .ToListAsync(cancellationToken);
 }

@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Users.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Users.Infrastructure", "src\Modules\Users\MovieFlow.Modules.Users.Infrastructure\MovieFlow.Modules.Users.Infrastructure.csproj", "{DE3A33DB-E239-4980-89E6-D6AE533F5F64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.Shared", "src\Modules\Movies\MovieFlow.Modules.Movies.Shared\MovieFlow.Modules.Movies.Shared.csproj", "{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{DE3A33DB-E239-4980-89E6-D6AE533F5F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3A33DB-E239-4980-89E6-D6AE533F5F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE3A33DB-E239-4980-89E6-D6AE533F5F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
@@ -102,5 +108,6 @@ Global
 		{BA395AB5-8A90-4300-BC16-9B7FA2E6D7F7} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
 		{8E29E24F-6A97-4ED1-ABA7-14EF603595E9} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
 		{DE3A33DB-E239-4980-89E6-D6AE533F5F64} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
+		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
 	EndGlobalSection
 EndGlobal

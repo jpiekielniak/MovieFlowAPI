@@ -11,7 +11,7 @@ internal sealed class GetByMovieEndpoint(IMediator mediator) : EndpointBaseAsync
     [HttpGet("{movieId:guid}/reviews")]
     [SwaggerOperation(
         Summary = "Get reviews by movie id",
-        Tags = [MoviesEndpoint.Tag]
+        Tags = [ReviewsEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<ReviewDto>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
