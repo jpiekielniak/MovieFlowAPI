@@ -17,6 +17,5 @@ internal sealed class CreateMovieValidator : AbstractValidator<CreateMovieComman
             .NotEmpty()
             .GreaterThanOrEqualTo(1900)
             .LessThanOrEqualTo(DateTime.Now.Year);
-        
     }
 }

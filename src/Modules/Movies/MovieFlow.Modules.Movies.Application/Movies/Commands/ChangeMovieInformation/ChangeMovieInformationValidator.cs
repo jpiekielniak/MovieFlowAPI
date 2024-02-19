@@ -1,4 +1,3 @@
-
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
 
 internal sealed class ChangeMovieInformationValidator : AbstractValidator<ChangeMovieInformationCommand>

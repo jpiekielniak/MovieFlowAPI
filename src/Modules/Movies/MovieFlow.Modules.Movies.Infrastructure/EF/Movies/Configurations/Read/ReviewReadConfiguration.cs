@@ -11,7 +11,7 @@ internal sealed class ReviewReadConfiguration : IEntityTypeConfiguration<ReviewR
         builder.HasMany(x => x.Likes)
             .WithOne()
             .HasForeignKey(x => x.ReviewId);
-        
+
         builder.ToTable("Reviews");
     }
 }

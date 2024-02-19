@@ -19,7 +19,7 @@ internal class MovieWriteConfiguration : IEntityTypeConfiguration<Movie>
             .HasConversion(x => x.Value, x => new Title(x))
             .HasColumnName("Title")
             .IsRequired();
-        
+
         builder.Property<Description>("Description")
             .HasConversion(x => x.Value, x => new Description(x))
             .HasColumnName("Description")
@@ -33,7 +33,7 @@ internal class MovieWriteConfiguration : IEntityTypeConfiguration<Movie>
         builder.Property<DateTimeOffset>("CreatedAt")
             .HasColumnName("CreatedAt")
             .IsRequired();
-        
+
         builder.Property<DateTimeOffset?>("UpdatedAt")
             .HasColumnName("UpdatedAt")
             .IsRequired(false);
@@ -45,7 +45,7 @@ internal class MovieWriteConfiguration : IEntityTypeConfiguration<Movie>
         builder.HasMany(x => x.Genres)
             .WithMany(x => x.Movies)
             .UsingEntity(j => j.ToTable("MovieGenres_Mapping"));
-        
+
 
         builder.ToTable("Movies");
     }

@@ -8,12 +8,12 @@ public static class MoviesModule
 {
     public static IServiceCollection RegisterMovies(this IServiceCollection services)
     {
-        services.AddMediatR(cfg=>cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));    
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
         services.AddCore();
         services.AddApplication();
         services.AddInfrastructure();
-        
+
         return services;
     }
 }

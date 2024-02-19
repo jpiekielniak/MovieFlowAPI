@@ -41,7 +41,7 @@ internal sealed class CreateMovieHandler(
         return new CreateMovieResponse(movie.Id);
     }
 
-    private async Task<List<Genre>> GetGenres(IReadOnlyCollection<GenreDto> genreIds, 
+    private async Task<List<Genre>> GetGenres(IReadOnlyCollection<GenreDto> genreIds,
         CancellationToken cancellationToken)
     {
         var ids = genreIds.Select(g => g.Id).ToList();

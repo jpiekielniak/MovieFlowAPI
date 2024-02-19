@@ -1,4 +1,3 @@
-
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
 internal class ReviewReadModel

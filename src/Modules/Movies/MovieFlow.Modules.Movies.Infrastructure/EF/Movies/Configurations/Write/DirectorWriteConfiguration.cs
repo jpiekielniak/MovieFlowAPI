@@ -1,9 +1,7 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Country;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.FirstName;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.LastName;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
 using EntityState = MovieFlow.Shared.Abstractions.Kernel.EntityState;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Write;
@@ -32,11 +30,11 @@ internal class DirectorWriteConfiguration : IEntityTypeConfiguration<Director>
             .HasConversion(x => x.Value, x => new Country(x))
             .HasColumnName("Country")
             .IsRequired();
-        
+
         builder.Property<DateTimeOffset>("CreatedAt")
             .HasColumnName("CreatedAt")
             .IsRequired();
-        
+
         builder.Property<DateTimeOffset?>("UpdatedAt")
             .HasColumnName("UpdatedAt")
             .IsRequired(false);

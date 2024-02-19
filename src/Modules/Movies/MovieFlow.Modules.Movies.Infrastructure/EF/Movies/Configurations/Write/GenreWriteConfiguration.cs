@@ -8,18 +8,18 @@ internal class GenreWriteConfiguration : IEntityTypeConfiguration<Genre>
     public void Configure(EntityTypeBuilder<Genre> builder)
     {
         builder.HasKey(f => f.Id);
-        
+
         builder.HasIndex(x => x.Name)
             .IsUnique();
 
         builder.Property<string>("Name")
             .HasColumnName("Name")
             .IsRequired();
-        
+
         builder.Property<DateTimeOffset>("CreatedAt")
             .HasColumnName("CreatedAt")
             .IsRequired();
-        
+
         builder.Property<DateTimeOffset?>("UpdatedAt")
             .HasColumnName("UpdatedAt")
             .IsRequired(false);

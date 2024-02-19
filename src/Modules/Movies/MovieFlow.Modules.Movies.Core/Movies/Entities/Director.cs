@@ -12,7 +12,7 @@ internal class Director : Entity
     internal DateTime DateOfBirth { get; set; }
     internal Country Country { get; set; }
     internal ICollection<Movie> Movies { get; set; }
-    
+
     private Director() // for EF
     {
     }
