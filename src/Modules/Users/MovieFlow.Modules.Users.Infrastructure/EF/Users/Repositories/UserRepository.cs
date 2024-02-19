@@ -23,5 +23,13 @@ internal sealed class UserRepository(
 
     public async Task<User> GetByEmailAsync(string email)
         => await _users.Include(x => x.Role).SingleOrDefaultAsync(u => u.Email == email);
-    
+
+    public async Task<User> GetUserAsync(Guid userId)
+        => await _users.SingleOrDefaultAsync(u => u.Id == userId);
+
+    public async Task DeleteAsync(User user, CancellationToken cancellationToken = default)
+    {
+        _users.Remove(user);
+        await CommitAsync(cancellationToken);
+    }
 }

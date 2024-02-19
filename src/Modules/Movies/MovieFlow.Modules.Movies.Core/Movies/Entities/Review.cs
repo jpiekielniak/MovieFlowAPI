@@ -43,7 +43,4 @@ internal sealed class Review : Entity
         Rating = rating;
         State = EntityState.Modified;
     }
-
-    public void AddLike(Like like)
-        => Likes.Add(like);
 }
