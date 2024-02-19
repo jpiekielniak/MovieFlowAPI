@@ -25,4 +25,10 @@ internal sealed class ReviewRepository(MoviesWriteDbContext dbContext) : IReview
         _reviews.Update(review);
         await CommitAsync(cancellationToken);
     }
+
+    public async Task DeleteAsync(Review review, CancellationToken cancellationToken)
+    {
+        _reviews.Remove(review);
+        await CommitAsync(cancellationToken);
+    }
 }
