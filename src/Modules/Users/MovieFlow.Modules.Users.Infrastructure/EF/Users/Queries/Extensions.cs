@@ -10,6 +10,9 @@ internal static class Extensions
             user.Id,
             user.Name,
             user.Email,
+            user.EmailConfirmed,
+            user.EmailConfirmedAt,
+            user.LastChangePasswordAt,
             user.Role.Name,
             user.IsActive);
 }

@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
-using MovieFlow.Modules.Users.Application.Users.Queries.GetUser;
+using MovieFlow.Modules.Users.Application.Users.Queries.Get;
 using MovieFlow.Shared.Abstractions.Exceptions.Errors;
 
 namespace MovieFlow.Modules.Users.Api.Endpoints.User.Queries.GetUser;
