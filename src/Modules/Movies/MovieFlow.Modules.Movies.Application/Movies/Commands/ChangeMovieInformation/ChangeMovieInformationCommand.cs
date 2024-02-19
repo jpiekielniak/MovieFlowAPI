@@ -2,7 +2,6 @@ namespace MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInform
 
 internal record ChangeMovieInformationCommand(
     string Title,
-    double Rating,
     int ReleaseYear,
     string Description) : IRequest
 {

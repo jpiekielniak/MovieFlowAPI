@@ -32,7 +32,6 @@ internal sealed class CreateMovieHandler(
             command.Title,
             command.Description,
             command.ReleaseYear,
-            command.Rating,
             director,
             genres
         );

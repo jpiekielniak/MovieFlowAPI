@@ -17,7 +17,7 @@ internal static class Extensions
         => new(
             movie.Id,
             movie.Title,
-            movie.Rating,
+            movie.Reviews.Any() ? movie.Reviews.Average(x => x.Rating) : 0,
             movie.ReleaseYear,
             movie.Description,
             movie.Genres.Select(x => x.Name).ToList(),

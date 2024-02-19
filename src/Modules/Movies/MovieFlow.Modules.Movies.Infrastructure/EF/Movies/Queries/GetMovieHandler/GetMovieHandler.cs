@@ -16,6 +16,7 @@ internal sealed class GetMovieHandler(
             .AsNoTracking()
             .Include(x => x.Director)
             .Include(x => x.Genres)
+            .Include(x => x.Reviews)
             .SingleOrDefaultAsync(x => x.Id == query.movieId, cancellationToken);
 
         return movie?.AsMovieDetailsDto();

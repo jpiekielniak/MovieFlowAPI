@@ -29,11 +29,6 @@ internal class MovieWriteConfiguration : IEntityTypeConfiguration<Movie>
             .HasConversion(x => x.Value, x => new ReleaseYear(x))
             .HasColumnName("ReleaseYear")
             .IsRequired();
-        
-        builder.Property<Rating>("Rating")
-            .HasConversion(x => x.Value, x => new Rating(x))
-            .HasColumnName("Rating")
-            .IsRequired();
 
         builder.Property<DateTimeOffset>("CreatedAt")
             .HasColumnName("CreatedAt")

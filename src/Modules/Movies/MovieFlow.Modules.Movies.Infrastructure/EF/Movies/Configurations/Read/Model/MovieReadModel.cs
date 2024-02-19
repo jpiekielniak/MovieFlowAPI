@@ -6,7 +6,8 @@ internal sealed class MovieReadModel
     public string Title { get; init; }
     public string Description { get; init; }
     public int ReleaseYear { get; init; }
-    public double Rating { get; init; }
     public DirectorReadModel Director { get; init; }
     public IReadOnlyCollection<GenreReadModel> Genres { get; init; }
+    public IReadOnlyCollection<ReviewReadModel> Reviews { get; init; }
+    public double Rating => Reviews.Average(x => x.Rating);
 }

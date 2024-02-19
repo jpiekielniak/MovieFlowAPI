@@ -18,9 +18,7 @@ internal sealed class ChangeMovieInformationHandler(
         movie.ChangeInformation(
             command.Title,
             command.Description,
-            command.ReleaseYear,
-            command.Rating
-        );
+            command.ReleaseYear);
 
         await movieRepository.UpdateAsync(movie, cancellationToken);
         await movieRepository.CommitAsync(cancellationToken);

@@ -13,11 +13,6 @@ internal sealed class ChangeMovieInformationValidator : AbstractValidator<Change
             .NotEmpty()
             .NotNull();
         
-        RuleFor(x => x.Rating)
-            .NotNull()
-            .NotEmpty()
-            .InclusiveBetween(1, 10);
-        
         RuleFor(x => x.ReleaseYear)
             .NotNull()
             .NotEmpty()

@@ -11,7 +11,7 @@ internal sealed class Movie : Entity
     internal Title Title { get; private set; }
     internal Description Description { get; private set; }
     internal ReleaseYear ReleaseYear { get; private set; }
-    internal Rating Rating { get; private set; }
+    internal Rating Rating => Reviews.Average(x => x.Rating);
     internal Guid DirectorId { get; private set; }
     internal Director Director { get; private set; }
     internal ICollection<Genre> Genres { get; set; }
@@ -22,13 +22,12 @@ internal sealed class Movie : Entity
     }
 
     private Movie(Title title, Description description,
-        ReleaseYear releaseYear, Rating rating,
+        ReleaseYear releaseYear,
         Director director, ICollection<Genre> genres, EntityState entityState)
     {
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
-        Rating = rating;
         Director = director;
         Genres = genres;
         Reviews = new List<Review>();
@@ -36,16 +35,15 @@ internal sealed class Movie : Entity
     }
 
     public static Movie Create(string title, string description,
-        int releaseYear, double rating, Director director, ICollection<Genre> genres)
-        => new(title, description, releaseYear, rating, director, genres, EntityState.Added);
+        int releaseYear, Director director, ICollection<Genre> genres)
+        => new(title, description, releaseYear, director, genres, EntityState.Added);
 
     internal void ChangeInformation(Title title, Description description,
-        ReleaseYear releaseYear, Rating rating)
+        ReleaseYear releaseYear)
     {
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
-        Rating = rating;
         State = EntityState.Modified;
     }
 }

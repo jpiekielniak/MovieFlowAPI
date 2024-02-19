@@ -12,7 +12,6 @@ internal sealed class MovieInitializer(
     private const string Title = "The Shawshank Redemption";
     private const string Description = "Two imprisoned...";
     private const int ReleaseYear = 1994;
-    private const double Rating = 8.5;
 
     public async Task InitDataAsync()
     {
@@ -22,7 +21,7 @@ internal sealed class MovieInitializer(
             var director = await writeDbContext.Directors.FirstAsync();
 
             await writeDbContext.Movies.AddAsync(Movie.Create(
-                Title, Description, ReleaseYear, Rating, director, genre)
+                Title, Description, ReleaseYear, director, genre)
             );
             await writeDbContext.SaveChangesAsync();
             logger.Log(LogLevel.Information, "Movie initialized");
