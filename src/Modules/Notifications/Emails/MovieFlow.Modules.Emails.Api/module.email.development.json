@@ -1,0 +1,7 @@
+{
+  "sendGrid": {
+    "API_KEY": "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",
+    "Sender": "movie.flow.api@gmail.com",
+    "SenderName": "MovieFlow"
+  }
+}

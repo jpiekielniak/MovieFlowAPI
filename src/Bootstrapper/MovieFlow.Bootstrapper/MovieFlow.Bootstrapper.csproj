@@ -11,6 +11,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="SendGrid" Version="9.29.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Modules\Movies\MovieFlow.Modules.Movies.Api\MovieFlow.Modules.Movies.Api.csproj" />
+      <ProjectReference Include="..\..\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Api\MovieFlow.Modules.Emails.Api.csproj" />
       <ProjectReference Include="..\..\Modules\Users\MovieFlow.Modules.Users.Api\MovieFlow.Modules.Users.Api.csproj" />
       <ProjectReference Include="..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
     </ItemGroup>

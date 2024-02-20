@@ -36,6 +36,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Users.Inf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.Shared", "src\Modules\Movies\MovieFlow.Modules.Movies.Shared\MovieFlow.Modules.Movies.Shared.csproj", "{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notifications", "Notifications", "{50A4BE1F-C4E1-4BCC-9051-AA2D85301A62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Emails", "Emails", "{F63614D8-0204-4065-8286-F84566F69CAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Api", "src\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Api\MovieFlow.Modules.Emails.Api.csproj", "{933B660F-5C79-4328-9D1F-5C1B2B8B5F1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Application", "src\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Application\MovieFlow.Modules.Emails.Application.csproj", "{97991D73-5D8C-42D9-85D0-E08FA8D00D66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Core", "src\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Core\MovieFlow.Modules.Emails.Core.csproj", "{356F6323-877D-4828-89C1-5DDB6C375803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Infrastructure", "src\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Infrastructure\MovieFlow.Modules.Emails.Infrastructure.csproj", "{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +102,22 @@ Global
 		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{933B660F-5C79-4328-9D1F-5C1B2B8B5F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933B660F-5C79-4328-9D1F-5C1B2B8B5F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933B660F-5C79-4328-9D1F-5C1B2B8B5F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933B660F-5C79-4328-9D1F-5C1B2B8B5F1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97991D73-5D8C-42D9-85D0-E08FA8D00D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97991D73-5D8C-42D9-85D0-E08FA8D00D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97991D73-5D8C-42D9-85D0-E08FA8D00D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97991D73-5D8C-42D9-85D0-E08FA8D00D66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{356F6323-877D-4828-89C1-5DDB6C375803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356F6323-877D-4828-89C1-5DDB6C375803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356F6323-877D-4828-89C1-5DDB6C375803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356F6323-877D-4828-89C1-5DDB6C375803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
@@ -109,5 +137,11 @@ Global
 		{8E29E24F-6A97-4ED1-ABA7-14EF603595E9} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
 		{DE3A33DB-E239-4980-89E6-D6AE533F5F64} = {E5894FFA-535A-4E9C-B34F-CA5644A98AE6}
 		{F5A3F9C7-B4FE-40AF-87B6-189B70DAA623} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
+		{50A4BE1F-C4E1-4BCC-9051-AA2D85301A62} = {734DE087-7376-43D7-803F-4846F0985035}
+		{F63614D8-0204-4065-8286-F84566F69CAC} = {50A4BE1F-C4E1-4BCC-9051-AA2D85301A62}
+		{933B660F-5C79-4328-9D1F-5C1B2B8B5F1F} = {F63614D8-0204-4065-8286-F84566F69CAC}
+		{97991D73-5D8C-42D9-85D0-E08FA8D00D66} = {F63614D8-0204-4065-8286-F84566F69CAC}
+		{356F6323-877D-4828-89C1-5DDB6C375803} = {F63614D8-0204-4065-8286-F84566F69CAC}
+		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E} = {F63614D8-0204-4065-8286-F84566F69CAC}
 	EndGlobalSection
 EndGlobal

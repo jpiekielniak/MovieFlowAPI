@@ -1,3 +1,4 @@
+using MovieFlow.Modules.Emails.Api;
 using MovieFlow.Modules.Movies.Api;
 using MovieFlow.Modules.Users.Api;
 
@@ -9,9 +10,8 @@ public static class Modules
     {
         services.RegisterMovies();
         services.RegisterUsers();
-        
+        services.RegisterEmails();
+
         return services;
     }
 }
-
-
