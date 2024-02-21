@@ -1,7 +1,5 @@
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
-using MovieFlow.Modules.Emails.Core.Emails.Services;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Emails.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Emails.Application")]
@@ -14,8 +12,6 @@ internal static class Extensions
 {
     public static IServiceCollection AddCore(this IServiceCollection services)
     {
-        services.AddMediatR(cfg=>cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-
         return services;
     }
 }
