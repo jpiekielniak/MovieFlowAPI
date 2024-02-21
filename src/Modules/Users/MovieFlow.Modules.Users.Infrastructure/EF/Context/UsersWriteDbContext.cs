@@ -20,7 +20,8 @@ internal class UsersWriteDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("users");
-        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        modelBuilder.ApplyConfiguration(new UserWriteConfiguration());
+        modelBuilder.ApplyConfiguration(new RoleWriteConfiguration());
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
