@@ -6,8 +6,7 @@ namespace MovieFlow.Modules.Movies.Application.Services.Extensions;
 internal static class Extensions
 {
     public static ReviewUserDto AsDto(this Review review) =>
-        new(
-            review.Id,
+        new(review.Id,
             review.Title,
             review.Content,
             review.Rating,

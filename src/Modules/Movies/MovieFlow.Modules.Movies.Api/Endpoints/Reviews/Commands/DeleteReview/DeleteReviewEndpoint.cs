@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Movies.Api.Endpoints.Movies;
-using MovieFlow.Modules.Movies.Application.Reviews.Commands.Delete;
+using MovieFlow.Modules.Movies.Application.Reviews.Commands.DeleteReview;
 
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Reviews.Commands.DeleteReview;
 

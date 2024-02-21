@@ -5,8 +5,7 @@ using MovieFlow.Modules.Movies.Shared.DTO;
 
 namespace MovieFlow.Modules.Movies.Application.Services;
 
-internal sealed class MoviesModuleApi(
-    IReviewRepository reviewRepository) : IMoviesModuleApi
+internal sealed class MoviesModuleApi(IReviewRepository reviewRepository) : IMoviesModuleApi
 {
     public async Task<List<ReviewUserDto>> GetReviewsForUserAsync(Guid userId,
         CancellationToken cancellationToken)

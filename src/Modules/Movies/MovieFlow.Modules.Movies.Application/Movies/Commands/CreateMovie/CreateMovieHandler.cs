@@ -1,13 +1,14 @@
+using MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie.DTO;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Genres;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
+using MovieFlow.Shared.Abstractions;
 
-namespace MovieFlow.Modules.Movies.Application.Movies.Commands.Create;
+namespace MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie;
 
-internal sealed class CreateMovieHandler(
-    IMovieRepository movieRepository,
+internal sealed class CreateMovieHandler(IMovieRepository movieRepository,
     IGenreRepository genreRepository,
     IDirectorRepository directorRepository)
     : IRequestHandler<CreateMovieCommand, CreateMovieResponse>
@@ -21,10 +22,9 @@ internal sealed class CreateMovieHandler(
         if (movieExists)
             throw new MovieAlreadyExistsException(command.Title);
 
-        var director = await directorRepository.GetAsync(command.DirectorId, cancellationToken);
-
-        if (director is null)
-            throw new DirectorNotFoundException(command.DirectorId);
+        var director = await directorRepository
+            .GetAsync(command.DirectorId, cancellationToken)
+            .NotNull(() => new DirectorNotFoundException(command.DirectorId));
 
         var genres = await GetGenres(command.Genres, cancellationToken);
 

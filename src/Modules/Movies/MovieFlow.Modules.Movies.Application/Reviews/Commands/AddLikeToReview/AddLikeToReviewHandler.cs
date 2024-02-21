@@ -5,18 +5,18 @@ using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;
 
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.AddLikes;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.AddLikeToReview;
 
-internal sealed class AddLikesHandler(
+internal sealed class AddLikeToReviewHandler(
     IMovieRepository movieRepository,
     IReviewRepository reviewRepository,
     ILikeRepository likeRepository,
-    IContext context) : IRequestHandler<AddLikesCommand>
+    IContext context) : IRequestHandler<AddLikeToReviewCommand>
 {
-    public async Task Handle(AddLikesCommand command, CancellationToken cancellationToken)
+    public async Task Handle(AddLikeToReviewCommand command, CancellationToken cancellationToken)
     {
         await movieRepository.GetAsync(command.MovieId, cancellationToken)
-            .NotNull(() => new MovieDoesNotExistException(command.MovieId));
+            .NotNull(() => new MovieNotFoundException(command.MovieId));
 
         var review = await reviewRepository.GetAsync(command.ReviewId, cancellationToken)
             .NotNull(() => new ReviewNotFoundException(command.ReviewId));

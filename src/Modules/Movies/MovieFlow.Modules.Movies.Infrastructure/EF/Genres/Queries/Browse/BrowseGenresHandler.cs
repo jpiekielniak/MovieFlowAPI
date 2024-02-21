@@ -1,5 +1,5 @@
-using MovieFlow.Modules.Movies.Application.Genres.DTO;
 using MovieFlow.Modules.Movies.Application.Genres.Queries.Browse;
+using MovieFlow.Modules.Movies.Application.Genres.Queries.Browse.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Genres.Queries.Browse;

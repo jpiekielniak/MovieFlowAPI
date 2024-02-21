@@ -1,4 +1,4 @@
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeInformation;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeReviewInformation;
 
 internal sealed class ChangeReviewInformationValidator : AbstractValidator<ChangeReviewInformationCommand>
 {

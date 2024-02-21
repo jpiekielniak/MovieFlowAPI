@@ -1,26 +1,23 @@
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
+using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
 
-internal sealed class ChangeMovieInformationHandler(
-    IMovieRepository movieRepository) : IRequestHandler<ChangeMovieInformationCommand>
+internal sealed class ChangeMovieInformationHandler(IMovieRepository movieRepository)
+    : IRequestHandler<ChangeMovieInformationCommand>
 {
-    public async Task Handle(
-        ChangeMovieInformationCommand command,
+    public async Task Handle(ChangeMovieInformationCommand command,
         CancellationToken cancellationToken)
     {
-        var movie = await movieRepository.GetAsync(command.MovieId, cancellationToken);
-
-        if (movie is null)
-            throw new MovieDoesNotExistException(command.MovieId);
+        var movie = await movieRepository.GetAsync(command.MovieId, cancellationToken)
+            .NotNull(() => new MovieNotFoundException(command.MovieId));
 
         movie.ChangeInformation(
             command.Title,
             command.Description,
             command.ReleaseYear);
 
-        await movieRepository.UpdateAsync(movie, cancellationToken);
         await movieRepository.CommitAsync(cancellationToken);
     }
 }

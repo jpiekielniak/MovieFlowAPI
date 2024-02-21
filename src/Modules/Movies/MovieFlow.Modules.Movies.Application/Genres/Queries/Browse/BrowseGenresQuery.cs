@@ -1,4 +1,4 @@
-using MovieFlow.Modules.Movies.Application.Genres.DTO;
+using MovieFlow.Modules.Movies.Application.Genres.Queries.Browse.DTO;
 
 namespace MovieFlow.Modules.Movies.Application.Genres.Queries.Browse;
 

@@ -6,4 +6,5 @@ internal record ReviewDto(
     double Rating,
     int PositiveLikes,
     int NegativeLikes,
-    Guid UserId);
+    Guid UserId
+);

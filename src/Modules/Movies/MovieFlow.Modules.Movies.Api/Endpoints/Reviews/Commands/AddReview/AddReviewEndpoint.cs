@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Movies.Api.Endpoints.Movies;
-using MovieFlow.Modules.Movies.Application.Reviews.Commands.Add;
+using MovieFlow.Modules.Movies.Application.Reviews.Commands.AddReview;
 using MovieFlow.Shared.Infrastructure.Api.Attributes;
 
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Reviews.Commands.AddReview;

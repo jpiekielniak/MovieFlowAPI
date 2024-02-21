@@ -1,6 +1,3 @@
 namespace MovieFlow.Modules.Movies.Application.Movies.Queries.Get.DTO;
 
-internal record DirectorDto(
-    Guid DirectorId,
-    string FirstName,
-    string LastName);
+internal record DirectorDto(Guid Id, string FirstName, string LastName);

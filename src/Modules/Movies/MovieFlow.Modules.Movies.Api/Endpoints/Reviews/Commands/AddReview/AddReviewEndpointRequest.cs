@@ -1,4 +1,4 @@
-using MovieFlow.Modules.Movies.Application.Reviews.Commands.Add;
+using MovieFlow.Modules.Movies.Application.Reviews.Commands.AddReview;
 
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Reviews.Commands.AddReview;
 

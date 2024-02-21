@@ -1,6 +1,6 @@
 using MovieFlow.Shared.Abstractions.Exceptions;
 
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.Delete;
+namespace MovieFlow.Modules.Movies.Core.Movies.Exceptions.Reviews;
 
 internal sealed class ReviewDoesNotBelongToMovieException()
     : MovieFlowException("Review does not belong to movie");

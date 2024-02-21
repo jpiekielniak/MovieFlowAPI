@@ -1,4 +1,4 @@
-using MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeInformation;
+using MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeReviewInformation;
 
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Reviews.Commands.ChangeReviewInformation;
 

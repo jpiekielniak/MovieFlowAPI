@@ -1,4 +1,4 @@
-using MovieFlow.Modules.Movies.Application.Movies.Commands.Create;
+using MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie;
 
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Movies.Commands.CreateMovie;
 

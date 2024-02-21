@@ -14,7 +14,7 @@ internal sealed class GetByMovieHandler(
     {
         await readDbContext.Movies
             .SingleOrDefaultAsync(x => x.Id == query.movieId, cancellationToken)
-            .NotNull(() => new MovieDoesNotExistException(query.movieId));
+            .NotNull(() => new MovieNotFoundException(query.movieId));
 
         return await readDbContext.Reviews
             .AsNoTracking()

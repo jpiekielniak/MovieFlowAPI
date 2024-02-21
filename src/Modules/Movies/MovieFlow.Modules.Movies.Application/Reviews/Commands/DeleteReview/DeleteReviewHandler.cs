@@ -5,17 +5,16 @@ using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;
 
-namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.Delete;
+namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.DeleteReview;
 
-internal sealed class DeleteReviewHandler(
-    IContext context,
-    IMovieRepository movieRepository,
-    IReviewRepository reviewRepository) : IRequestHandler<DeleteReviewCommand>
+internal sealed class DeleteReviewHandler(IContext context,
+    IMovieRepository movieRepository, IReviewRepository reviewRepository) 
+    : IRequestHandler<DeleteReviewCommand>
 {
     public async Task Handle(DeleteReviewCommand command, CancellationToken cancellationToken)
     {
         await movieRepository.GetAsync(command.MovieId, cancellationToken)
-            .NotNull(() => new MovieDoesNotExistException(command.MovieId));
+            .NotNull(() => new MovieNotFoundException(command.MovieId));
 
         var review = await reviewRepository.GetAsync(command.ReviewId, cancellationToken)
             .NotNull(() => new ReviewNotFoundException(command.ReviewId));

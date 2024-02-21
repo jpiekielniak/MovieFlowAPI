@@ -1,4 +1,4 @@
-namespace MovieFlow.Modules.Movies.Application.Movies.Commands.Create;
+namespace MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie;
 
 internal sealed class CreateMovieValidator : AbstractValidator<CreateMovieCommand>
 {
