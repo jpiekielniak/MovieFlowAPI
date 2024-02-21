@@ -2,9 +2,8 @@ using MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
 
 namespace MovieFlow.Modules.Users.Api.Endpoints.User.Commands.SignUp;
 
-[Route(UsersEndpoint.Url)]
-internal sealed class SignUpEndpoint(
-    IMediator mediator) : EndpointBaseAsync
+[Route(UserEndpoint.Url)]
+internal sealed class SignUpEndpoint(IMediator mediator) : EndpointBaseAsync
     .WithRequest<SignUpCommand>
     .WithActionResult<SignUpResponse>
 {
@@ -12,11 +11,11 @@ internal sealed class SignUpEndpoint(
     [HttpPost("sign-up")]
     [SwaggerOperation(
         Summary = "Sign up",
-        Tags = [UsersEndpoint.Tag]
+        Tags = [UserEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public override async Task<ActionResult<SignUpResponse>> HandleAsync(SignUpCommand command,
-        CancellationToken cancellationToken = new())
+        CancellationToken cancellationToken = default)
         => Ok(await mediator.Send(command, cancellationToken));
 }

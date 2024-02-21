@@ -1,24 +1,24 @@
 using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
 using MovieFlow.Modules.Users.Application.Users.Queries.GetCurrent;
 
-namespace MovieFlow.Modules.Users.Api.Endpoints.User.Queries.GetCurrent;
+namespace MovieFlow.Modules.Users.Api.Endpoints.User.Queries.GetCurrentLoggedUser;
 
-[Route(UsersEndpoint.Url)]
-internal sealed class GetCurrentUserEndpoint(IMediator mediator) : EndpointBaseAsync
+[Route(UserEndpoint.Url)]
+internal sealed class GetCurrentLoggedUserEndpoint(IMediator mediator) : EndpointBaseAsync
     .WithoutRequest
     .WithActionResult<UserDetailsDto>
 {
     [Authorize]
-    [HttpGet("user")]
+    [HttpGet("users")]
     [SwaggerOperation(
         Summary = "Get current logged user",
-        Tags = [UsersEndpoint.Tag]
+        Tags = [UserEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDetailsDto))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(void))]
     public override async Task<ActionResult<UserDetailsDto>> HandleAsync(
-        CancellationToken cancellationToken = new())
+        CancellationToken cancellationToken = default)
     {
         var response = await mediator.Send(new GetCurrentUserQuery(), cancellationToken);
 

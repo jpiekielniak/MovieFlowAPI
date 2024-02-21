@@ -5,7 +5,7 @@ using MovieFlow.Shared.Abstractions.Exceptions.Errors;
 
 namespace MovieFlow.Modules.Users.Api.Endpoints.User.Queries.GetReviewForUser;
 
-[Route(UsersEndpoint.Url)]
+[Route(UserEndpoint.Url)]
 internal sealed class GetReviewForUserEndpoint(IMediator mediator) : EndpointBaseAsync
     .WithRequest<GetReviewForUserQuery>
     .WithActionResult<List<ReviewUserDto>>
@@ -14,11 +14,11 @@ internal sealed class GetReviewForUserEndpoint(IMediator mediator) : EndpointBas
     [HttpGet("{userId:guid}/reviews")]
     [SwaggerOperation(
         Summary = "Get reviews for user",
-        Tags = [UsersEndpoint.Tag]
+        Tags = [UserEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<ReviewDto>))]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     public override async Task<ActionResult<List<ReviewUserDto>>> HandleAsync(
         [FromRoute] GetReviewForUserQuery query,
         CancellationToken cancellationToken = new())

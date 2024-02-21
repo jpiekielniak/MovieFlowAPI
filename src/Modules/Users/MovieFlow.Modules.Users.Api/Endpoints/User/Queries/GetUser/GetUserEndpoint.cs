@@ -4,7 +4,7 @@ using MovieFlow.Shared.Abstractions.Exceptions.Errors;
 
 namespace MovieFlow.Modules.Users.Api.Endpoints.User.Queries.GetUser;
 
-[Route(UsersEndpoint.Url)]
+[Route(UserEndpoint.Url)]
 internal sealed class GetUserEndpoint(IMediator mediator) : EndpointBaseAsync
     .WithRequest<GetUserQuery>
     .WithActionResult<UserDetailsDto?>
@@ -13,13 +13,13 @@ internal sealed class GetUserEndpoint(IMediator mediator) : EndpointBaseAsync
     [HttpGet("{userId:guid}")]
     [SwaggerOperation(
         Summary = "Get user details",
-        Tags = [UsersEndpoint.Tag]
+        Tags = [UserEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDetailsDto))]
-    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(void))]
-    [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
+    [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(void))]
     public override async Task<ActionResult<UserDetailsDto?>> HandleAsync(
         [FromRoute] GetUserQuery query,
         CancellationToken cancellationToken = new())
