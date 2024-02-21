@@ -7,4 +7,5 @@ public record ReviewUserDto(
     double Rating,
     int PositiveLikes,
     int NegativeLikes,
-    Guid MovieId);
+    Guid MovieId
+);
