@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
-using MovieFlow.Modules.Users.Application.Users.Queries.GetCurrent;
+using MovieFlow.Modules.Users.Application.Users.Queries.GetCurrentLoggedUser;
 
 namespace MovieFlow.Modules.Users.Api.Endpoints.User.Queries.GetCurrentLoggedUser;
 
@@ -20,7 +20,7 @@ internal sealed class GetCurrentLoggedUserEndpoint(IMediator mediator) : Endpoin
     public override async Task<ActionResult<UserDetailsDto>> HandleAsync(
         CancellationToken cancellationToken = default)
     {
-        var response = await mediator.Send(new GetCurrentUserQuery(), cancellationToken);
+        var response = await mediator.Send(new GetCurrentLoggedUserQuery(), cancellationToken);
 
         if (response is null)
             return NotFound();

@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
-using MovieFlow.Modules.Users.Application.Users.Queries.Get;
+using MovieFlow.Modules.Users.Application.Users.Queries.GetUser;
 using MovieFlow.Modules.Users.Core.Users.Exceptions;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Modules.Users.Infrastructure.EF.Users.Configurations.Read.Model;

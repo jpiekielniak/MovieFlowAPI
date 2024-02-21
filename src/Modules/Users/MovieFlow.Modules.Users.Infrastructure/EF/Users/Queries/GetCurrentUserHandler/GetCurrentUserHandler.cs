@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
-using MovieFlow.Modules.Users.Application.Users.Queries.GetCurrent;
+using MovieFlow.Modules.Users.Application.Users.Queries.GetCurrentLoggedUser;
 using MovieFlow.Modules.Users.Core.Users.Exceptions;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Shared.Abstractions;
@@ -9,9 +9,9 @@ namespace MovieFlow.Modules.Users.Infrastructure.EF.Users.Queries.GetCurrentUser
 
 internal sealed class GetCurrentUserHandler(
     IContext context,
-    UsersReadDbContext readDbContext) : IRequestHandler<GetCurrentUserQuery, UserDetailsDto>
+    UsersReadDbContext readDbContext) : IRequestHandler<GetCurrentLoggedUserQuery, UserDetailsDto>
 {
-    public async Task<UserDetailsDto> Handle(GetCurrentUserQuery query,
+    public async Task<UserDetailsDto> Handle(GetCurrentLoggedUserQuery query,
         CancellationToken cancellationToken)
     {
         var user = await readDbContext.Users

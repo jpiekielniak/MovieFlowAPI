@@ -5,12 +5,12 @@ using MovieFlow.Shared.Abstractions.Auth;
 
 namespace MovieFlow.Modules.Users.Application.Users.Commands.SignIn;
 
-internal sealed class SignInHandler(
-    IUserRepository userRepository,
-    IAuthManager authManager,
-    IPasswordHasher<Core.Users.Entities.User> passwordHasher) : IRequestHandler<SignInCommand, SignInResponse>
+internal sealed class SignInHandler(IUserRepository userRepository,
+    IAuthManager authManager, IPasswordHasher<Core.Users.Entities.User> passwordHasher) 
+    : IRequestHandler<SignInCommand, SignInResponse>
 {
-    public async Task<SignInResponse> Handle(SignInCommand command, CancellationToken cancellationToken)
+    public async Task<SignInResponse> Handle(SignInCommand command, 
+        CancellationToken cancellationToken)
     {
         var user = await userRepository
             .GetByEmailAsync(command.Email)

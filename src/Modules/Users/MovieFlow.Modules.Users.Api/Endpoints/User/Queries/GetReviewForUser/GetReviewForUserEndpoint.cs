@@ -1,5 +1,4 @@
 using MovieFlow.Modules.Movies.Shared.DTO;
-using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
 using MovieFlow.Modules.Users.Application.Users.Queries.GetReviewForUser;
 using MovieFlow.Shared.Abstractions.Exceptions.Errors;
 
@@ -16,7 +15,7 @@ internal sealed class GetReviewForUserEndpoint(IMediator mediator) : EndpointBas
         Summary = "Get reviews for user",
         Tags = [UserEndpoint.Tag]
     )]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<ReviewDto>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<ReviewUserDto>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     public override async Task<ActionResult<List<ReviewUserDto>>> HandleAsync(
