@@ -1,11 +1,9 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using MovieFlow.Shared.Abstractions.RenderView;
 using MovieFlow.Shared.Abstractions.Time;
 using MovieFlow.Shared.Infrastructure.Api;
 using MovieFlow.Shared.Infrastructure.Exceptions;
 using MovieFlow.Shared.Infrastructure.Postgres;
-using MovieFlow.Shared.Infrastructure.RenderView;
 using MovieFlow.Shared.Infrastructure.Serialization;
 using MovieFlow.Shared.Infrastructure.Time;
 using Microsoft.AspNetCore.Builder;
@@ -14,8 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using MovieFlow.Shared.Abstractions.Modules;
+using MovieFlow.Shared.Abstractions.RenderView;
 using MovieFlow.Shared.Infrastructure.Auth;
 using MovieFlow.Shared.Infrastructure.Contexts;
+using MovieFlow.Shared.Infrastructure.RenderView;
 using MovieFlow.Shared.Infrastructure.Services;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
@@ -68,7 +68,7 @@ public static class Extensions
             });
         });
 
-        services.AddScoped<IRazorViewRenderer, RazorViewRenderer>();
+        services.AddTransient<IRazorViewRenderer, RazorViewRenderer>();
         services.AddRazorPages();
         services.AddSingleton<IContextFactory, ContextFactory>();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -118,15 +118,5 @@ public static class Extensions
         var options = new T();
         configuration.GetSection(sectionName).Bind(options);
         return options;
-    }
-
-    public static string GetModuleName(this Type type)
-    {
-        if (type?.Namespace is null)
-            return string.Empty;
-
-        return type.Namespace.StartsWith("MovieFlow.Modules.")
-            ? type.Namespace.Split(".")[2].ToLowerInvariant()
-            : string.Empty;
     }
 }

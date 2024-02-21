@@ -13,10 +13,5 @@ internal sealed class SignUpValidator : AbstractValidator<SignUpCommand>
             .NotEmpty()
             .NotNull()
             .EmailAddress();
-
-        RuleFor(x => x.Password)
-            .NotEmpty()
-            .NotNull()
-            .MinimumLength(6);
     }
 }
