@@ -1,5 +1,5 @@
 ﻿using MovieFlow.Modules.Emails.Core.Emails.Repositories;
-using MovieFlow.Modules.Emails.Infrastructure.EF.Contexts;
+using MovieFlow.Modules.Emails.Infrastructure.EF.Context;
 using MovieFlow.Modules.Emails.Infrastructure.EF.Emails.Repositories;
 using MovieFlow.Shared.Infrastructure.Postgres;
 

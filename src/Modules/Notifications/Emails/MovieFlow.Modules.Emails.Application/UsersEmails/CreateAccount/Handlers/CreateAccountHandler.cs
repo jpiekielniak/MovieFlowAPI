@@ -9,11 +9,8 @@ using MovieFlow.Shared.Abstractions.Time;
 
 namespace MovieFlow.Modules.Emails.Application.UsersEmails.CreateAccount.Handlers;
 
-internal sealed class CreateAccountHandler(
-    IEmailRepository emailRepository,
-    IEmailService emailService,
-    IClock clock,
-    IRazorViewRenderer razorViewRenderer)
+internal sealed class CreateAccountHandler(IEmailRepository emailRepository,
+    IEmailService emailService, IClock clock, IRazorViewRenderer razorViewRenderer)
     : INotificationHandler<CreateAccountEvent>
 {
     private const string PathView = "~/UsersEmails/CreateAccount/Views/CreateAccount.cshtml";
@@ -24,7 +21,12 @@ internal sealed class CreateAccountHandler(
     {
         var model = new CreateAccountModel(@event.Email, @event.Password, Subject);
         var renderedView = await razorViewRenderer.RenderViewToStringAsync(PathView, model);
-        var email = Email.Create(@event.Email, Subject, renderedView, clock.CurrentDateTimeOffset());
+        var email = Email.Create(
+            @event.Email,
+            Subject,
+            renderedView,
+            clock.CurrentDateTimeOffset()
+        );
 
         await emailService.SendAsync(@event.Email, Subject, renderedView, renderedView);
         await emailRepository.AddAsync(email, cancellationToken);

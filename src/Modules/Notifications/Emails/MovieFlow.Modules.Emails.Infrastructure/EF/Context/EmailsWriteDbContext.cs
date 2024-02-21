@@ -1,7 +1,7 @@
 using MovieFlow.Modules.Emails.Core.Emails.Entities;
 using MovieFlow.Modules.Emails.Infrastructure.EF.Configuration.Write;
 
-namespace MovieFlow.Modules.Emails.Infrastructure.EF.Contexts;
+namespace MovieFlow.Modules.Emails.Infrastructure.EF.Context;
 
 internal sealed class EmailsWriteDbContext : DbContext
 {

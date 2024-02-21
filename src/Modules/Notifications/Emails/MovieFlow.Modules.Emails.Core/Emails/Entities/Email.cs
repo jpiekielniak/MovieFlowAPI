@@ -10,7 +10,7 @@ internal class Email
     private string Message { get; set; }
     private DateTimeOffset SentAt { get; set; }
 
-    private Email() //for EF
+    private Email()
     {
     }
 

@@ -1,11 +1,10 @@
 using MovieFlow.Modules.Emails.Core.Emails.Entities;
 using MovieFlow.Modules.Emails.Core.Emails.Repositories;
-using MovieFlow.Modules.Emails.Infrastructure.EF.Contexts;
+using MovieFlow.Modules.Emails.Infrastructure.EF.Context;
 
 namespace MovieFlow.Modules.Emails.Infrastructure.EF.Emails.Repositories;
 
-internal sealed class EmailRepository(
-    EmailsWriteDbContext writeDbContext) : IEmailRepository
+internal sealed class EmailRepository(EmailsWriteDbContext writeDbContext) : IEmailRepository
 {
     private readonly DbSet<Email> _emails = writeDbContext.Emails;
 
@@ -15,6 +14,6 @@ internal sealed class EmailRepository(
         await CommitAsync(cancellationToken);
     }
 
-    public async Task CommitAsync(CancellationToken cancellationToken)
+    private async Task CommitAsync(CancellationToken cancellationToken)
         => await writeDbContext.SaveChangesAsync(cancellationToken);
 }
