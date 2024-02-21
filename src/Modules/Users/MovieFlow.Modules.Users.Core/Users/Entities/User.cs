@@ -17,7 +17,7 @@ internal sealed class User : Entity
     public Guid RoleId { get; private set; }
     public Role Role { get; private set; }
 
-    private User() //for EF
+    private User()
     {
     }
 

@@ -6,7 +6,6 @@ internal interface IUserRepository
 {
     Task<bool> UserExistsAsync(string email, string name);
     Task AddAsync(User user, CancellationToken cancellationToken);
-    Task CommitAsync(CancellationToken cancellationToken);
 
     Task<User> GetByEmailAsync(string commandEmail);
     Task<User> GetUserAsync(Guid userId);
