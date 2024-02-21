@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\MovieFlow.Modules.Emails.Application\MovieFlow.Modules.Emails.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="SendGrid" Version="9.29.2" />
+    </ItemGroup>
+
+</Project>

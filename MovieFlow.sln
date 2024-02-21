@@ -48,6 +48,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Infrastructure", "src\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Infrastructure\MovieFlow.Modules.Emails.Infrastructure.csproj", "{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Shared", "src\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Shared\MovieFlow.Modules.Emails.Shared.csproj", "{7B7227E3-AF04-483B-A789-34C97BC2324B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{49170651-3AA4-416C-8C10-34FE5CDCD7C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.SendGrid", "src\Modules\Notifications\Emails\Integrations\MovieFlow.Modules.Emails.SendGrid\MovieFlow.Modules.Emails.SendGrid.csproj", "{B8A10337-7559-4E32-9CB0-00A47FE0113F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +124,14 @@ Global
 		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B7227E3-AF04-483B-A789-34C97BC2324B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B7227E3-AF04-483B-A789-34C97BC2324B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B7227E3-AF04-483B-A789-34C97BC2324B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B7227E3-AF04-483B-A789-34C97BC2324B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A10337-7559-4E32-9CB0-00A47FE0113F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A10337-7559-4E32-9CB0-00A47FE0113F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A10337-7559-4E32-9CB0-00A47FE0113F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A10337-7559-4E32-9CB0-00A47FE0113F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
@@ -143,5 +157,8 @@ Global
 		{97991D73-5D8C-42D9-85D0-E08FA8D00D66} = {F63614D8-0204-4065-8286-F84566F69CAC}
 		{356F6323-877D-4828-89C1-5DDB6C375803} = {F63614D8-0204-4065-8286-F84566F69CAC}
 		{9AE39CC9-8DBF-4C7A-BDB9-D7DBA770264E} = {F63614D8-0204-4065-8286-F84566F69CAC}
+		{7B7227E3-AF04-483B-A789-34C97BC2324B} = {F63614D8-0204-4065-8286-F84566F69CAC}
+		{49170651-3AA4-416C-8C10-34FE5CDCD7C9} = {F63614D8-0204-4065-8286-F84566F69CAC}
+		{B8A10337-7559-4E32-9CB0-00A47FE0113F} = {49170651-3AA4-416C-8C10-34FE5CDCD7C9}
 	EndGlobalSection
 EndGlobal

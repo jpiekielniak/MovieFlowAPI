@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
@@ -8,8 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Shared\MovieFlow.Shared.Abstractions\MovieFlow.Shared.Abstractions.csproj" />
-      <ProjectReference Include="..\MovieFlow.Modules.Emails.Core\MovieFlow.Modules.Emails.Core.csproj" />
-      <ProjectReference Include="..\MovieFlow.Modules.Emails.Shared\MovieFlow.Modules.Emails.Shared.csproj" />
     </ItemGroup>
 
 </Project>
