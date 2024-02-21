@@ -16,7 +16,6 @@ internal sealed class UsersReadDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("users");
-        modelBuilder.ApplyConfiguration(new UserReadConfiguration());
-        modelBuilder.ApplyConfiguration(new RoleReadConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
 }

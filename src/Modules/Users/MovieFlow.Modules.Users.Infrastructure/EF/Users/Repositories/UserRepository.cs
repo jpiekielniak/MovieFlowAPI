@@ -4,8 +4,7 @@ using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 
 namespace MovieFlow.Modules.Users.Infrastructure.EF.Users.Repositories;
 
-internal sealed class UserRepository(
-    UsersWriteDbContext dbContext) : IUserRepository
+internal sealed class UserRepository(UsersWriteDbContext dbContext) : IUserRepository
 {
     private readonly DbSet<User> _users = dbContext.Users;
 
@@ -18,11 +17,10 @@ internal sealed class UserRepository(
         await CommitAsync(cancellationToken);
     }
 
-    public async Task CommitAsync(CancellationToken cancellationToken)
-        => await dbContext.SaveChangesAsync(cancellationToken);
-
     public async Task<User> GetByEmailAsync(string email)
-        => await _users.Include(x => x.Role).SingleOrDefaultAsync(u => u.Email == email);
+        => await _users
+            .Include(x => x.Role)
+            .SingleOrDefaultAsync(u => u.Email == email);
 
     public async Task<User> GetUserAsync(Guid userId)
         => await _users.SingleOrDefaultAsync(u => u.Id == userId);
@@ -32,4 +30,7 @@ internal sealed class UserRepository(
         _users.Remove(user);
         await CommitAsync(cancellationToken);
     }
+    
+    private async Task CommitAsync(CancellationToken cancellationToken)
+        => await dbContext.SaveChangesAsync(cancellationToken);
 }

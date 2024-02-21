@@ -5,10 +5,9 @@ using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;
 
-namespace MovieFlow.Modules.Users.Infrastructure.EF.Users.Queries.GetCurrentUserHandler;
+namespace MovieFlow.Modules.Users.Infrastructure.EF.Users.Queries.GetCurrentLoggedUserHandler;
 
-internal sealed class GetCurrentUserHandler(
-    IContext context,
+internal sealed class GetCurrentLoggedUserHandler(IContext context,
     UsersReadDbContext readDbContext) : IRequestHandler<GetCurrentLoggedUserQuery, UserDetailsDto>
 {
     public async Task<UserDetailsDto> Handle(GetCurrentLoggedUserQuery query,

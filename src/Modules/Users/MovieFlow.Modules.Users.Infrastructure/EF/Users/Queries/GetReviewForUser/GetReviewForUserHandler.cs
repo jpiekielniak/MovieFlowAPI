@@ -18,6 +18,9 @@ internal sealed class GetReviewForUserHandler(
             .SingleOrDefaultAsync(x => x.Id == query.userId, cancellationToken)
             .NotNull(() => new UserNotFoundException(query.userId));
 
-        return await moviesModuleApi.GetReviewsForUserAsync(user.Id, cancellationToken);
+        var userReviews = await moviesModuleApi
+            .GetReviewsForUserAsync(user.Id, cancellationToken);
+
+        return userReviews;
     }
 }

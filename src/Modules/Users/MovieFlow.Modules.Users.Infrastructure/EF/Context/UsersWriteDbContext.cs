@@ -10,20 +10,17 @@ internal class UsersWriteDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
+
     private readonly IClock _clock;
 
 
     public UsersWriteDbContext(DbContextOptions<UsersWriteDbContext> options, IClock clock)
-        : base(options)
-    {
-        _clock = clock;
-    }
+        : base(options) => _clock = clock;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("users");
-        modelBuilder.ApplyConfiguration(new UserWriteConfiguration());
-        modelBuilder.ApplyConfiguration(new RoleWriteConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())

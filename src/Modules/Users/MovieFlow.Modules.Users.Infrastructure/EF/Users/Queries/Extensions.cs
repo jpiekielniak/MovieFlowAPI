@@ -14,5 +14,6 @@ internal static class Extensions
             user.EmailConfirmedAt,
             user.LastChangePasswordAt,
             user.Role.Name,
-            user.IsActive);
+            user.IsActive
+        );
 }

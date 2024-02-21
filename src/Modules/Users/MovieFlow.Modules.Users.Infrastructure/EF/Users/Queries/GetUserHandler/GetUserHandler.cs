@@ -8,11 +8,11 @@ using MovieFlow.Shared.Abstractions;
 namespace MovieFlow.Modules.Users.Infrastructure.EF.Users.Queries.GetUserHandler;
 
 internal sealed class GetUserHandler(UsersReadDbContext readDbContext)
-    : IRequestHandler<GetUserQuery, UserDetailsDto?>
+    : IRequestHandler<GetUserQuery, UserDetailsDto>
 {
     private readonly DbSet<UserReadModel> _users = readDbContext.Users;
 
-    public async Task<UserDetailsDto?> Handle(GetUserQuery query,
+    public async Task<UserDetailsDto> Handle(GetUserQuery query,
         CancellationToken cancellationToken)
     {
         var user = await _users
@@ -21,6 +21,6 @@ internal sealed class GetUserHandler(UsersReadDbContext readDbContext)
                 cancellationToken)
             .NotNull(() => new UserNotFoundException(query.userId));
 
-        return user?.AsDetailsDto();
+        return user.AsDetailsDto();
     }
 }
