@@ -1,15 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\..\Shared\MovieFlow.Shared.Abstractions\MovieFlow.Shared.Abstractions.csproj" />
-      <ProjectReference Include="..\MovieFlow.Modules.Emails.Core\MovieFlow.Modules.Emails.Core.csproj" />
-      <ProjectReference Include="..\MovieFlow.Modules.Emails.Shared\MovieFlow.Modules.Emails.Shared.csproj" />
+        <ProjectReference Include="..\..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj"/>
+        <ProjectReference Include="..\MovieFlow.Modules.Emails.Core\MovieFlow.Modules.Emails.Core.csproj"/>
+        <ProjectReference Include="..\MovieFlow.Modules.Emails.Shared\MovieFlow.Modules.Emails.Shared.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
-﻿using MovieFlow.Shared.Abstractions.RenderView;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -8,99 +7,80 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
+using MovieFlow.Shared.Abstractions.RenderView;
 
 namespace MovieFlow.Shared.Infrastructure.RenderView;
 
-public class RazorViewRenderer(
-    IRazorViewEngine viewEngine,
-    ITempDataProvider tempDataProvider,
-    IServiceProvider serviceProvider,
-    IHttpContextAccessor contextAccessor)
-    : IRazorViewRenderer
+public class RazorViewRenderer : IRazorViewRenderer
 {
-    public async Task<string> RenderViewToStringAsync(string viewName, Dictionary<string, object> viewData)
+    private readonly IRazorViewEngine _viewEngine;
+    private readonly ITempDataProvider _tempDataProvider;
+    private readonly IServiceProvider _serviceProvider;
+
+    public RazorViewRenderer(
+        IRazorViewEngine viewEngine,
+        ITempDataProvider tempDataProvider,
+        IServiceProvider serviceProvider)
     {
-        var actionContext = new ActionContext(contextAccessor.HttpContext, new RouteData(), new ActionDescriptor());
-        var view = FindView(actionContext, viewName);
-
-        await using (var output = new StringWriter())
-        {
-            var viewContext = new ViewContext(
-                actionContext,
-                view,
-                new ViewDataDictionary(metadataProvider: new EmptyModelMetadataProvider(), modelState: new ModelStateDictionary()),
-                new TempDataDictionary(actionContext.HttpContext, tempDataProvider),
-                output,
-                new HtmlHelperOptions());
-            viewContext.RouteData = contextAccessor.HttpContext.GetRouteData();
-            if (viewData != null)
-            {
-                foreach (var item in viewData)
-                {
-                    viewContext.ViewData.Add(item.Key, item.Value);
-                }
-            }
-
-            await view.RenderAsync(viewContext);
-
-            return output.ToString();
-        }
+        _viewEngine = viewEngine;
+        _tempDataProvider = tempDataProvider;
+        _serviceProvider = serviceProvider;
     }
 
     public async Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model)
-    {
-        var actionContext = GetActionContext();
-        var view = FindView(actionContext, viewName);
-
-        using (var output = new StringWriter())
         {
-            var viewContext = new ViewContext(
-                actionContext,
-                view,
-                new ViewDataDictionary<TModel>(
-                    metadataProvider: new EmptyModelMetadataProvider(),
-                    modelState: new ModelStateDictionary())
-                {
-                    Model = model
-                },
-                new TempDataDictionary(
-                    actionContext.HttpContext,
-                    tempDataProvider),
-                output,
-                new HtmlHelperOptions());
+            var actionContext = GetActionContext();
+            var view = FindView(actionContext, viewName);
 
-            await view.RenderAsync(viewContext);
+            using (var output = new StringWriter())
+            {
+                var viewContext = new ViewContext(
+                    actionContext,
+                    view,
+                    new ViewDataDictionary<TModel>(
+                        metadataProvider: new EmptyModelMetadataProvider(),
+                        modelState: new ModelStateDictionary())
+                    {
+                        Model = model
+                    },
+                    new TempDataDictionary(
+                        actionContext.HttpContext,
+                        _tempDataProvider),
+                    output,
+                    new HtmlHelperOptions());
 
-            return output.ToString();
-        }
-    }
+                await view.RenderAsync(viewContext);
 
-    private IView FindView(ActionContext actionContext, string viewName)
-    {
-        var getViewResult = viewEngine.GetView(executingFilePath: null, viewPath: viewName, isMainPage: true);
-        if (getViewResult.Success)
-        {
-            return getViewResult.View;
+                return output.ToString();
+            }
         }
 
-        var findViewResult = viewEngine.FindView(actionContext, viewName, isMainPage: true);
-        if (findViewResult.Success)
+        private IView FindView(ActionContext actionContext, string viewName)
         {
-            return findViewResult.View;
+            var getViewResult = _viewEngine.GetView(executingFilePath: null, viewPath: viewName, isMainPage: true);
+            if (getViewResult.Success)
+            {
+                return getViewResult.View;
+            }
+
+            var findViewResult = _viewEngine.FindView(actionContext, viewName, isMainPage: true);
+            if (findViewResult.Success)
+            {
+                return findViewResult.View;
+            }
+
+            var searchedLocations = getViewResult.SearchedLocations.Concat(findViewResult.SearchedLocations);
+            var errorMessage = string.Join(
+                Environment.NewLine,
+                new[] { $"Unable to find view '{viewName}'. The following locations were searched:" }.Concat(searchedLocations)); ;
+
+            throw new InvalidOperationException(errorMessage);
         }
 
-        var searchedLocations = getViewResult.SearchedLocations.Concat(findViewResult.SearchedLocations);
-        var errorMessage = string.Join(
-            Environment.NewLine,
-            new[] { $"Unable to find view '{viewName}'. The following locations were searched:" }.Concat(searchedLocations));
-
-        throw new InvalidOperationException(errorMessage);
-    }
-
-    private ActionContext GetActionContext()
-    {
-        var httpContext = new DefaultHttpContext();
-        httpContext.RequestServices = serviceProvider;
-        return new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
-    }
+        private ActionContext GetActionContext()
+        {
+            var httpContext = new DefaultHttpContext();
+            httpContext.RequestServices = _serviceProvider;
+            return new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
+        }
 }

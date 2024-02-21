@@ -7,15 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
-      <ProjectReference Include="..\Integrations\MovieFlow.Modules.Emails.SendGrid\MovieFlow.Modules.Emails.SendGrid.csproj" />
-      <ProjectReference Include="..\MovieFlow.Modules.Emails.Infrastructure\MovieFlow.Modules.Emails.Infrastructure.csproj" />
+        <ProjectReference Include="..\Integrations\MovieFlow.Modules.Emails.SendGrid\MovieFlow.Modules.Emails.SendGrid.csproj" />
+        <ProjectReference Include="..\MovieFlow.Modules.Emails.Infrastructure\MovieFlow.Modules.Emails.Infrastructure.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="module.email.development.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+        <None Update="module.email.development.json"/>
+        <Content Include="module.email.development.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>
