@@ -4,5 +4,5 @@ namespace MovieFlow.Modules.Movies.Core.Movies.Repositories;
 
 internal interface IDirectorRepository
 {
-    Task<Director?> GetAsync(Guid id, CancellationToken cancellationToken);
+    Task<Director> GetAsync(Guid id, CancellationToken cancellationToken);
 }

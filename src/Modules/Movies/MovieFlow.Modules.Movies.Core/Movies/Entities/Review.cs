@@ -17,12 +17,12 @@ internal sealed class Review : Entity
     internal Movie Movie { get; }
     internal Guid UserId { get; }
 
-    private Review() //For EF
+    private Review()
     {
     }
 
-    private Review(Title title, Content content, Rating rating, Movie movie, Guid userId,
-        EntityState entityState)
+    private Review(Title title, Content content, Rating rating, Movie movie, 
+        Guid userId, EntityState entityState)
     {
         Title = title;
         Content = content;

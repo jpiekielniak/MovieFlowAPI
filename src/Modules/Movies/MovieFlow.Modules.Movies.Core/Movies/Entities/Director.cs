@@ -13,7 +13,7 @@ internal class Director : Entity
     internal Country Country { get; set; }
     internal ICollection<Movie> Movies { get; set; }
 
-    private Director() // for EF
+    private Director()
     {
     }
 

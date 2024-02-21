@@ -8,7 +8,7 @@ internal sealed class Like
     internal Review Review { get; set; }
     internal Guid UserId { get; set; }
 
-    private Like() //For EF
+    private Like() 
     {
     }
 

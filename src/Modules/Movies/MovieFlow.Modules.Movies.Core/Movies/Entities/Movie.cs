@@ -17,7 +17,7 @@ internal sealed class Movie : Entity
     internal ICollection<Genre> Genres { get; set; }
     internal ICollection<Review> Reviews { get; set; }
 
-    private Movie() // for EF
+    private Movie()
     {
     }
 

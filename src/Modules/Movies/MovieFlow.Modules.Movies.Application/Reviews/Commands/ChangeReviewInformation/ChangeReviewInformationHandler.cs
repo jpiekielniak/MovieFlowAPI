@@ -28,7 +28,7 @@ internal sealed class ChangeReviewInformationHandler(IMovieRepository movieRepos
             command.Rating
         );
 
-        await reviewRepository.UpdateAsync(review, cancellationToken);
+        await reviewRepository.CommitAsync(cancellationToken);
     }
 
     private bool IsReviewBelongToCurrentUser(Review review)
