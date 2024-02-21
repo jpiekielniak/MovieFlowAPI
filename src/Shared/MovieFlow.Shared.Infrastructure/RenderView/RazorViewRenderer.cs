@@ -11,28 +11,16 @@ using MovieFlow.Shared.Abstractions.RenderView;
 
 namespace MovieFlow.Shared.Infrastructure.RenderView;
 
-public class RazorViewRenderer : IRazorViewRenderer
+public class RazorViewRenderer(IRazorViewEngine viewEngine, 
+    ITempDataProvider tempDataProvider, IServiceProvider serviceProvider) 
+    : IRazorViewRenderer
 {
-    private readonly IRazorViewEngine _viewEngine;
-    private readonly ITempDataProvider _tempDataProvider;
-    private readonly IServiceProvider _serviceProvider;
-
-    public RazorViewRenderer(
-        IRazorViewEngine viewEngine,
-        ITempDataProvider tempDataProvider,
-        IServiceProvider serviceProvider)
-    {
-        _viewEngine = viewEngine;
-        _tempDataProvider = tempDataProvider;
-        _serviceProvider = serviceProvider;
-    }
-
     public async Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model)
         {
             var actionContext = GetActionContext();
             var view = FindView(actionContext, viewName);
 
-            using (var output = new StringWriter())
+            await using (var output = new StringWriter())
             {
                 var viewContext = new ViewContext(
                     actionContext,
@@ -45,7 +33,7 @@ public class RazorViewRenderer : IRazorViewRenderer
                     },
                     new TempDataDictionary(
                         actionContext.HttpContext,
-                        _tempDataProvider),
+                        tempDataProvider),
                     output,
                     new HtmlHelperOptions());
 
@@ -57,13 +45,13 @@ public class RazorViewRenderer : IRazorViewRenderer
 
         private IView FindView(ActionContext actionContext, string viewName)
         {
-            var getViewResult = _viewEngine.GetView(executingFilePath: null, viewPath: viewName, isMainPage: true);
+            var getViewResult = viewEngine.GetView(executingFilePath: null, viewPath: viewName, isMainPage: true);
             if (getViewResult.Success)
             {
                 return getViewResult.View;
             }
 
-            var findViewResult = _viewEngine.FindView(actionContext, viewName, isMainPage: true);
+            var findViewResult = viewEngine.FindView(actionContext, viewName, isMainPage: true);
             if (findViewResult.Success)
             {
                 return findViewResult.View;
@@ -80,7 +68,7 @@ public class RazorViewRenderer : IRazorViewRenderer
         private ActionContext GetActionContext()
         {
             var httpContext = new DefaultHttpContext();
-            httpContext.RequestServices = _serviceProvider;
+            httpContext.RequestServices = serviceProvider;
             return new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
         }
 }
