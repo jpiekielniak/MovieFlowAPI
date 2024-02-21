@@ -15,17 +15,12 @@ internal sealed class MovieRepository(MoviesWriteDbContext dbContext) : IMovieRe
     }
 
     public async Task<bool> MovieExistsAsync(string title, int releaseYear, CancellationToken cancellationToken)
-        => await _movies.AnyAsync(x => x.Title == title && x.ReleaseYear == releaseYear, cancellationToken);
+        => await _movies.AnyAsync(x => x.Title == title && x.ReleaseYear == releaseYear,
+            cancellationToken);
 
-    public async Task<Movie?> GetAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<Movie> GetAsync(Guid id, CancellationToken cancellationToken)
         => await _movies.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
     public async Task CommitAsync(CancellationToken cancellationToken)
         => await dbContext.SaveChangesAsync(cancellationToken);
-
-    public async Task UpdateAsync(Movie movie, CancellationToken cancellationToken)
-    {
-        _movies.Update(movie);
-        await CommitAsync(cancellationToken);
-    }
 }

@@ -1,4 +1,3 @@
-using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Context;
@@ -15,10 +14,6 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("movies");
-        modelBuilder.ApplyConfiguration(new MovieReadConfiguration());
-        modelBuilder.ApplyConfiguration(new GenreReadConfiguration());
-        modelBuilder.ApplyConfiguration(new DirectorReadConfiguration());
-        modelBuilder.ApplyConfiguration(new ReviewReadConfiguration());
-        modelBuilder.ApplyConfiguration(new LikeReadConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
 }

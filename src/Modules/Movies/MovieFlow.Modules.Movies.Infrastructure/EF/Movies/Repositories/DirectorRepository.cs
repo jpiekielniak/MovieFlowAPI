@@ -6,6 +6,8 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Repositories;
 
 internal sealed class DirectorRepository(MoviesWriteDbContext dbContext) : IDirectorRepository
 {
-    public async Task<Director?> GetAsync(Guid id, CancellationToken cancellationToken)
-        => await dbContext.Directors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+    private readonly DbSet<Director> _directors = dbContext.Directors;
+
+    public async Task<Director> GetAsync(Guid id, CancellationToken cancellationToken)
+        => await _directors.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 }

@@ -31,9 +31,7 @@ internal sealed class MovieService : IMovieService
     }
 
     public IQueryable<MovieReadModel> FilterByReleaseYear(IQueryable<MovieReadModel> movies, int releaseYear)
-    {
-        return releaseYear <= 0 ? movies : movies.Where(f => f.ReleaseYear == releaseYear);
-    }
+        => releaseYear <= 0 ? movies : movies.Where(f => f.ReleaseYear == releaseYear);
 
     public IQueryable<MovieReadModel> FilterByDirector(IQueryable<MovieReadModel> movies, string director)
     {
@@ -41,7 +39,6 @@ internal sealed class MovieService : IMovieService
             return movies;
 
         var search = $"%{director}%";
-
 
         return movies.Where(f =>
             Microsoft.EntityFrameworkCore.EF.Functions.ILike(

@@ -21,11 +21,7 @@ internal class MoviesWriteDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("movies");
-        modelBuilder.ApplyConfiguration(new MovieWriteConfiguration());
-        modelBuilder.ApplyConfiguration(new GenreWriteConfiguration());
-        modelBuilder.ApplyConfiguration(new DirectorWriteConfiguration());
-        modelBuilder.ApplyConfiguration(new ReviewWriteConfiguration());
-        modelBuilder.ApplyConfiguration(new LikeWriteConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())

@@ -4,12 +4,10 @@ using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries.GetMovieHandler;
 
-internal sealed class GetMovieHandler(
-    MoviesReadDbContext readDbContext
-) : IRequestHandler<GetMovieQuery, MovieDetailsDto>
+internal sealed class GetMovieHandler(MoviesReadDbContext readDbContext)
+    : IRequestHandler<GetMovieQuery, MovieDetailsDto>
 {
-    public async Task<MovieDetailsDto> Handle(
-        GetMovieQuery query,
+    public async Task<MovieDetailsDto> Handle(GetMovieQuery query,
         CancellationToken cancellationToken)
     {
         var movie = await readDbContext.Movies
@@ -17,7 +15,7 @@ internal sealed class GetMovieHandler(
             .Include(x => x.Director)
             .Include(x => x.Genres)
             .Include(x => x.Reviews)
-            .SingleOrDefaultAsync(x => x.Id == query.movieId, cancellationToken);
+            .SingleOrDefaultAsync(x => x.Id == query.MovieId, cancellationToken);
 
         return movie?.AsMovieDetailsDto();
     }

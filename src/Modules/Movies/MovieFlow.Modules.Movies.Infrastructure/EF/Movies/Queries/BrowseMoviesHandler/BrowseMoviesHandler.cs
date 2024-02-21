@@ -5,10 +5,8 @@ using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries.BrowseMoviesHandler;
 
-internal sealed class BrowseMoviesHandler(
-    MoviesReadDbContext readDbContext,
-    IMovieService movieService)
-    : IRequestHandler<BrowseMoviesQuery, List<MovieDto>>
+internal sealed class BrowseMoviesHandler(MoviesReadDbContext readDbContext,
+    IMovieService movieService) : IRequestHandler<BrowseMoviesQuery, List<MovieDto>>
 {
     public async Task<List<MovieDto>> Handle(BrowseMoviesQuery query,
         CancellationToken cancellationToken)

@@ -12,5 +12,6 @@ internal static class Extensions
             review.Rating,
             review.PositiveLikes,
             review.NegativeLikes,
-            review.UserId);
+            review.UserId
+        );
 }

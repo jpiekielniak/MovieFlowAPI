@@ -6,8 +6,8 @@ using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Reviews.Queries.GetByMovie;
 
-internal sealed class GetByMovieHandler(
-    MoviesReadDbContext readDbContext) : IRequestHandler<GetByMovieQuery, List<ReviewDto>>
+internal sealed class GetByMovieHandler(MoviesReadDbContext readDbContext)
+    : IRequestHandler<GetByMovieQuery, List<ReviewDto>>
 {
     public async Task<List<ReviewDto>> Handle(GetByMovieQuery query,
         CancellationToken cancellationToken)
@@ -16,11 +16,13 @@ internal sealed class GetByMovieHandler(
             .SingleOrDefaultAsync(x => x.Id == query.movieId, cancellationToken)
             .NotNull(() => new MovieNotFoundException(query.movieId));
 
-        return await readDbContext.Reviews
+        var reviews = await readDbContext.Reviews
             .AsNoTracking()
             .Include(x => x.Likes)
             .Where(x => x.Movie.Id == query.movieId)
             .Select(x => x.AsDto())
             .ToListAsync(cancellationToken);
+
+        return reviews;
     }
 }
