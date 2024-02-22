@@ -23,4 +23,10 @@ internal sealed class MovieRepository(MoviesWriteDbContext dbContext) : IMovieRe
 
     public async Task CommitAsync(CancellationToken cancellationToken)
         => await dbContext.SaveChangesAsync(cancellationToken);
+
+    public async Task DeleteAsync(Movie movie, CancellationToken cancellationToken)
+    {
+        _movies.Remove(movie);
+        await CommitAsync(cancellationToken);
+    }
 }

@@ -6,6 +6,7 @@ internal interface IMovieRepository
 {
     Task AddAsync(Movie movie, CancellationToken cancellationToken);
     Task<bool> MovieExistsAsync(string title, int releaseYear, CancellationToken cancellationToken);
-    Task<Movie?> GetAsync(Guid id, CancellationToken cancellationToken);
+    Task<Movie> GetAsync(Guid id, CancellationToken cancellationToken);
     Task CommitAsync(CancellationToken cancellationToken);
+    Task DeleteAsync(Movie movie, CancellationToken cancellationToken);
 }
