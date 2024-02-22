@@ -45,4 +45,10 @@ internal sealed class User : Entity
         IsActive = false;
         State = EntityState.Modified;
     }
+
+    public void Unblock()
+    {
+        IsActive = true;
+        State = EntityState.Modified;
+    }
 }
