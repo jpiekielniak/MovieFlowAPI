@@ -1,3 +1,4 @@
+using MovieFlow.Modules.Emails.Shared.Events.Users.ChangePassword;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Core.Users.Exceptions;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
@@ -10,7 +11,7 @@ namespace MovieFlow.Modules.Users.Application.Users.Commands.ChangePassword;
 
 internal sealed class ChangePasswordHandler(IClock clock,
     IUserRepository userRepository, IPasswordHasher<User> passwordHasher,
-    IContext context) : IRequestHandler<ChangePasswordCommand>
+    IContext context, IMediator mediator) : IRequestHandler<ChangePasswordCommand>
 {
     public async Task Handle(ChangePasswordCommand command,
         CancellationToken cancellationToken)
@@ -29,7 +30,11 @@ internal sealed class ChangePasswordHandler(IClock clock,
             throw new PasswordsDoNotMatchException("Passwords do not match");
 
         var newPassword = passwordHasher.HashPassword(default, command.NewPassword);
-        user.SetPassword(newPassword, clock.CurrentDateTimeOffset());
+        var now = clock.CurrentDateTimeOffset();
+        user.SetPassword(newPassword, now);
         await userRepository.UpdateAsync(user, cancellationToken);
+
+        var @event = new ChangePasswordEvent(user.Email, now);
+        await mediator.Publish(@event, cancellationToken);
     }
 }
