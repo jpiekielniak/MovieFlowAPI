@@ -22,15 +22,21 @@ internal sealed class UserRepository(UsersWriteDbContext dbContext) : IUserRepos
             .Include(x => x.Role)
             .SingleOrDefaultAsync(u => u.Email == email);
 
-    public async Task<User> GetUserAsync(Guid userId)
-        => await _users.SingleOrDefaultAsync(u => u.Id == userId);
+    public async Task<User> GetAsync(Guid userId, CancellationToken cancellationToken)
+        => await _users.SingleOrDefaultAsync(u => u.Id == userId, cancellationToken);
 
-    public async Task DeleteAsync(User user, CancellationToken cancellationToken = default)
+    public async Task DeleteAsync(User user, CancellationToken cancellationToken)
     {
         _users.Remove(user);
         await CommitAsync(cancellationToken);
     }
-    
+
+    public async Task UpdateAsync(User user, CancellationToken cancellationToken)
+    {
+        _users.Update(user);
+        await CommitAsync(cancellationToken);
+    }
+
     private async Task CommitAsync(CancellationToken cancellationToken)
         => await dbContext.SaveChangesAsync(cancellationToken);
 }

@@ -23,7 +23,7 @@ internal sealed class SignInHandler(IUserRepository userRepository,
             .VerifyHashedPassword(user,
                 user.Password,
                 command.Password
-            ) == PasswordVerificationResult.Failed;
+            ) == PasswordVerificationResult.Success;
 
         if (!isValidPassword)
             throw new InvalidCredentialsException();

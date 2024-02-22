@@ -8,6 +8,7 @@ internal interface IUserRepository
     Task AddAsync(User user, CancellationToken cancellationToken);
 
     Task<User> GetByEmailAsync(string commandEmail);
-    Task<User> GetUserAsync(Guid userId);
-    public Task DeleteAsync(User user, CancellationToken cancellationToken = default);
+    Task<User> GetAsync(Guid userId, CancellationToken cancellationToken);
+    public Task DeleteAsync(User user, CancellationToken cancellationToken);
+    Task UpdateAsync(User user, CancellationToken cancellationToken);
 }

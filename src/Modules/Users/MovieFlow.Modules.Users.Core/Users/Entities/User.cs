@@ -30,6 +30,12 @@ internal sealed class User : Entity
         State = state;
     }
 
-    public static User Create(Name name,Email email, Password password, Role role)
+    public static User Create(Name name, Email email, Password password, Role role)
         => new(name, email, password, role, EntityState.Added);
+
+    public void SetPassword(string password, DateTimeOffset lastChangePasswordAt)
+    {
+        Password = password;
+        LastChangePasswordAt = lastChangePasswordAt;
+    }
 }

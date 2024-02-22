@@ -9,7 +9,7 @@ internal sealed class DeleteUserHandler(IUserRepository userRepository) : IReque
     public async Task Handle(DeleteUserCommand command,
         CancellationToken cancellationToken)
     {
-        var user = await userRepository.GetUserAsync(command.UserId)
+        var user = await userRepository.GetAsync(command.UserId, cancellationToken)
             .NotNull(() => new UserNotFoundException(command.UserId));
 
         await userRepository.DeleteAsync(user, cancellationToken);
