@@ -33,9 +33,16 @@ internal sealed class User : Entity
     public static User Create(Name name, Email email, Password password, Role role)
         => new(name, email, password, role, EntityState.Added);
 
-    public void SetPassword(string password, DateTimeOffset lastChangePasswordAt)
+    public void SetPassword(Password password, DateTimeOffset lastChangePasswordAt)
     {
         Password = password;
         LastChangePasswordAt = lastChangePasswordAt;
+        State = EntityState.Modified;
+    }
+
+    public void Block()
+    {
+        IsActive = false;
+        State = EntityState.Modified;
     }
 }
