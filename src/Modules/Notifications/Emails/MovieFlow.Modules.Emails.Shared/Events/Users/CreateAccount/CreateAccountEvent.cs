@@ -1,5 +1,5 @@
 using MediatR;
 
-namespace MovieFlow.Modules.Emails.Shared.Events.Users;
+namespace MovieFlow.Modules.Emails.Shared.Events.Users.CreateAccount;
 
 public record CreateAccountEvent(string Email, string Password) : INotification;

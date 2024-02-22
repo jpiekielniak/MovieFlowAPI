@@ -1,20 +1,20 @@
 using MediatR;
-using MovieFlow.Modules.Emails.Application.UsersEmails.CreateAccount.Models;
+using MovieFlow.Modules.Emails.Application.Users.CreateAccount.Models;
 using MovieFlow.Modules.Emails.Core.Emails.Entities;
 using MovieFlow.Modules.Emails.Core.Emails.Repositories;
 using MovieFlow.Modules.Emails.Core.Emails.Services;
-using MovieFlow.Modules.Emails.Shared.Events.Users;
+using MovieFlow.Modules.Emails.Shared.Events.Users.CreateAccount;
 using MovieFlow.Shared.Abstractions.RenderView;
 using MovieFlow.Shared.Abstractions.Time;
 
-namespace MovieFlow.Modules.Emails.Application.UsersEmails.CreateAccount.Handlers;
+namespace MovieFlow.Modules.Emails.Application.Users.CreateAccount.Handlers;
 
 internal sealed class CreateAccountHandler(IEmailRepository emailRepository,
     IEmailService emailService, IClock clock, IRazorViewRenderer razorViewRenderer)
     : INotificationHandler<CreateAccountEvent>
 {
-    private const string PathView = "~/UsersEmails/CreateAccount/Views/CreateAccount.cshtml";
-    private const string Subject = "Welcome to MovieFlow";
+    private const string PathView = "~/Users/CreateAccount/Views/CreateAccount.cshtml";
+    private const string Subject = "Witamy w MovieFlow";
 
     public async Task Handle(CreateAccountEvent @event,
         CancellationToken cancellationToken)
