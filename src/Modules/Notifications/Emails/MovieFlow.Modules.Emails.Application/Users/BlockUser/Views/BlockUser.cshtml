@@ -1,0 +1,18 @@
+@model MovieFlow.Modules.Emails.Application.Users.BlockUser.Models.BlockUserModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konto zablokowane</title>
+</head>
+<body>
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fefefe; border: 1px solid #ff0000; border-radius: 10px;">
+    <h2 style="color: #ff0000;">Twoje konto zostało zablokowane</h2>
+    <p>Konto zostało zablokowane o @Model.BlockedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss") z powodu naruszenia zasad serwisu.</p>
+    <p>Jeśli uważasz, że zablokowanie konta było błędem, prosimy o kontakt z administratorem.</p>
+</div>
+</body>
+</html>
