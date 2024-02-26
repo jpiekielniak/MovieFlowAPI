@@ -1,5 +1,6 @@
 using MovieFlow.Modules.Emails.Shared.Events.Users.BlockUser;
 using MovieFlow.Modules.Users.Core.Users.Exceptions;
+using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;
@@ -19,6 +20,9 @@ internal sealed class BlockUserHandler(IContext context,
         var user = await userRepository
             .GetAsync(command.UserId, cancellationToken)
             .NotNull(() => new UserNotFoundException(command.UserId));
+        
+        if(!user.IsActive)
+            throw new UserIsAlreadyBlockedException(user.Id);
 
         user.Block();
         await userRepository.UpdateAsync(user, cancellationToken);
