@@ -1,7 +1,7 @@
-using MovieFlow.Modules.Emails.Shared.Events.Users;
 using MovieFlow.Modules.Emails.Shared.Events.Users.CreateAccount;
 using MovieFlow.Modules.Users.Core.Users.Entities;
-using MovieFlow.Modules.Users.Core.Users.Exceptions;
+using MovieFlow.Modules.Users.Core.Users.Exceptions.Roles;
+using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Shared.Abstractions;
 using PasswordGenerator;

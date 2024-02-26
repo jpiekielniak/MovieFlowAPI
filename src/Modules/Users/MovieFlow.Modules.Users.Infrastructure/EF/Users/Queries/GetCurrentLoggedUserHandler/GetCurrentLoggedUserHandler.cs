@@ -1,6 +1,6 @@
 using MovieFlow.Modules.Users.Application.Users.Queries.DTO;
 using MovieFlow.Modules.Users.Application.Users.Queries.GetCurrentLoggedUser;
-using MovieFlow.Modules.Users.Core.Users.Exceptions;
+using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;

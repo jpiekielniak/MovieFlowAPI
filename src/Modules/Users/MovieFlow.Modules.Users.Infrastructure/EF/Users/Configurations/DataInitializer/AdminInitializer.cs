@@ -1,6 +1,5 @@
-
 using MovieFlow.Modules.Users.Core.Users.Entities;
-using MovieFlow.Modules.Users.Core.Users.Exceptions;
+using MovieFlow.Modules.Users.Core.Users.Exceptions.Roles;
 using MovieFlow.Modules.Users.Infrastructure.EF.Context;
 using MovieFlow.Shared.Infrastructure;
 
