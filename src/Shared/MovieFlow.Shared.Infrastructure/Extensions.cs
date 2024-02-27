@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using MediatR;
 using MovieFlow.Shared.Abstractions.Time;
 using MovieFlow.Shared.Infrastructure.Api;
 using MovieFlow.Shared.Infrastructure.Exceptions;
@@ -17,6 +18,7 @@ using MovieFlow.Shared.Infrastructure.Auth;
 using MovieFlow.Shared.Infrastructure.Contexts;
 using MovieFlow.Shared.Infrastructure.RenderView;
 using MovieFlow.Shared.Infrastructure.Services;
+using MovieFlow.Shared.Infrastructure.Validation;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 [assembly: InternalsVisibleTo("MovieFlow.Bootstrapper")]
@@ -74,6 +76,7 @@ public static class Extensions
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddTransient(sp => sp.GetRequiredService<IContextFactory>().Create());
         services.AddSingleton<IJsonSerializer, SystemTextJsonSerializer>();
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         services.AddAuth(modules);
         services.AddErrorHandling();
         services.AddPostgres();

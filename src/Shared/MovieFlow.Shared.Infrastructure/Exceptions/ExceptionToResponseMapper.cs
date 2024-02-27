@@ -40,7 +40,7 @@ internal class ExceptionToResponseMapper : IExceptionToResponseMapper
     private static ExceptionResponse GetExceptionResponse(ValidationException ex)
     {
         var errors = ex.Errors
-            .Select(q => new Error(q.ErrorCode, q.ErrorMessage))
+            .Select(q => new Error("validation_failed", q.ErrorMessage))
             .ToArray();
 
         var response = new ErrorsResponse(errors);
