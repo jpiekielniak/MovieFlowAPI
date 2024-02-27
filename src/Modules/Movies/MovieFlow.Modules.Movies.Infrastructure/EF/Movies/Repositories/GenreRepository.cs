@@ -8,6 +8,9 @@ internal class GenreRepository(MoviesWriteDbContext dbContext) : IGenreRepositor
 {
     private readonly DbSet<Genre> _genres = dbContext.Genres;
 
+    public async Task<Genre> GetAsync(Guid genreId, CancellationToken cancellationToken)
+        => await _genres.SingleOrDefaultAsync(x => x.Id == genreId, cancellationToken);
+
     public async Task<List<Genre>> GetByIdsAsync(List<Guid> genreIds,
         CancellationToken cancellationToken)
         => await _genres
@@ -21,6 +24,12 @@ internal class GenreRepository(MoviesWriteDbContext dbContext) : IGenreRepositor
     public async Task AddAsync(Genre genre, CancellationToken cancellationToken)
     {
         await _genres.AddAsync(genre, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task DeleteAsync(Genre genre, CancellationToken cancellationToken)
+    {
+        _genres.Remove(genre);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 }
