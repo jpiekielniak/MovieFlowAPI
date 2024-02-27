@@ -13,4 +13,14 @@ internal class GenreRepository(MoviesWriteDbContext dbContext) : IGenreRepositor
         => await _genres
             .Where(g => genreIds.Contains(g.Id))
             .ToListAsync(cancellationToken);
+
+    public async Task<bool> ExistsByNameAsync(string name,
+        CancellationToken cancellationToken)
+        => await _genres.AnyAsync(g => g.Name == name, cancellationToken);
+
+    public async Task AddAsync(Genre genre, CancellationToken cancellationToken)
+    {
+        await _genres.AddAsync(genre, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
 }

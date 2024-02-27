@@ -1,3 +1,4 @@
+using MovieFlow.Modules.Movies.Application.Genres.Commands.CreateGenre;
 using MovieFlow.Modules.Movies.Application.Services;
 using MovieFlow.Modules.Movies.Shared;
 
@@ -11,7 +12,8 @@ internal static class Extensions
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-
+        
+        services.AddTransient<IValidator<CreateGenreCommand>, CreateGenreValidator>();
         services.AddTransient<IMoviesModuleApi, MoviesModuleApi>();
 
         return services;
