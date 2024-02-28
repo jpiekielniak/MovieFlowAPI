@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Movies.Application.Directors.Queries.DTO;
+using MovieFlow.Modules.Movies.Application.Directors.Queries.GetMoviesForDirector.DTO;
 using MovieFlow.Modules.Movies.Application.Shared.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
@@ -21,4 +22,7 @@ internal static class Extensions
             director.FirstName,
             director.LastName
         );
+
+    public static DirectorMovieDto AsDirectorMovieDto(this MovieReadModel movie)
+        => new(movie.Id, movie.Title);
 }
