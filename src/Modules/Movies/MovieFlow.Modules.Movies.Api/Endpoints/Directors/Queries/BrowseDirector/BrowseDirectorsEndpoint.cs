@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Movies.Application.Directors.Queries.BrowseDirectors;
-using MovieFlow.Modules.Movies.Application.Movies.Queries.Get.DTO;
+using MovieFlow.Modules.Movies.Application.Shared.DTO;
 
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Directors.Queries.BrowseDirector;
 

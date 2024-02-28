@@ -1,4 +1,4 @@
-using MovieFlow.Modules.Movies.Application.Reviews.Queries.GetByMovie.DTO;
+using MovieFlow.Modules.Movies.Application.Reviews.Queries.GetReviewsByMovie.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Reviews.Queries;

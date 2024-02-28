@@ -1,5 +1,6 @@
-using MovieFlow.Modules.Movies.Application.Movies.Queries.Browse.DTO;
-using MovieFlow.Modules.Movies.Application.Movies.Queries.Get.DTO;
+using MovieFlow.Modules.Movies.Application.Movies.Queries.BrowseMovies.DTO;
+using MovieFlow.Modules.Movies.Application.Movies.Queries.GetMovie.DTO;
+using MovieFlow.Modules.Movies.Application.Shared.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries;

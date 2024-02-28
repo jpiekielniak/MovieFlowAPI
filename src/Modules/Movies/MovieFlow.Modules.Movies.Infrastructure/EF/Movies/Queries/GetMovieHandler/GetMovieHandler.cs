@@ -1,5 +1,5 @@
-using MovieFlow.Modules.Movies.Application.Movies.Queries.Get;
-using MovieFlow.Modules.Movies.Application.Movies.Queries.Get.DTO;
+using MovieFlow.Modules.Movies.Application.Movies.Queries.GetMovie;
+using MovieFlow.Modules.Movies.Application.Movies.Queries.GetMovie.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries.GetMovieHandler;

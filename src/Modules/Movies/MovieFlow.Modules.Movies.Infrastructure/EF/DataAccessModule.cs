@@ -1,10 +1,10 @@
 ﻿using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 using MovieFlow.Shared.Infrastructure.Postgres;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
+using MovieFlow.Modules.Movies.Infrastructure.EF.Directors.Services;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.DataInitializer;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Repositories;
-using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services.Directors;
-using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services.Movies;
+using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;
 using MovieFlow.Shared.Infrastructure;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF;
