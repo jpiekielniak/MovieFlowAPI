@@ -8,17 +8,20 @@ using PasswordGenerator;
 
 namespace MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
 
-internal sealed class SignUpHandler(IPasswordHasher<User> passwordHasher,
-    IRoleRepository roleRepository, IUserRepository userRepository, 
+internal sealed class SignUpHandler(
+    IPasswordHasher<User> passwordHasher,
+    IRoleRepository roleRepository,
+    IUserRepository userRepository,
     IMediator mediator) : IRequestHandler<SignUpCommand, SignUpResponse>
 {
     private const string UserRole = "User";
     private const string UserExceptionMessage = "User with this email or name already exists";
 
-    public async Task<SignUpResponse> Handle(SignUpCommand command, 
+    public async Task<SignUpResponse> Handle(SignUpCommand command,
         CancellationToken cancellationToken)
     {
-        var userExists = await userRepository.UserExistsAsync(command.Email, command.Name);
+        var userExists = await userRepository
+            .UserExistsAsync(command.Email, command.Name, cancellationToken);
 
         if (userExists)
             throw new UserAlreadyExistsException(UserExceptionMessage);

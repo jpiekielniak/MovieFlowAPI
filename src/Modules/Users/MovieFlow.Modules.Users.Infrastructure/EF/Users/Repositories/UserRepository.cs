@@ -8,8 +8,8 @@ internal sealed class UserRepository(UsersWriteDbContext dbContext) : IUserRepos
 {
     private readonly DbSet<User> _users = dbContext.Users;
 
-    public async Task<bool> UserExistsAsync(string email, string name)
-        => await _users.AnyAsync(u => u.Email == email && u.Name == name);
+    public async Task<bool> UserExistsAsync(string email, string name, CancellationToken cancellationToken)
+        => await _users.AnyAsync(u => u.Email == email || u.Name == name, cancellationToken);
 
     public async Task AddAsync(User user, CancellationToken cancellationToken)
     {

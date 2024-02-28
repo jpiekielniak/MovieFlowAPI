@@ -4,7 +4,7 @@ namespace MovieFlow.Modules.Users.Core.Users.Repositories;
 
 internal interface IUserRepository
 {
-    Task<bool> UserExistsAsync(string email, string name);
+    Task<bool> UserExistsAsync(string email, string name, CancellationToken cancellationToken);
     Task AddAsync(User user, CancellationToken cancellationToken);
 
     Task<User> GetByEmailAsync(string commandEmail);
