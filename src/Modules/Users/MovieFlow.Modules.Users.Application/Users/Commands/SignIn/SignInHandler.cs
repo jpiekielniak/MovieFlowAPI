@@ -36,6 +36,6 @@ internal sealed class SignInHandler(IUserRepository userRepository,
         var jwt = authManager.CreateToken(user.Id.ToString(), user.Role.Name, claims: claims);
         jwt.Email = user.Email;
 
-        return new SignInResponse(jwt);
+        return new SignInResponse(jwt.AccessToken);
     }
 }
