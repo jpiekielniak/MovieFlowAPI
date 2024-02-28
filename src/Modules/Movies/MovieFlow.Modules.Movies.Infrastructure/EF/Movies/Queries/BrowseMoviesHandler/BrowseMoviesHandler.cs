@@ -2,6 +2,7 @@ using MovieFlow.Modules.Movies.Application.Movies.Queries.Browse;
 using MovieFlow.Modules.Movies.Application.Movies.Queries.Browse.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;
+using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services.Movies;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Queries.BrowseMoviesHandler;
 

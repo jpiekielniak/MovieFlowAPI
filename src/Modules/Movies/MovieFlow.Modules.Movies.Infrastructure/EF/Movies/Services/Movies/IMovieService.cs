@@ -1,6 +1,6 @@
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Read.Model;
 
-namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;
+namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services.Movies;
 
 internal interface IMovieService
 {
