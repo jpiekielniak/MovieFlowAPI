@@ -14,6 +14,9 @@ internal sealed class DirectorRepository(MoviesWriteDbContext dbContext) : IDire
     public async Task AddAsync(Director director, CancellationToken cancellationToken)
     {
         await _directors.AddAsync(director, cancellationToken);
-        await dbContext.SaveChangesAsync(cancellationToken);
+        await CommitAsync(cancellationToken);
     }
+
+    public async Task CommitAsync(CancellationToken cancellationToken)
+        => await dbContext.SaveChangesAsync(cancellationToken);
 }

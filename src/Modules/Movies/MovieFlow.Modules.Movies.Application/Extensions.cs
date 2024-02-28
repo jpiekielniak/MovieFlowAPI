@@ -1,3 +1,4 @@
+using MovieFlow.Modules.Movies.Application.Directors.Commands.ChangeDirectorInformation;
 using MovieFlow.Modules.Movies.Application.Directors.Commands.CreateDirector;
 using MovieFlow.Modules.Movies.Application.Genres.Commands.CreateGenre;
 using MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
@@ -23,7 +24,9 @@ internal static class Extensions
             .AddScoped<IValidator<ChangeMovieInformationCommand>, ChangeMovieInformationValidator>()
             .AddScoped<IValidator<AddReviewCommand>, AddReviewValidator>()
             .AddScoped<IValidator<ChangeReviewInformationCommand>, ChangeReviewInformationValidator>()
-            .AddScoped<IValidator<CreateDirectorCommand>, CreateDirectorValidator>();
+            .AddScoped<IValidator<CreateDirectorCommand>, CreateDirectorValidator>()
+            .AddScoped<IValidator<ChangeDirectorInformationCommand>, ChangeDirectorInformationValidator>();
+
 
         services.AddTransient<IMoviesModuleApi, MoviesModuleApi>();
 
