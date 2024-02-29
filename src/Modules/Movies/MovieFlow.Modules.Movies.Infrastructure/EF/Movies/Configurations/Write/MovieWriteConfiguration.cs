@@ -46,6 +46,9 @@ internal class MovieWriteConfiguration : IEntityTypeConfiguration<Movie>
             .WithMany(x => x.Movies)
             .UsingEntity(j => j.ToTable("MovieGenres_Mapping"));
 
+        builder.HasMany(x => x.MoviePhotos)
+            .WithOne(x => x.Movie)
+            .HasForeignKey(x => x.MovieId);
 
         builder.ToTable("Movies");
     }

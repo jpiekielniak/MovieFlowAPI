@@ -14,6 +14,7 @@ internal sealed class Movie : Entity
     internal Rating Rating => Reviews.Average(x => x.Rating);
     internal Guid DirectorId { get; private set; }
     internal Director Director { get; private set; }
+    internal ICollection<MoviePhoto> MoviePhotos { get; set; }
     internal ICollection<Genre> Genres { get; set; }
     internal ICollection<Review> Reviews { get; set; }
 
@@ -22,8 +23,8 @@ internal sealed class Movie : Entity
     }
 
     private Movie(Title title, Description description,
-        ReleaseYear releaseYear,
-        Director director, ICollection<Genre> genres, EntityState entityState)
+        ReleaseYear releaseYear, Director director, 
+        ICollection<Genre> genres, EntityState entityState)
     {
         Title = title;
         Description = description;
