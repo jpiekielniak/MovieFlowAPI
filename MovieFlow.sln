@@ -54,6 +54,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.SendGrid", "src\Modules\Notifications\Emails\Integrations\MovieFlow.Modules.Emails.SendGrid\MovieFlow.Modules.Emails.SendGrid.csproj", "{B8A10337-7559-4E32-9CB0-00A47FE0113F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{2DEE4C48-CBE0-44BA-A875-69287CEB5704}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration\ISendGridConfiguration.cs = Configuration\ISendGridConfiguration.cs
+		Configuration\SendGridConfiguration.cs = Configuration\SendGridConfiguration.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage", "src\Modules\Movies\Integrations\MovieFlow.Modules.Movies.AzureStorage\MovieFlow.Modules.Movies.AzureStorage.csproj", "{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,6 +140,10 @@ Global
 		{B8A10337-7559-4E32-9CB0-00A47FE0113F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8A10337-7559-4E32-9CB0-00A47FE0113F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8A10337-7559-4E32-9CB0-00A47FE0113F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
@@ -160,5 +172,7 @@ Global
 		{7B7227E3-AF04-483B-A789-34C97BC2324B} = {F63614D8-0204-4065-8286-F84566F69CAC}
 		{49170651-3AA4-416C-8C10-34FE5CDCD7C9} = {F63614D8-0204-4065-8286-F84566F69CAC}
 		{B8A10337-7559-4E32-9CB0-00A47FE0113F} = {49170651-3AA4-416C-8C10-34FE5CDCD7C9}
+		{2DEE4C48-CBE0-44BA-A875-69287CEB5704} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
+		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333} = {2DEE4C48-CBE0-44BA-A875-69287CEB5704}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Movies.Application;
+using MovieFlow.Modules.Movies.AzureStorage;
 using MovieFlow.Modules.Movies.Core;
 using MovieFlow.Modules.Movies.Infrastructure;
 
@@ -13,6 +14,7 @@ public static class MoviesModule
         services.AddCore();
         services.AddApplication();
         services.AddInfrastructure();
+        services.AddAzureStorage();
 
         return services;
     }
