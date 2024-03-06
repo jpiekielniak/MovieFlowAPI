@@ -14,6 +14,8 @@ internal sealed class GetDirectorHandler(MoviesReadDbContext readDbContext)
     {
         var director = await readDbContext.Directors
             .AsNoTracking()
+            .Include(x => x.DirectorPhotos)
+            .ThenInclude(x => x.Photo)
             .SingleOrDefaultAsync(x => x.Id == query.DirectorId, cancellationToken)
             .NotNull(() => new DirectorNotFoundException(query.DirectorId));
 

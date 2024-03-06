@@ -13,6 +13,7 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
     public DbSet<LikeReadModel> Likes { get; set; }
     public DbSet<PhotoReadModel> Photos { get; set; }
     public DbSet<MoviePhotoReadModel> MoviePhotos {get; set;}
+    public DbSet<DirectorPhotoReadModel> DirectorPhotos {get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -24,5 +25,6 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
         modelBuilder.ApplyConfiguration(new LikeReadConfiguration());
         modelBuilder.ApplyConfiguration(new PhotoReadConfiguration());
         modelBuilder.ApplyConfiguration(new MoviePhotoReadConfiguration());
+        modelBuilder.ApplyConfiguration(new DirectorPhotoReadConfiguration());
     }
 }

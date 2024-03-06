@@ -5,5 +5,6 @@ internal record DirectorDetailsDto(
     string FirstName,
     string LastName,
     DateTime DateOfBirth,
-    string Country
+    string Country,
+    List<string> DirectorPhotos
 );
