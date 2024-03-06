@@ -4,7 +4,7 @@ namespace MovieFlow.Modules.Movies.Api.Endpoints.Directors.Commands.CreateDirect
 
 [Route(DirectorEndpoint.Url)]
 internal sealed class CreateDirectorEndpoint(IMediator mediator) : EndpointBaseAsync
-    .WithRequest<CreateDirectorCommand>
+    .WithRequest<CreateDirectorEndpointRequest>
     .WithActionResult<CreateDirectorResponse>
 {
     [Authorize(Roles = "Admin")]
@@ -17,7 +17,11 @@ internal sealed class CreateDirectorEndpoint(IMediator mediator) : EndpointBaseA
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
-    public override async Task<ActionResult<CreateDirectorResponse>> HandleAsync(CreateDirectorCommand command,
+    public override async Task<ActionResult<CreateDirectorResponse>> HandleAsync(
+        [FromForm] CreateDirectorEndpointRequest request,
         CancellationToken cancellationToken = default)
-        => Ok(await mediator.Send(command, cancellationToken));
+    {
+        var command = request.Command with { Photo = request.Photo };
+        return Ok(await mediator.Send(command, cancellationToken));
+    }
 }

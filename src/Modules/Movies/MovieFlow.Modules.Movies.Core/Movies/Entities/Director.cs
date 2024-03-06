@@ -12,6 +12,7 @@ internal class Director : Entity
     internal DateTime DateOfBirth { get; set; }
     internal Country Country { get; set; }
     internal ICollection<Movie> Movies { get; set; }
+    internal ICollection<DirectorPhoto> DirectorPhotos { get; set; }
 
     private Director()
     {
@@ -24,6 +25,7 @@ internal class Director : Entity
         LastName = lastName;
         DateOfBirth = dateOfBirth;
         Country = country;
+        DirectorPhotos = new List<DirectorPhoto>();
         State = entityState;
     }
 
@@ -38,5 +40,11 @@ internal class Director : Entity
         DateOfBirth = dateOfBirth;
         Country = country;
         State = EntityState.Modified;
+    }
+
+    public void AddPhoto(Photo photo)
+    {
+        var directorPhoto = DirectorPhoto.Create(this, photo);
+        DirectorPhotos.Add(directorPhoto);
     }
 }
