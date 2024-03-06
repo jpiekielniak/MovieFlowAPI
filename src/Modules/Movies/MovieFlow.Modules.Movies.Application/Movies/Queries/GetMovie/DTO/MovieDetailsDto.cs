@@ -9,4 +9,5 @@ internal record MovieDetailsDto(
     int ReleaseYear,
     string Description,
     List<string> Genres,
-    DirectorDto Director);
+    DirectorDto Director,
+    List<string> MoviePhotos);

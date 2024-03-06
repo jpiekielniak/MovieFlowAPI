@@ -12,9 +12,11 @@ internal sealed class GetMovieHandler(MoviesReadDbContext readDbContext)
     {
         var movie = await readDbContext.Movies
             .AsNoTracking()
+            .Include(x => x.Reviews)
             .Include(x => x.Director)
             .Include(x => x.Genres)
-            .Include(x => x.Reviews)
+            .Include(x => x.MoviePhotos)
+            .ThenInclude(x => x.Photo)
             .SingleOrDefaultAsync(x => x.Id == query.MovieId, cancellationToken);
 
         return movie?.AsMovieDetailsDto();

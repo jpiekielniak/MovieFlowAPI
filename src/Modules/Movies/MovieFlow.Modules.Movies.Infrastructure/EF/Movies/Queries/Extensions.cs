@@ -22,7 +22,8 @@ internal static class Extensions
             movie.ReleaseYear,
             movie.Description,
             movie.Genres.Select(x => x.Name).ToList(),
-            movie.Director.AsDirectorDto()
+            movie.Director.AsDirectorDto(),
+            movie.MoviePhotos.Select(x => x.Photo.Url).ToList()
         );
 
     private static DirectorDto AsDirectorDto(this DirectorReadModel director)
