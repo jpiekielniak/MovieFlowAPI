@@ -55,10 +55,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.SendGrid", "src\Modules\Notifications\Emails\Integrations\MovieFlow.Modules.Emails.SendGrid\MovieFlow.Modules.Emails.SendGrid.csproj", "{B8A10337-7559-4E32-9CB0-00A47FE0113F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{2DEE4C48-CBE0-44BA-A875-69287CEB5704}"
-	ProjectSection(SolutionItems) = preProject
-		Configuration\ISendGridConfiguration.cs = Configuration\ISendGridConfiguration.cs
-		Configuration\SendGridConfiguration.cs = Configuration\SendGridConfiguration.cs
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage", "src\Modules\Movies\Integrations\MovieFlow.Modules.Movies.AzureStorage\MovieFlow.Modules.Movies.AzureStorage.csproj", "{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}"
 EndProject

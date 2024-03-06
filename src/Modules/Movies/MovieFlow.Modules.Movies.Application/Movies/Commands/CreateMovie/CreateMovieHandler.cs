@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie.DTO;
+using MovieFlow.Modules.Movies.AzureStorage.Services;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Genres;
@@ -8,9 +9,11 @@ using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie;
 
-internal sealed class CreateMovieHandler(IMovieRepository movieRepository,
+internal sealed class CreateMovieHandler(
+    IMovieRepository movieRepository,
     IGenreRepository genreRepository,
-    IDirectorRepository directorRepository)
+    IDirectorRepository directorRepository,
+    IAzureStorageService azureStorageService)
     : IRequestHandler<CreateMovieCommand, CreateMovieResponse>
 {
     public async Task<CreateMovieResponse> Handle(CreateMovieCommand command,
@@ -28,6 +31,9 @@ internal sealed class CreateMovieHandler(IMovieRepository movieRepository,
 
         var genres = await GetGenres(command.Genres, cancellationToken);
 
+        await azureStorageService.UploadImageAsync(command.Photo);
+        var photoUrl = await azureStorageService.GetImageUrlAsync(command.Photo.FileName);
+
         var movie = Movie.Create(
             command.Title,
             command.Description,
@@ -36,6 +42,14 @@ internal sealed class CreateMovieHandler(IMovieRepository movieRepository,
             genres
         );
 
+        var photo = Photo.Create(
+            command.Photo.FileName,
+            photoUrl,
+            command.Title,
+            command.Photo.ContentType
+        );
+
+        movie.AddPhoto(photo);
         await movieRepository.AddAsync(movie, cancellationToken);
 
         return new CreateMovieResponse(movie.Id);

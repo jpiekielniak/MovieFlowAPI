@@ -19,6 +19,8 @@ using MovieFlow.Shared.Infrastructure.Contexts;
 using MovieFlow.Shared.Infrastructure.RenderView;
 using MovieFlow.Shared.Infrastructure.Services;
 using MovieFlow.Shared.Infrastructure.Validation;
+using Swashbuckle.AspNetCore.JsonMultipartFormDataSupport.Extensions;
+using Swashbuckle.AspNetCore.JsonMultipartFormDataSupport.Integrations;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 [assembly: InternalsVisibleTo("MovieFlow.Bootstrapper")]
@@ -82,6 +84,7 @@ public static class Extensions
         services.AddPostgres();
         services.AddSingleton<IClock, Clock>();
         services.AddHostedService<AppInitializer>();
+        services.AddJsonMultipartFormDataSupport(JsonSerializerChoice.Newtonsoft);
         services.AddControllers()
             .ConfigureApplicationPartManager(manager =>
             {

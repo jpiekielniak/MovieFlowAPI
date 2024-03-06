@@ -22,10 +22,7 @@ internal sealed class PhotoWriteConfiguration : IEntityTypeConfiguration<Photo>
 
         builder.Property(x => x.ContentType)
             .IsRequired();
-
-        builder.Property(x => x.Content)
-            .IsRequired();
-
+        
         builder.ToTable("Photos");
     }
 }

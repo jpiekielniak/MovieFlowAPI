@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
 {
     [DbContext(typeof(MoviesWriteDbContext))]
-    [Migration("20240229163218_MoviePhotoMigration")]
-    partial class MoviePhotoMigration
+    [Migration("20240306113258_PhotoMigration")]
+    partial class PhotoMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -211,7 +211,6 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ContentType")

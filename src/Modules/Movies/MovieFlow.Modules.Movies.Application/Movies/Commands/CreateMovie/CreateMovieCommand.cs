@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie.DTO;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie;
@@ -7,4 +8,7 @@ internal record CreateMovieCommand(
     string Description,
     int ReleaseYear,
     Guid DirectorId,
-    List<GenreDto> Genres) : IRequest<CreateMovieResponse>;
+    List<GenreDto> Genres) : IRequest<CreateMovieResponse>
+{
+    internal IFormFile Photo { get; init; }
+}

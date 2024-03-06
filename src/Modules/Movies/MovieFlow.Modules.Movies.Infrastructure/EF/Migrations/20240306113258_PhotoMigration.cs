@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class MoviePhotoMigration : Migration
+    public partial class PhotoMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                     Url = table.Column<string>(type: "text", nullable: false),
                     Alt = table.Column<string>(type: "text", nullable: false),
                     ContentType = table.Column<string>(type: "text", nullable: false),
-                    Content = table.Column<string>(type: "text", nullable: false),
+                    Content = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     State = table.Column<int>(type: "integer", nullable: false)

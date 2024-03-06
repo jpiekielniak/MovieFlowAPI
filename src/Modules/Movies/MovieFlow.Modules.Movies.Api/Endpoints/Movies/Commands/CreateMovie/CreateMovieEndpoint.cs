@@ -4,7 +4,7 @@ namespace MovieFlow.Modules.Movies.Api.Endpoints.Movies.Commands.CreateMovie;
 
 [Route($"{MovieEndpoint.Url}")]
 internal sealed class CreateMovieEndpoint(IMediator mediator) : EndpointBaseAsync
-    .WithRequest<CreateMovieCommand>
+    .WithRequest<CreateMovieEndpointRequest>
     .WithResult<CreateMovieResponse>
 {
     [Authorize(Roles = "Admin")]
@@ -17,7 +17,11 @@ internal sealed class CreateMovieEndpoint(IMediator mediator) : EndpointBaseAsyn
         Summary = "Create Movie",
         Tags = [MovieEndpoint.Tag]
     )]
-    public override async Task<CreateMovieResponse> HandleAsync(CreateMovieCommand command,
+    public override async Task<CreateMovieResponse> HandleAsync(
+        [FromForm] CreateMovieEndpointRequest request,
         CancellationToken cancellationToken = default)
-        => await mediator.Send(command, cancellationToken);
+    {
+        var command = request.Command with { Photo = request.Photo };
+        return await mediator.Send(command, cancellationToken);
+    }
 }

@@ -23,7 +23,7 @@ internal sealed class Movie : Entity
     }
 
     private Movie(Title title, Description description,
-        ReleaseYear releaseYear, Director director, 
+        ReleaseYear releaseYear, Director director,
         ICollection<Genre> genres, EntityState entityState)
     {
         Title = title;
@@ -32,6 +32,7 @@ internal sealed class Movie : Entity
         Director = director;
         Genres = genres;
         Reviews = new List<Review>();
+        MoviePhotos = new List<MoviePhoto>();
         State = entityState;
     }
 
@@ -46,5 +47,11 @@ internal sealed class Movie : Entity
         Description = description;
         ReleaseYear = releaseYear;
         State = EntityState.Modified;
+    }
+
+    internal void AddPhoto(Photo photo)
+    {
+        var moviePhoto = MoviePhoto.Create(this, photo);
+        MoviePhotos.Add(moviePhoto);
     }
 }

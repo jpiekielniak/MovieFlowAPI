@@ -208,7 +208,6 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ContentType")
