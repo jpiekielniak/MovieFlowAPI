@@ -1,6 +1,5 @@
 using MovieFlow.Shared.Abstractions.Kernel;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Rating;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.ReleaseYear;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
 
@@ -11,12 +10,18 @@ internal sealed class Movie : Entity
     internal Title Title { get; private set; }
     internal Description Description { get; private set; }
     internal ReleaseYear ReleaseYear { get; private set; }
-    internal Rating Rating => Reviews.Average(x => x.Rating);
     internal Guid DirectorId { get; private set; }
     internal Director Director { get; private set; }
-    internal ICollection<MoviePhoto> MoviePhotos { get; set; }
-    internal ICollection<Genre> Genres { get; set; }
-    internal ICollection<Review> Reviews { get; set; }
+    internal double? Rating => Reviews.Any() ? Reviews.Average(x => x.Rating) : 0;
+    internal List<Genre> Genres { get; set; }
+    internal List<Review> Reviews { get; set; }
+    private HashSet<MoviePhoto> _moviePhotos = [];
+    
+    public IEnumerable<MoviePhoto> MoviePhotos
+    {
+        get => _moviePhotos;
+        set => _moviePhotos = [..value];
+    }
 
     private Movie()
     {
@@ -24,20 +29,20 @@ internal sealed class Movie : Entity
 
     private Movie(Title title, Description description,
         ReleaseYear releaseYear, Director director,
-        ICollection<Genre> genres, EntityState entityState)
+        List<Genre> genres, EntityState entityState)
     {
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
         Director = director;
         Genres = genres;
-        Reviews = new List<Review>();
-        MoviePhotos = new List<MoviePhoto>();
+        Reviews = [];
+        MoviePhotos = [];
         State = entityState;
     }
 
     public static Movie Create(string title, string description,
-        int releaseYear, Director director, ICollection<Genre> genres)
+        int releaseYear, Director director, List<Genre> genres)
         => new(title, description, releaseYear, director, genres, EntityState.Added);
 
     internal void ChangeInformation(Title title, Description description,
@@ -52,6 +57,6 @@ internal sealed class Movie : Entity
     internal void AddPhoto(Photo photo)
     {
         var moviePhoto = MoviePhoto.Create(this, photo);
-        MoviePhotos.Add(moviePhoto);
+        _moviePhotos.Add(moviePhoto);
     }
 }

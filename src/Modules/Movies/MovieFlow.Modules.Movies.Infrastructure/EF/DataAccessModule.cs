@@ -2,10 +2,8 @@
 using MovieFlow.Shared.Infrastructure.Postgres;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Directors.Services;
-using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.DataInitializer;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Repositories;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Services;
-using MovieFlow.Shared.Infrastructure;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF;
 
@@ -22,16 +20,18 @@ internal static class DataAccessModule
             .AddScoped<IGenreRepository, GenreRepository>()
             .AddScoped<IDirectorRepository, DirectorRepository>()
             .AddScoped<IReviewRepository, ReviewRepository>()
-            .AddScoped<ILikeRepository, LikeRepository>();
+            .AddScoped<ILikeRepository, LikeRepository>()
+            .AddScoped<IPhotoRepository, PhotoRepository>()
+            .AddScoped<IMoviePhotoRepository, MoviePhotoRepository>();
 
         services
             .AddScoped<IMovieService, MovieService>()
             .AddScoped<IDirectorService, DirectorService>();
 
-        services
+        /*services
             .AddInitializer<GenreInitializer>()
             .AddInitializer<DirectorInitializer>()
-            .AddInitializer<MovieInitializer>();
+            .AddInitializer<MovieInitializer>();*/
 
         return services;
     }

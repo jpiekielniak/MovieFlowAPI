@@ -19,7 +19,13 @@ internal sealed class MovieRepository(MoviesWriteDbContext dbContext) : IMovieRe
             cancellationToken);
 
     public async Task<Movie> GetAsync(Guid id, CancellationToken cancellationToken)
-        => await _movies.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        => await _movies
+            .Include(x => x.Genres)
+            .Include(x => x.Director)
+            .Include(x => x.Reviews)
+            .Include(x => x.MoviePhotos)
+                .ThenInclude(x => x.Photo)
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
     public async Task CommitAsync(CancellationToken cancellationToken)
         => await dbContext.SaveChangesAsync(cancellationToken);
@@ -27,6 +33,12 @@ internal sealed class MovieRepository(MoviesWriteDbContext dbContext) : IMovieRe
     public async Task DeleteAsync(Movie movie, CancellationToken cancellationToken)
     {
         _movies.Remove(movie);
+        await CommitAsync(cancellationToken);
+    }
+
+    public async Task UpdateAsync(Movie movie, CancellationToken cancellationToken)
+    {
+        _movies.Update(movie);
         await CommitAsync(cancellationToken);
     }
 }

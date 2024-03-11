@@ -9,4 +9,5 @@ internal interface IMovieRepository
     Task<Movie> GetAsync(Guid id, CancellationToken cancellationToken);
     Task CommitAsync(CancellationToken cancellationToken);
     Task DeleteAsync(Movie movie, CancellationToken cancellationToken);
+    Task UpdateAsync(Movie movie, CancellationToken cancellationToken);
 }
