@@ -7,6 +7,7 @@ internal sealed class DirectorReadModel
     public string LastName { get; init; }
     public DateTime DateOfBirth { get; init; }
     public string Country { get; init; }
+    public DirectorPhotoReadModel DirectorPhoto { get; init; }
     public IReadOnlyCollection<MovieReadModel> Movies { get; init; }
-    public IReadOnlyCollection<DirectorPhotoReadModel> DirectorPhotos { get; init; }
+   
 }
