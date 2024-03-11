@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http;
 using MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie.DTO;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie;

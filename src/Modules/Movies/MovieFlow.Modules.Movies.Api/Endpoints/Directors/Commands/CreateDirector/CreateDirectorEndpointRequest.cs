@@ -1,5 +1,4 @@
 using MovieFlow.Modules.Movies.Application.Directors.Commands.CreateDirector;
-using Swashbuckle.AspNetCore.JsonMultipartFormDataSupport.Attributes;
 
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Directors.Commands.CreateDirector;
 

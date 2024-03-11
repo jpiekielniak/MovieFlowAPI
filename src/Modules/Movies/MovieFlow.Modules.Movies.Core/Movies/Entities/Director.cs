@@ -1,4 +1,3 @@
-using MovieFlow.Shared.Abstractions.Kernel;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Country;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.FirstName;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.LastName;

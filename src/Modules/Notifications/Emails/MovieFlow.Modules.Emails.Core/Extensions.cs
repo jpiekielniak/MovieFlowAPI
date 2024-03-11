@@ -1,7 +1,6 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
-using MovieFlow.Modules.Emails.Core.Emails.Services;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Emails.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Emails.Application")]

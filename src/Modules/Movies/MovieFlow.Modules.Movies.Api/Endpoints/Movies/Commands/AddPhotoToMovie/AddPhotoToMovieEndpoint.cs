@@ -1,5 +1,3 @@
-using MovieFlow.Modules.Movies.Application.Movies.Commands.AddPhotoToMovie;
-
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Movies.Commands.AddPhotoToMovie;
 
 [Route(MovieEndpoint.Url)]

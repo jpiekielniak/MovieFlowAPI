@@ -2,7 +2,6 @@ using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Reviews;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using MovieFlow.Shared.Abstractions;
 using MovieFlow.Shared.Abstractions.Contexts;
 
 namespace MovieFlow.Modules.Movies.Application.Reviews.Commands.ChangeReviewInformation;

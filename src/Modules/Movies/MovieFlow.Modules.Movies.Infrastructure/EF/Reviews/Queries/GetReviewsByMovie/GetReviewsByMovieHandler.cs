@@ -2,7 +2,6 @@ using MovieFlow.Modules.Movies.Application.Reviews.Queries.GetReviewsByMovie;
 using MovieFlow.Modules.Movies.Application.Reviews.Queries.GetReviewsByMovie.DTO;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
-using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Reviews.Queries.GetReviewsByMovie;
 

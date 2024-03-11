@@ -1,5 +1,3 @@
-using MovieFlow.Shared.Abstractions.Kernel;
-
 namespace MovieFlow.Modules.Movies.Core.Movies.Entities;
 
 internal sealed class Photo : Entity

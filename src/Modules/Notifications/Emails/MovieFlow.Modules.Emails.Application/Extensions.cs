@@ -1,8 +1,6 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using MovieFlow.Modules.Emails.Shared.Events.Users;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Emails.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Emails.Infrastructure")]

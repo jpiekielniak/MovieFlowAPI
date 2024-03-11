@@ -1,11 +1,8 @@
-using MediatR;
 using MovieFlow.Modules.Emails.Application.Users.UnblockUser.Models;
 using MovieFlow.Modules.Emails.Core.Emails.Entities;
 using MovieFlow.Modules.Emails.Core.Emails.Repositories;
 using MovieFlow.Modules.Emails.Core.Emails.Services;
 using MovieFlow.Modules.Emails.Shared.Events.Users.UnblockUser;
-using MovieFlow.Shared.Abstractions.RenderView;
-using MovieFlow.Shared.Abstractions.Time;
 
 namespace MovieFlow.Modules.Emails.Application.Users.UnblockUser.Handler;
 

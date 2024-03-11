@@ -1,6 +1,5 @@
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Genres;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Application.Genres.Commands.DeleteGenre;
 

@@ -1,6 +1,5 @@
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Application.Directors.Commands.ChangeDirectorInformation;
 

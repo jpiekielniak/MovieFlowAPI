@@ -1,10 +1,7 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.CreatedAt;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Rating;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.ReleaseYear;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
-using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.UpdatedAt;
 using EntityState = MovieFlow.Shared.Abstractions.Kernel.EntityState;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Write;

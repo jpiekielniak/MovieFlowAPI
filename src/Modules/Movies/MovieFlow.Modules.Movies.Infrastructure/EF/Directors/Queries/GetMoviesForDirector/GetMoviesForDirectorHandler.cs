@@ -2,7 +2,6 @@ using MovieFlow.Modules.Movies.Application.Directors.Queries.GetMoviesForDirecto
 using MovieFlow.Modules.Movies.Application.Directors.Queries.GetMoviesForDirector.DTO;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
-using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Directors.Queries.GetMoviesForDirector;
 

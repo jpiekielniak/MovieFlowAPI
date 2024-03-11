@@ -1,5 +1,4 @@
 using MovieFlow.Modules.Emails.Shared.Events.Users.BlockUser;
-using MovieFlow.Modules.Users.Core.Users.Exceptions;
 using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Shared.Abstractions;

@@ -2,7 +2,6 @@ using MovieFlow.Modules.Movies.AzureStorage.Services;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using MovieFlow.Shared.Abstractions;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.AddPhotoToMovie;
 

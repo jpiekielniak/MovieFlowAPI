@@ -1,4 +1,3 @@
-using MovieFlow.Shared.Abstractions.Kernel;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Content;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Rating;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
