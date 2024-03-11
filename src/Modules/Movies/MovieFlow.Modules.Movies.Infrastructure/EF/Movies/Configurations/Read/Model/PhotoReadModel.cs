@@ -7,5 +7,4 @@ internal sealed class PhotoReadModel
     public string Url { get; init; }
     public string Alt { get; init; }
     public string ContentType { get; init; }
-    public string Content { get; init; }
 }

@@ -46,10 +46,6 @@ internal class DirectorWriteConfiguration : IEntityTypeConfiguration<Director>
         builder.HasMany(x => x.Movies)
             .WithOne(x => x.Director)
             .HasForeignKey(x => x.DirectorId);
-        
-        builder.HasMany(x => x.DirectorPhotos)
-            .WithOne(x => x.Director)
-            .HasForeignKey(x => x.DirectorId);
 
         builder.ToTable("Directors");
     }
