@@ -8,11 +8,9 @@ internal sealed class MoviePhotoWriteConfiguration : IEntityTypeConfiguration<Mo
     {
         builder.HasKey(x => x.Id);
         
-        builder.Property(x => x.MovieId)
-            .IsRequired();
-
-        builder.Property(x => x.PhotoId)
-            .IsRequired();
+        builder.HasOne(x => x.Movie)
+            .WithMany(m => m.MoviePhotos)
+            .HasForeignKey(x => x.MovieId);
         
         builder.ToTable("MoviePhotos");
     }

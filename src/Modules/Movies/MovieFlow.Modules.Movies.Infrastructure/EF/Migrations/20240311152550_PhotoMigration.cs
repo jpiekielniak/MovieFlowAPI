@@ -21,7 +21,6 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                     Url = table.Column<string>(type: "text", nullable: false),
                     Alt = table.Column<string>(type: "text", nullable: false),
                     ContentType = table.Column<string>(type: "text", nullable: false),
-                    Content = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     State = table.Column<int>(type: "integer", nullable: false)
@@ -29,6 +28,34 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Photos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DirectorPhotos",
+                schema: "movies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    DirectorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PhotoId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DirectorPhotos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DirectorPhotos_Directors_DirectorId",
+                        column: x => x.DirectorId,
+                        principalSchema: "movies",
+                        principalTable: "Directors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DirectorPhotos_Photos_PhotoId",
+                        column: x => x.PhotoId,
+                        principalSchema: "movies",
+                        principalTable: "Photos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,6 +87,19 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_DirectorPhotos_DirectorId",
+                schema: "movies",
+                table: "DirectorPhotos",
+                column: "DirectorId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DirectorPhotos_PhotoId",
+                schema: "movies",
+                table: "DirectorPhotos",
+                column: "PhotoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MoviePhotos_MovieId",
                 schema: "movies",
                 table: "MoviePhotos",
@@ -82,6 +122,10 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "DirectorPhotos",
+                schema: "movies");
+
             migrationBuilder.DropTable(
                 name: "MoviePhotos",
                 schema: "movies");

@@ -94,7 +94,8 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DirectorId");
+                    b.HasIndex("DirectorId")
+                        .IsUnique();
 
                     b.HasIndex("PhotoId");
 
@@ -228,9 +229,6 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Content")
-                        .HasColumnType("text");
-
                     b.Property<string>("ContentType")
                         .IsRequired()
                         .HasColumnType("text");
@@ -324,13 +322,13 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.DirectorPhoto", b =>
                 {
                     b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Director", "Director")
-                        .WithMany("DirectorPhotos")
-                        .HasForeignKey("DirectorId")
+                        .WithOne("Photo")
+                        .HasForeignKey("MovieFlow.Modules.Movies.Core.Movies.Entities.DirectorPhoto", "DirectorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", "Photo")
-                        .WithMany()
+                        .WithMany("DirectorPhotos")
                         .HasForeignKey("PhotoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -371,7 +369,7 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                         .IsRequired();
 
                     b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", "Photo")
-                        .WithMany()
+                        .WithMany("MoviePhotos")
                         .HasForeignKey("PhotoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -394,9 +392,9 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
 
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Director", b =>
                 {
-                    b.Navigation("DirectorPhotos");
-
                     b.Navigation("Movies");
+
+                    b.Navigation("Photo");
                 });
 
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Movie", b =>
@@ -404,6 +402,13 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                     b.Navigation("MoviePhotos");
 
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", b =>
+                {
+                    b.Navigation("DirectorPhotos");
+
+                    b.Navigation("MoviePhotos");
                 });
 
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Review", b =>

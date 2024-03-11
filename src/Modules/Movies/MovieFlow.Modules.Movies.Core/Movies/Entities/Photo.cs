@@ -8,7 +8,9 @@ internal sealed class Photo : Entity
     public string Url { get; private set; }
     public string Alt { get; private set; }
     public string ContentType { get; private set; }
-    public string Content { get; private set; }
+    
+    public ICollection<DirectorPhoto> DirectorPhotos { get; set; }
+    public ICollection<MoviePhoto> MoviePhotos { get; set; }
 
     private Photo()
     {
