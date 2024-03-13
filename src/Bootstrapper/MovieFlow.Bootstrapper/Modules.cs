@@ -1,5 +1,6 @@
 using MovieFlow.Modules.Emails.Api;
 using MovieFlow.Modules.Movies.Api;
+using MovieFlow.Modules.Newsletters.Api;
 using MovieFlow.Modules.Users.Api;
 
 namespace MovieFlow.Bootstrapper;
@@ -11,6 +12,7 @@ public static class Modules
         services.RegisterMovies();
         services.RegisterUsers();
         services.RegisterEmails();
+        services.RegisterNewsletters();
 
         return services;
     }

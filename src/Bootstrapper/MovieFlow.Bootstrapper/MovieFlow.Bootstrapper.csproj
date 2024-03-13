@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Modules\Movies\MovieFlow.Modules.Movies.Api\MovieFlow.Modules.Movies.Api.csproj" />
+      <ProjectReference Include="..\..\Modules\Newsletters\MovieFlow.Modules.Newsletters.Api\MovieFlow.Modules.Newsletters.Api.csproj" />
       <ProjectReference Include="..\..\Modules\Notifications\Emails\MovieFlow.Modules.Emails.Api\MovieFlow.Modules.Emails.Api.csproj" />
       <ProjectReference Include="..\..\Modules\Users\MovieFlow.Modules.Users.Api\MovieFlow.Modules.Users.Api.csproj" />
       <ProjectReference Include="..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
