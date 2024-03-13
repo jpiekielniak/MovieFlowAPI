@@ -5,14 +5,14 @@ using MovieFlow.Modules.Newsletters.Core.Newsletters.Exceptions.EmailSubscriptio
 using MovieFlow.Modules.Newsletters.Core.Newsletters.Repositories;
 using MovieFlow.Shared.Abstractions.Time;
 
-namespace MovieFlow.Modules.Newsletters.Application.EmailSubscriptions.Commands.SubscriptionEmailNewsletter;
+namespace MovieFlow.Modules.Newsletters.Application.EmailSubscriptions.Commands.SubscribeEmailNewsletter;
 
-internal sealed class SubscriptionEmailNewsletterHandler(
+internal sealed class SubscribeEmailNewsletterHandler(
     IEmailSubscriptionsRepository emailSubscriptionsRepository,
     IMediator mediator,
-    IClock clock) : IRequestHandler<SubscriptionEmailNewsletterCommand>
+    IClock clock) : IRequestHandler<SubscribeEmailNewsletterCommand>
 {
-    public async Task Handle(SubscriptionEmailNewsletterCommand command, CancellationToken cancellationToken)
+    public async Task Handle(SubscribeEmailNewsletterCommand command, CancellationToken cancellationToken)
     {
         var subscriptionExist = await emailSubscriptionsRepository
             .CheckEmailExistsAsync(command.Email, cancellationToken);
