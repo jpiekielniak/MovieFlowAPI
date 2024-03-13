@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Emails.Core.Emails.Entities;
+using MovieFlow.Modules.Emails.Core.Emails.Enums;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Recipient;
 
 namespace MovieFlow.Modules.Emails.Infrastructure.EF.Configuration.Write;
@@ -24,6 +25,11 @@ internal sealed class EmailWriteConfiguration : IEntityTypeConfiguration<Email>
 
         builder.Property<DateTimeOffset>("SentAt")
             .HasColumnName("SentAt")
+            .IsRequired();
+
+        builder.Property<EmailMessageStatus>("Status")
+            .HasConversion<string>()
+            .HasColumnName("Status")
             .IsRequired();
 
         builder.ToTable("Emails");

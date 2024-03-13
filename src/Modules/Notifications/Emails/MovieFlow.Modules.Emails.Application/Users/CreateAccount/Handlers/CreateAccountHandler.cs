@@ -25,7 +25,8 @@ internal sealed class CreateAccountHandler(IEmailRepository emailRepository,
             clock.CurrentDateTimeOffset()
         );
 
-        await emailService.SendAsync(@event.Email, Subject, renderedView, renderedView);
+        var status = await emailService.SendAsync(@event.Email, Subject, renderedView, renderedView);
+        email.SetEmailStatus(status);
         await emailRepository.AddAsync(email, cancellationToken);
         await Task.CompletedTask;
     }
