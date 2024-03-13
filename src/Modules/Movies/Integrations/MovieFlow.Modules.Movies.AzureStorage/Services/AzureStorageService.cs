@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.WindowsAzure.Storage;
 using MovieFlow.Modules.Movies.AzureStorage.Configuration;
-using MovieFlow.Shared.Abstractions.Exceptions;
+using MovieFlow.Modules.Movies.AzureStorage.Services.Exceptions;
 
 namespace MovieFlow.Modules.Movies.AzureStorage.Services;
 
@@ -34,6 +34,17 @@ internal class AzureStorageService(IAzureStorageConfiguration azureStorageConfig
         var imageUrl = blob.Uri.ToString();
         return imageUrl;
     }
-}
 
-internal class AzureFileNotFoundException(string message) : MovieFlowException(message);
+    public async Task DeleteImageAsync(string fileName)
+    {
+        var account = CloudStorageAccount.Parse(_connectionString);
+        var client = account.CreateCloudBlobClient();
+        var container = client.GetContainerReference(_containerName);
+        var blob = container.GetBlockBlobReference(fileName);
+
+        if (!await blob.ExistsAsync())
+            throw new AzureFileNotFoundException("File not found");
+        
+        await blob.DeleteIfExistsAsync();
+    }
+}

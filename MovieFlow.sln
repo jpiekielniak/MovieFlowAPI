@@ -58,6 +58,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage", "src\Modules\Movies\Integrations\MovieFlow.Modules.Movies.AzureStorage\MovieFlow.Modules.Movies.AzureStorage.csproj", "{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage.Events", "src\Modules\Movies\Integrations\MovieFlow.Modules.Movies.AzureStorage.Events\MovieFlow.Modules.Movies.AzureStorage.Events.csproj", "{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +142,10 @@ Global
 		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
@@ -170,5 +176,6 @@ Global
 		{B8A10337-7559-4E32-9CB0-00A47FE0113F} = {49170651-3AA4-416C-8C10-34FE5CDCD7C9}
 		{2DEE4C48-CBE0-44BA-A875-69287CEB5704} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
 		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333} = {2DEE4C48-CBE0-44BA-A875-69287CEB5704}
+		{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB} = {2DEE4C48-CBE0-44BA-A875-69287CEB5704}
 	EndGlobalSection
 EndGlobal

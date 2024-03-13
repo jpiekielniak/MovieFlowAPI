@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
+      <ProjectReference Include="..\MovieFlow.Modules.Movies.AzureStorage.Events\MovieFlow.Modules.Movies.AzureStorage.Events.csproj" />
     </ItemGroup>
 
     <ItemGroup>

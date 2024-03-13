@@ -13,4 +13,13 @@ internal sealed class PhotoRepository(MoviesWriteDbContext writeDbContext) : IPh
         await _photos.AddAsync(photo, cancellationToken);
         await writeDbContext.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<Photo> GetAsync(Guid photoId, CancellationToken cancellationToken)
+        => await _photos.SingleOrDefaultAsync(x => x.Id == photoId, cancellationToken);
+
+    public async Task DeleteAsync(Photo photo, CancellationToken cancellationToken)
+    {
+        _photos.Remove(photo);
+        await writeDbContext.SaveChangesAsync(cancellationToken);
+    }
 }

@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using MovieFlow.Modules.Movies.AzureStorage.Configuration;
@@ -10,6 +11,8 @@ internal static class Extensions
 {
     public static IServiceCollection AddAzureStorage(this IServiceCollection services)
     {
+        services.AddMediatR(cfg=>cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+        
         services.AddSingleton<IAzureStorageConfiguration, AzureStorageConfiguration>();
         services.AddSingleton<IAzureStorageService, AzureStorageService>();
         
