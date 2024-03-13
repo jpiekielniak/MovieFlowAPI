@@ -5,6 +5,7 @@ namespace MovieFlow.Modules.Emails.Infrastructure.EF.Context;
 
 internal sealed class EmailsWriteDbContext : DbContext
 {
+    private static string Schema => "emails";
     public DbSet<Email> Emails { get; set; }
 
     public EmailsWriteDbContext(DbContextOptions<EmailsWriteDbContext> options) : base(options)
@@ -13,7 +14,7 @@ internal sealed class EmailsWriteDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("emails");
+        modelBuilder.HasDefaultSchema(Schema);
         modelBuilder.ApplyConfiguration(new EmailWriteConfiguration());
     }
 }

@@ -6,6 +6,7 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> options)
     : DbContext(options)
 {
+    private static string Schema => "movies";
     public DbSet<MovieReadModel> Movies { get; set; }
     public DbSet<GenreReadModel> Genres { get; set; }
     public DbSet<DirectorReadModel> Directors { get; set; }
@@ -17,7 +18,7 @@ internal sealed class MoviesReadDbContext(DbContextOptions<MoviesReadDbContext> 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("movies");
+        modelBuilder.HasDefaultSchema(Schema);
         modelBuilder.ApplyConfiguration(new MovieReadConfiguration());
         modelBuilder.ApplyConfiguration(new GenreReadConfiguration());
         modelBuilder.ApplyConfiguration(new DirectorReadConfiguration());

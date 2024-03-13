@@ -6,6 +6,7 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 
 internal class MoviesWriteDbContext : DbContext
 {
+    private static string Schema => "movies";
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Director> Directors { get; set; }
@@ -21,7 +22,7 @@ internal class MoviesWriteDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("movies");
+        modelBuilder.HasDefaultSchema(Schema);
         modelBuilder.ApplyConfiguration(new MovieWriteConfiguration());
         modelBuilder.ApplyConfiguration(new GenreWriteConfiguration());
         modelBuilder.ApplyConfiguration(new DirectorWriteConfiguration());

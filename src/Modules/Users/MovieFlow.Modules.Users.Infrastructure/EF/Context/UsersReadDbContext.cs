@@ -5,6 +5,7 @@ namespace MovieFlow.Modules.Users.Infrastructure.EF.Context;
 
 internal sealed class UsersReadDbContext : DbContext
 {
+    private static string Schema => "users";
     public DbSet<UserReadModel> Users { get; set; }
     public DbSet<RoleReadModel> Roles { get; set; }
 
@@ -15,7 +16,7 @@ internal sealed class UsersReadDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("users");
+        modelBuilder.HasDefaultSchema(Schema);
         modelBuilder.ApplyConfiguration(new UserReadConfiguration());
         modelBuilder.ApplyConfiguration(new RoleReadConfiguration());
     }

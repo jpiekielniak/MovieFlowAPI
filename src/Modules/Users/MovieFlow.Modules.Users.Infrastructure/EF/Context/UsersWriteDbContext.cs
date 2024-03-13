@@ -8,6 +8,8 @@ namespace MovieFlow.Modules.Users.Infrastructure.EF.Context;
 
 internal class UsersWriteDbContext : DbContext
 {
+    private static string Schema => "users";
+
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
 
@@ -19,7 +21,7 @@ internal class UsersWriteDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("users");
+        modelBuilder.HasDefaultSchema(Schema);
         modelBuilder.ApplyConfiguration(new UserWriteConfiguration());
         modelBuilder.ApplyConfiguration(new RoleWriteConfiguration());
     }
