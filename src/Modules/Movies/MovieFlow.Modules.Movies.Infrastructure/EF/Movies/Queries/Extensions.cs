@@ -11,7 +11,8 @@ internal static class Extensions
         => new(
             movie.Id,
             movie.Title,
-            movie.Genres.Select(x => x.Name).ToList()
+            movie.Genres.Select(x => x.Name).ToList(),
+            movie.MoviePhotos.Select(x => x.Photo.Url).FirstOrDefault()
         );
 
     public static MovieDetailsDto AsMovieDetailsDto(this MovieReadModel movie)
