@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MovieFlow.Modules.Newsletters.Core.Newsletters.Entities;
-using MovieFlow.Modules.Newsletters.Infrastructure.EF.Configurations.Write;
+using MovieFlow.Modules.Newsletters.Infrastructure.EF.EmailSubscriptions.Configurations.Write;
 
 namespace MovieFlow.Modules.Newsletters.Infrastructure.EF.Context;
 

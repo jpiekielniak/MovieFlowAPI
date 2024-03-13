@@ -1,0 +1,51 @@
+@model MovieFlow.Modules.Emails.Application.Newsletters.SubscriptionEmailNewsletter.Models.SubscriptionEmailNewsletterModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Subject</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #cccccc;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Witaj w naszym newsletterze!</h1>
+    <p>Dołączyłeś właśnie do naszego newslettera. Dziękujemy za zapisanie się.</p>
+    <p>Data dołączenia: @Model.JoinedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</p>
+</div>
+<div class="footer">
+    <p>Pozdrawiamy,</p>
+    <p>Zespół MovieFlow</p>
+</div>
+</body>
+</html>

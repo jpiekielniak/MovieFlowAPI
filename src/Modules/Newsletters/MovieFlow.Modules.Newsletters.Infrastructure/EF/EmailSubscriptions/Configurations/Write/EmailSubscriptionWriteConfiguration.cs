@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MovieFlow.Modules.Newsletters.Core.Newsletters.Entities;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Email;
 
-namespace MovieFlow.Modules.Newsletters.Infrastructure.EF.Configurations.Write;
+namespace MovieFlow.Modules.Newsletters.Infrastructure.EF.EmailSubscriptions.Configurations.Write;
 
 internal sealed class EmailSubscriptionWriteConfiguration : IEntityTypeConfiguration<EmailSubscription>
 {
