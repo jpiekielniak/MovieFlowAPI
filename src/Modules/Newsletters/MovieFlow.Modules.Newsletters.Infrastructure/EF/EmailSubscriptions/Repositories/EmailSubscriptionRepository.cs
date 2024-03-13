@@ -18,4 +18,7 @@ internal sealed class EmailSubscriptionRepository(NewslettersWriteDbContext writ
 
     public async Task<bool> CheckEmailExistsAsync(string email, CancellationToken cancellationToken)
         => await _emailSubscriptions.AnyAsync(x => x.Email == email, cancellationToken);
+
+    public async Task<List<string>> GetAllAsync(CancellationToken cancellationToken)
+        => await _emailSubscriptions.Select(x => x.Email.Value).ToListAsync(cancellationToken);
 }

@@ -5,6 +5,7 @@ using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Genres;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
+using MovieFlow.Modules.Newsletters.Shared.Events.CreatedMovie;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.CreateMovie;
 
@@ -12,7 +13,8 @@ internal sealed class CreateMovieHandler(
     IMovieRepository movieRepository,
     IGenreRepository genreRepository,
     IDirectorRepository directorRepository,
-    IAzureStorageService azureStorageService)
+    IAzureStorageService azureStorageService,
+    IMediator mediator)
     : IRequestHandler<CreateMovieCommand, CreateMovieResponse>
 {
     public async Task<CreateMovieResponse> Handle(CreateMovieCommand command,
@@ -50,6 +52,9 @@ internal sealed class CreateMovieHandler(
 
         movie.AddPhoto(photo);
         await movieRepository.AddAsync(movie, cancellationToken);
+
+        var @event = new CreatedMovieEvent(movie.Title, movie.Description, photoUrl);
+        await mediator.Publish(@event, cancellationToken);
 
         return new CreateMovieResponse(movie.Id);
     }

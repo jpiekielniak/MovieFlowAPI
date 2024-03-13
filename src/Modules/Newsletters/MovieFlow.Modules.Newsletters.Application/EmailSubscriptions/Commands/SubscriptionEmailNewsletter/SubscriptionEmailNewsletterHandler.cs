@@ -1,5 +1,5 @@
 using MediatR;
-using MovieFlow.Modules.Emails.Shared.Events.Newsletters.SubscribeEmailNewsletter;
+using MovieFlow.Modules.Emails.Shared.Events.Newsletters.EmailSubscriptions.SubscribeEmailNewsletter;
 using MovieFlow.Modules.Newsletters.Core.Newsletters.Entities;
 using MovieFlow.Modules.Newsletters.Core.Newsletters.Exceptions.EmailSubscriptions;
 using MovieFlow.Modules.Newsletters.Core.Newsletters.Repositories;

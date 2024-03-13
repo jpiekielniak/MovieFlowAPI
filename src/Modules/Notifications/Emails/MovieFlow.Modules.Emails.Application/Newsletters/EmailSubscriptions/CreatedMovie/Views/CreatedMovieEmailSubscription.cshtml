@@ -1,0 +1,59 @@
+@model MovieFlow.Modules.Emails.Application.Newsletters.EmailSubscriptions.CreatedMovie.Models.CreatedMovieEmailSubscriptionModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Subject</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+        }
+
+        .movie-details {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .movie-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Nowy film dodany!</h1>
+    <div class="movie-details">
+        <h2>@Model.Title</h2>
+        <p>@Model.Description</p>
+        <img src="@Model.ImageUrl" alt="@Model.Title" class="movie-image">
+        <p>Więcej szczegółów znajdziesz na naszej stronie.</p>
+    </div>
+</div>
+</body>
+</html>

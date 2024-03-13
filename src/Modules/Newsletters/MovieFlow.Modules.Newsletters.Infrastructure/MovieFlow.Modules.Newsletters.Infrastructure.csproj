@@ -11,8 +11,4 @@
       <ProjectReference Include="..\MovieFlow.Modules.Newsletters.Application\MovieFlow.Modules.Newsletters.Application.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="EF\Migrations\" />
-    </ItemGroup>
-
 </Project>
