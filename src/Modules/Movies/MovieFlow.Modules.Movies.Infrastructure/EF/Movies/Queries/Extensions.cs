@@ -31,6 +31,7 @@ internal static class Extensions
         => new(
             director.Id,
             director.FirstName,
-            director.LastName
+            director.LastName,
+            director.DirectorPhoto.Photo.Url
         );
 }

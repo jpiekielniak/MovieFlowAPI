@@ -15,6 +15,8 @@ internal sealed class BrowseDirectorsHandler(
     {
         var directors = readDbContext.Directors
             .AsNoTracking()
+            .Include(x => x.DirectorPhoto)
+            .ThenInclude(x => x.Photo)
             .AsQueryable();
 
         directors = directorService.FilterByName(directors, query.Name);

@@ -21,7 +21,8 @@ internal static class Extensions
         => new(
             director.Id,
             director.FirstName,
-            director.LastName
+            director.LastName,
+            director.DirectorPhoto.Photo.Url
         );
 
     public static DirectorMovieDto AsDirectorMovieDto(this MovieReadModel movie)
