@@ -7,4 +7,6 @@ internal interface IEmailSubscriptionsRepository
     Task AddAsync(EmailSubscription subscription, CancellationToken cancellationToken);
     Task<bool> CheckEmailExistsAsync(string email, CancellationToken cancellationToken);
     Task<List<string>> GetAllAsync(CancellationToken cancellationToken);
+    Task<EmailSubscription> GetAsync(string email, CancellationToken cancellationToken);
+    Task DeleteAsync(EmailSubscription email, CancellationToken cancellationToken);
 }

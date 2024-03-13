@@ -21,4 +21,13 @@ internal sealed class EmailSubscriptionRepository(NewslettersWriteDbContext writ
 
     public async Task<List<string>> GetAllAsync(CancellationToken cancellationToken)
         => await _emailSubscriptions.Select(x => x.Email.Value).ToListAsync(cancellationToken);
+
+    public async Task<EmailSubscription> GetAsync(string email, CancellationToken cancellationToken)
+        => await _emailSubscriptions.SingleOrDefaultAsync(x => x.Email == email, cancellationToken);
+
+    public async Task DeleteAsync(EmailSubscription email, CancellationToken cancellationToken)
+    {
+        _emailSubscriptions.Remove(email);
+        await writeDbContext.SaveChangesAsync(cancellationToken);
+    }
 }

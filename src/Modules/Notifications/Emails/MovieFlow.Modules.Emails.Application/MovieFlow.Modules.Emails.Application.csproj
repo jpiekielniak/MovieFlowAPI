@@ -13,4 +13,8 @@
         <ProjectReference Include="..\MovieFlow.Modules.Emails.Shared\MovieFlow.Modules.Emails.Shared.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <AdditionalFiles Include="Newsletters\EmailSubscriptions\UnSubscribeEmailNewsletter\Views\UnSubscriptionEmailNewsletter.cshtml" />
+    </ItemGroup>
+
 </Project>
