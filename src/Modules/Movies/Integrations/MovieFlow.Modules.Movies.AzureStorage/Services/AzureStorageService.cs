@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.WindowsAzure.Storage;
 using MovieFlow.Modules.Movies.AzureStorage.Configuration;
 using MovieFlow.Modules.Movies.AzureStorage.Services.Exceptions;
 

@@ -1,4 +1,3 @@
-using MediatR;
 using MovieFlow.Modules.Movies.AzureStorage.Events.Events.PhotoDeleted;
 using MovieFlow.Modules.Movies.AzureStorage.Services;
 

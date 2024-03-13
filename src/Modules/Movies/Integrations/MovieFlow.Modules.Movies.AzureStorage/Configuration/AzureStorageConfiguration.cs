@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Configuration;
-
 namespace MovieFlow.Modules.Movies.AzureStorage.Configuration;
 
 internal sealed class AzureStorageConfiguration(IConfiguration configuration) : IAzureStorageConfiguration
