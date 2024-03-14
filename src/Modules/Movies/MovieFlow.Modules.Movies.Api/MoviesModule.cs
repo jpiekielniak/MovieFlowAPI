@@ -1,6 +1,7 @@
 using MovieFlow.Modules.Movies.Application;
 using MovieFlow.Modules.Movies.AzureStorage;
 using MovieFlow.Modules.Movies.Core;
+using MovieFlow.Modules.Movies.GoogleMaps;
 using MovieFlow.Modules.Movies.Infrastructure;
 
 namespace MovieFlow.Modules.Movies.Api;
@@ -15,6 +16,7 @@ public static class MoviesModule
         services.AddApplication();
         services.AddInfrastructure();
         services.AddAzureStorage();
+        services.AddGoogleMaps();
 
         return services;
     }

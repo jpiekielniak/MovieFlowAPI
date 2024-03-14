@@ -10,6 +10,7 @@
       <ProjectReference Include="..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\..\Newsletters\MovieFlow.Modules.Newsletters.Shared\MovieFlow.Modules.Newsletters.Shared.csproj" />
       <ProjectReference Include="..\Integrations\AzureStorage\MovieFlow.Modules.Movies.AzureStorage\MovieFlow.Modules.Movies.AzureStorage.csproj" />
+      <ProjectReference Include="..\Integrations\GoogleMaps\MovieFlow.Modules.Movies.GoogleMaps\MovieFlow.Modules.Movies.GoogleMaps.csproj" />
       <ProjectReference Include="..\MovieFlow.Modules.Movies.Core\MovieFlow.Modules.Movies.Core.csproj" />
       <ProjectReference Include="..\MovieFlow.Modules.Movies.Shared\MovieFlow.Modules.Movies.Shared.csproj" />
     </ItemGroup>

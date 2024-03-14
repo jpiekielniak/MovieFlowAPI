@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Integrations\AzureStorage\MovieFlow.Modules.Movies.AzureStorage\MovieFlow.Modules.Movies.AzureStorage.csproj" />
+      <ProjectReference Include="..\Integrations\GoogleMaps\MovieFlow.Modules.Movies.GoogleMaps\MovieFlow.Modules.Movies.GoogleMaps.csproj" />
       <ProjectReference Include="..\MovieFlow.Modules.Movies.Infrastructure\MovieFlow.Modules.Movies.Infrastructure.csproj" />
     </ItemGroup>
 
