@@ -1,0 +1,6 @@
+{
+  "azureStorage": {
+    "ConnectionString": "",
+    "ContainerName": ""
+  }
+}
