@@ -56,9 +56,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Emails.Se
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{2DEE4C48-CBE0-44BA-A875-69287CEB5704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage", "src\Modules\Movies\Integrations\MovieFlow.Modules.Movies.AzureStorage\MovieFlow.Modules.Movies.AzureStorage.csproj", "{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage", "src\Modules\Movies\Integrations\AzureStorage\MovieFlow.Modules.Movies.AzureStorage\MovieFlow.Modules.Movies.AzureStorage.csproj", "{39C0712F-A298-4C4D-AAD7-DBB5FEC37333}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage.Events", "src\Modules\Movies\Integrations\MovieFlow.Modules.Movies.AzureStorage.Events\MovieFlow.Modules.Movies.AzureStorage.Events.csproj", "{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.AzureStorage.Events", "src\Modules\Movies\Integrations\AzureStorage\MovieFlow.Modules.Movies.AzureStorage.Events\MovieFlow.Modules.Movies.AzureStorage.Events.csproj", "{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Newsletters", "Newsletters", "{BA7A3ADE-0B2F-4AE1-B0F9-4B94C78B2B30}"
 EndProject
@@ -71,6 +71,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Newsletters.Api", "src\Modules\Newsletters\MovieFlow.Modules.Newsletters.Api\MovieFlow.Modules.Newsletters.Api.csproj", "{A7440F5B-706E-4C1C-8AC6-408C32BAAC73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Newsletters.Shared", "src\Modules\Newsletters\MovieFlow.Modules.Newsletters.Shared\MovieFlow.Modules.Newsletters.Shared.csproj", "{D5C229C9-15A0-4BE3-8902-A10955558EFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureStorage", "AzureStorage", "{6EF3ECF4-39D0-4D20-9536-2B1F2DA3DD4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,13 +209,14 @@ Global
 		{49170651-3AA4-416C-8C10-34FE5CDCD7C9} = {F63614D8-0204-4065-8286-F84566F69CAC}
 		{B8A10337-7559-4E32-9CB0-00A47FE0113F} = {49170651-3AA4-416C-8C10-34FE5CDCD7C9}
 		{2DEE4C48-CBE0-44BA-A875-69287CEB5704} = {A30DA26A-208B-4A0F-A20B-EB70B6EEF7AC}
-		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333} = {2DEE4C48-CBE0-44BA-A875-69287CEB5704}
-		{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB} = {2DEE4C48-CBE0-44BA-A875-69287CEB5704}
 		{BA7A3ADE-0B2F-4AE1-B0F9-4B94C78B2B30} = {734DE087-7376-43D7-803F-4846F0985035}
 		{D3867C26-253C-4B73-B753-050CD60B7EDE} = {BA7A3ADE-0B2F-4AE1-B0F9-4B94C78B2B30}
 		{0FEDE357-3F73-4224-86C7-6DC7FEDA360F} = {BA7A3ADE-0B2F-4AE1-B0F9-4B94C78B2B30}
 		{FB1C6FDA-37F8-4BFF-8E93-F4043BC0804C} = {BA7A3ADE-0B2F-4AE1-B0F9-4B94C78B2B30}
 		{A7440F5B-706E-4C1C-8AC6-408C32BAAC73} = {BA7A3ADE-0B2F-4AE1-B0F9-4B94C78B2B30}
 		{D5C229C9-15A0-4BE3-8902-A10955558EFC} = {BA7A3ADE-0B2F-4AE1-B0F9-4B94C78B2B30}
+		{6EF3ECF4-39D0-4D20-9536-2B1F2DA3DD4C} = {2DEE4C48-CBE0-44BA-A875-69287CEB5704}
+		{39C0712F-A298-4C4D-AAD7-DBB5FEC37333} = {6EF3ECF4-39D0-4D20-9536-2B1F2DA3DD4C}
+		{D84790F8-9AFB-4714-9BC1-C2DEDD7AE8AB} = {6EF3ECF4-39D0-4D20-9536-2B1F2DA3DD4C}
 	EndGlobalSection
 EndGlobal
