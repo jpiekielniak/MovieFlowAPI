@@ -67,11 +67,11 @@ public static class Extensions
                             Id = "Bearer"
                         }
                     },
-                    new string[] { }
+                    Array.Empty<string>()
                 }
             });
         });
-
+        services.AddHttpClient();
         services.AddTransient<IRazorViewRenderer, RazorViewRenderer>();
         services.AddRazorPages();
         services.AddSingleton<IContextFactory, ContextFactory>();
@@ -96,7 +96,6 @@ public static class Extensions
 
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
     {
-        app.UseCors("cors");
         app.UseErrorHandling();
         app.UseSwagger();
         app.UseSwaggerUI(c =>

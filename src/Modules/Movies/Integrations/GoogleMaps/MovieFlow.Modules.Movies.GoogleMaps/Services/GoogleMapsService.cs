@@ -5,61 +5,54 @@ using Newtonsoft.Json;
 
 namespace MovieFlow.Modules.Movies.GoogleMaps.Services;
 
-internal class GoogleMapsService(IGoogleMapsConfiguration googleMapsConfiguration) : IGoogleMapsService
+internal class GoogleMapsService(IGoogleMapsConfiguration googleMapsConfiguration, HttpClient httpClient)
+    : IGoogleMapsService
 {
     private readonly string _apiKey = googleMapsConfiguration.ApiKey;
     private const ushort Radius = 25_000;
+    private const string BaseUrl = "https://maps.googleapis.com/maps/api/place";
 
     public async Task<List<CinemaDto>> GetNearestCinemasAsync(double latitude, double longitude,
         CancellationToken cancellationToken = default)
     {
-        using var httpClient = new HttpClient();
-        var response = await httpClient.GetAsync(
-            $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=kino&" +
-            $"location={latitude.ToString(CultureInfo.CurrentCulture).Replace(",", ".")}," +
-            $"{longitude.ToString(CultureInfo.InvariantCulture)}" +
-            $"&radius={Radius}&language=pl&key={_apiKey}",
-            cancellationToken);
+        var url = $"{BaseUrl}/nearbysearch/json?keyword=kino&" +
+                  $"location={latitude.ToString(CultureInfo.InvariantCulture)}," +
+                  $"{longitude.ToString(CultureInfo.InvariantCulture)}" +
+                  $"&radius={Radius}&language=pl&key={_apiKey}";
+
+        var response = await httpClient.GetAsync(url, cancellationToken);
+        response.EnsureSuccessStatusCode();
 
         var jsonString = await response.Content.ReadAsStringAsync(cancellationToken);
         var cinemasResponse = JsonConvert.DeserializeObject<GoogleMapsResponse>(jsonString);
 
-        var cinemas = cinemasResponse.Results.Take(5).ToList();
+        var cinemas = cinemasResponse.Results
+            .Take(5)
+            .ToList();
 
-        foreach (var cinema in cinemas)
+        await Parallel.ForEachAsync(cinemas, cancellationToken, async (cinema, _) =>
         {
-            (cinema.Website, cinema.Url) = await GetCinemaDetailsAsync(cinema.Place_Id, cancellationToken);
-        }
-
+            var details = await GetCinemaDetailsAsync(cinema.PlaceId, cancellationToken);
+            (cinema.Website, cinema.Url, cinema.PhotoUrl) = details;
+        });
+        
         return cinemas;
     }
-
-    private async Task<(string Website, string Url)> GetCinemaDetailsAsync(string placeId,
+    
+    private async Task<(string Website, string Url, string photoUrl)> GetCinemaDetailsAsync(string placeId,
         CancellationToken cancellationToken)
     {
-        using var httpClient = new HttpClient();
-        var response = await httpClient.GetAsync(
-            $"https://maps.googleapis.com/maps/api/place/details/json?place_id={placeId}&key={_apiKey}",
-            cancellationToken);
+        var url = $"{BaseUrl}/details/json?place_id={placeId}&key={_apiKey}";
+        var response = await httpClient.GetAsync(url, cancellationToken);
+        response.EnsureSuccessStatusCode();
+
         var jsonString = await response.Content.ReadAsStringAsync(cancellationToken);
-        var placeDetails = JsonConvert.DeserializeObject<GoogleMapsPlaceDetailsResponse>(jsonString);
+        var placeDetails = JsonConvert.DeserializeObject<GoogleMapsResponse<CinemaDetailsDto>>(jsonString);
 
-        return (placeDetails.Result.Website, placeDetails.Result.Url);
+        var photoUrl = placeDetails.Result.Photos?.FirstOrDefault()?.PhotoReference != null
+            ? $"{BaseUrl}/photo?maxwidth=400&photoreference={placeDetails.Result.Photos.First().PhotoReference}&key={_apiKey}"
+            : null;
+
+        return (placeDetails.Result.Website, placeDetails.Result.Url, photoUrl);
     }
-}
-
-internal class GoogleMapsResponse
-{
-    public List<CinemaDto> Results { get; set; }
-}
-
-internal class GoogleMapsPlaceDetailsResponse
-{
-    public CinemaDetails Result { get; set; }
-}
-
-internal class CinemaDetails
-{
-    public string Website { get; set; }
-    public string Url { get; set; }
 }

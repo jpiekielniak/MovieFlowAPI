@@ -18,8 +18,6 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-app.UseStaticFiles();
-
 app.UseInfrastructure(); 
 
 app.MapControllers();
