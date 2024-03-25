@@ -1,3 +1,4 @@
+using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.ReleaseYear;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
@@ -33,8 +34,8 @@ internal sealed class Movie : Entity
         Title = title;
         Description = description;
         ReleaseYear = releaseYear;
-        Director = director;
-        Genres = genres;
+        Director = director ?? throw new DirectorCannotBeNullException();
+        Genres = genres ?? throw new GenresCannotBeNullException();
         Reviews = [];
         MoviePhotos = [];
         State = entityState;
@@ -55,7 +56,7 @@ internal sealed class Movie : Entity
 
     internal void AddPhoto(Photo photo)
     {
-        var moviePhoto = MoviePhoto.Create(this, photo);
+        var moviePhoto = MoviePhoto.Create(this, photo ?? throw new PhotoCannotBeNullException());
         _moviePhotos.Add(moviePhoto);
     }
 }
