@@ -115,7 +115,7 @@ public class MovieTests
 
         //Assert
         movie.Photos.ShouldNotBeEmpty();
-        movie.Photos.Count().ShouldBe(1);
+        movie.Photos.Count.ShouldBe(1);
     }
 
     [Fact]
@@ -132,9 +132,24 @@ public class MovieTests
         //Assert
         exception.ShouldNotBeNull();
         movie.Photos.ShouldBeEmpty();
-        movie.Photos.Count().ShouldBe(0);
+        movie.Photos.Count.ShouldBe(0);
     }
 
+    [Fact]
+    public void given_valid_movie_without_reviews_should_rating_equals_zero()
+    {
+        //Arrange
+        var director = CreateDirector();
+        var genre = CreateGenre();
+
+        //Act
+        var movie = Act("Kubuś Puchatek", "Test description", 2024, director, [genre]);
+
+        //Assert
+       movie.Rating.ShouldBe(0.0);
+       movie.Rating.ShouldBeOfType<double>();
+    }
+    
     private static Director CreateDirector() => Director.Create("John", "Doe", new DateTime(1970, 04, 25), "USA");
     private static Genre CreateGenre() => Genre.Create("Genre");
     private static Photo CreatePhoto() => Photo.Create("Photo", "www.movieflow.com/photos/photo", "Photo", "");

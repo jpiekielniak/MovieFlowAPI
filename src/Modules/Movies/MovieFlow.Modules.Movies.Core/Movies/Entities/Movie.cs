@@ -50,8 +50,5 @@ internal sealed class Movie : Entity
     }
 
     internal void AddPhoto(Photo photo)
-    {
-       // var moviePhoto = MoviePhoto.Create(this, photo ?? throw new PhotoCannotBeNullException());
-        Photos.Add(photo);
-    }
+    => Photos.Add(photo ?? throw new PhotoCannotBeNullException());
 }
