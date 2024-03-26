@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
+using MovieFlow.Shared.Abstractions.Exceptions;
 using Shouldly;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class MovieTests
         var genre = CreateGenre();
 
         //Act
-        var movie = Act("Kubuś Puchatek", "Test description", 2024, director, [genre]);
+        var movie = GetValidMovie(director, genre);
 
         //Assert
         movie.ShouldBeOfType<Movie>();
@@ -33,12 +34,14 @@ public class MovieTests
         //Arrange
         var director = CreateDirector();
         var genre = CreateGenre();
+        const string description = "Test description";
 
         //Act
-        var exception = Record.Exception(() => Act(null, "Test description", 2024, director, [genre]));
+        var exception = Record.Exception(() => Act(null, description, 2024, director, [genre]));
 
         //Assert
         exception.ShouldNotBeNull();
+        exception.ShouldBeAssignableTo<MovieFlowException>();
     }
 
     [Fact]
@@ -47,13 +50,15 @@ public class MovieTests
         //Arrange
         var director = CreateDirector();
         var genre = CreateGenre();
+        const string title = "Kubuś Puchatek";
+        const string description = "Test description";
 
         //Act
-        var exception = Record.Exception(() =>
-            Act("Kubuś Puchatek", "Test description", DateTime.Now.AddYears(3).Year, director, [genre]));
+        var exception = Record.Exception(() => Act(title, description, DateTime.Now.AddYears(3).Year, director, [genre]));
 
         //Assert
         exception.ShouldNotBeNull();
+        exception.ShouldBeAssignableTo<MovieFlowException>();
     }
 
     [Fact]
@@ -61,13 +66,16 @@ public class MovieTests
     {
         //Arrange
         var director = CreateDirector();
+        const string title = "Kubuś Puchatek";
+        const string description = "Test description";
+        const int releaseYear = 2023;
 
         //Act
-        var exception = Record.Exception(() =>
-            Act("Kubuś Puchatek", "Test description", 2024, director, null));
-
+        var exception = Record.Exception(() => Act(title, description, releaseYear, director, null));
+        
         //Assert
         exception.ShouldNotBeNull();
+        exception.ShouldBeAssignableTo<MovieFlowException>();
     }
 
     [Fact]
@@ -75,13 +83,17 @@ public class MovieTests
     {
         //Arrange
         var genre = CreateGenre();
+        const string title = "Kubuś Puchatek";
+        const string description = "Test description";
+        const int releaseYear = 2023;
 
         //Act
         var exception = Record.Exception(() =>
-            Act("Kubuś Puchatek", "Test description", 2024, null, [genre]));
+            Act(title, description, releaseYear, null, [genre]));
 
         //Assert
         exception.ShouldNotBeNull();
+        exception.ShouldBeAssignableTo<MovieFlowException>();
     }
 
     [Fact]
@@ -90,16 +102,20 @@ public class MovieTests
         //Arrange
         var director = CreateDirector();
         var genre = CreateGenre();
-        var movie = Act("Kubuś Puchatek", "Test description", 2024, director, [genre]);
+        var movie = GetValidMovie(director, genre);
+        const string title = "Kubuś Puchatek 2";
+        const string description = "Test description 2";
+        const int releaseYear = 2023;
 
         //Act
-        Act(movie, "Kubuś Puchatek 2", "Test description 2", 2023);
+        Act(movie, title, description, releaseYear);
 
         //Assert
-        movie.Title.Value.ShouldBe("Kubuś Puchatek 2");
-        movie.Description.Value.ShouldBe("Test description 2");
-        movie.ReleaseYear.Value.ShouldBe(2023);
+        movie.Title.Value.ShouldBe(title);
+        movie.Description.Value.ShouldBe(description);
+        movie.ReleaseYear.Value.ShouldBe(releaseYear);
     }
+
 
     [Fact]
     public void given_valid_photo_to_movie_should_succeed()
@@ -107,7 +123,7 @@ public class MovieTests
         //Arrange
         var director = CreateDirector();
         var genre = CreateGenre();
-        var movie = Act("Kubuś Puchatek", "Test description", 2024, director, [genre]);
+        var movie = GetValidMovie(director, genre);
         var photo = CreatePhoto();
 
         //Act
@@ -124,13 +140,14 @@ public class MovieTests
         //Arrange
         var director = CreateDirector();
         var genre = CreateGenre();
-        var movie = Act("Kubuś Puchatek", "Test description", 2024, director, [genre]);
+        var movie = GetValidMovie(director, genre);
 
         //Act
         var exception = Record.Exception(() => movie.AddPhoto(null));
 
         //Assert
         exception.ShouldNotBeNull();
+        exception.ShouldBeAssignableTo<MovieFlowException>();
         movie.Photos.ShouldBeEmpty();
         movie.Photos.Count.ShouldBe(0);
     }
@@ -141,16 +158,22 @@ public class MovieTests
         //Arrange
         var director = CreateDirector();
         var genre = CreateGenre();
+        const string title = "Kubuś Puchatek";
+        const string description = "Test description";
+        const int releaseYear = 2024;
 
         //Act
-        var movie = Act("Kubuś Puchatek", "Test description", 2024, director, [genre]);
+        var movie = Act(title, description, releaseYear, director, [genre]);
 
         //Assert
-       movie.Rating.ShouldBe(0.0);
-       movie.Rating.ShouldBeOfType<double>();
+        movie.Rating.ShouldBe(0.0);
+        movie.Rating.ShouldBeOfType<double>();
     }
-    
+
     private static Director CreateDirector() => Director.Create("John", "Doe", new DateTime(1970, 04, 25), "USA");
     private static Genre CreateGenre() => Genre.Create("Genre");
     private static Photo CreatePhoto() => Photo.Create("Photo", "www.movieflow.com/photos/photo", "Photo", "");
+
+    private static Movie GetValidMovie(Director director, Genre genre)
+        => Movie.Create("Kubuś Puchatek", "Test description", 2024, director, [genre]);
 }

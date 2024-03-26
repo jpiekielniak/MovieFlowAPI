@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
+using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Shared;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.ReleaseYear;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Title;
