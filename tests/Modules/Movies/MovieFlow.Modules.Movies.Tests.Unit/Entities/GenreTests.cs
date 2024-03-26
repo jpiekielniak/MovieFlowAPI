@@ -1,5 +1,4 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
-using MovieFlow.Shared.Abstractions.Exceptions;
 using Shouldly;
 using Xunit;
 

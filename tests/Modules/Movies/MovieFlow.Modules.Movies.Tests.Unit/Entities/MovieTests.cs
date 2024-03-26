@@ -2,6 +2,7 @@ using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Shared.Abstractions.Exceptions;
 using Shouldly;
 using Xunit;
+using static MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 
@@ -169,11 +170,4 @@ public class MovieTests
         movie.Rating.ShouldBe(0.0);
         movie.Rating.ShouldBeOfType<double>();
     }
-
-    private static Director CreateDirector() => Director.Create("John", "Doe", new DateTime(1970, 04, 25), "USA");
-    private static Genre CreateGenre() => Genre.Create("Genre");
-    private static Photo CreatePhoto() => Photo.Create("Photo", "www.movieflow.com/photos/photo", "Photo", "");
-
-    private static Movie GetValidMovie(Director director, Genre genre)
-        => Movie.Create("Kubuś Puchatek", "Test description", 2024, director, [genre]);
 }

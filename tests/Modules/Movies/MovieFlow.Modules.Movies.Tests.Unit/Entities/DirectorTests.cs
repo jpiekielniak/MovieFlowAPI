@@ -4,6 +4,7 @@ using MovieFlow.Shared.Abstractions.Exceptions;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Country;
 using Shouldly;
 using Xunit;
+using static MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 
@@ -92,8 +93,4 @@ public class DirectorTests
         exception.ShouldNotBeNull();
         exception.ShouldBeAssignableTo<MovieFlowException>();
     }
-    
-    private static Photo CreatePhoto() => Photo.Create("Director photo", "www.movieflow.com/photos/photo", "Photo", "");
-    private static Director GetValidDirector() => Director.Create("John", "Doe", new DateTime(1970, 4, 20), "USA");
-
 }
