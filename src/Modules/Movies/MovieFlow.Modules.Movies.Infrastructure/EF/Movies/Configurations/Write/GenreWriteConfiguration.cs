@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
+using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name;
 using EntityState = MovieFlow.Shared.Abstractions.Kernel.EntityState;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Configurations.Write;
@@ -12,7 +13,8 @@ internal class GenreWriteConfiguration : IEntityTypeConfiguration<Genre>
         builder.HasIndex(x => x.Name)
             .IsUnique();
 
-        builder.Property<string>("Name")
+        builder.Property<Name>("Name")
+            .HasConversion(x => x.Value, x => new Name(x))
             .HasColumnName("Name")
             .IsRequired();
 
