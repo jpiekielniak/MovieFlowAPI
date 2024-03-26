@@ -1,3 +1,4 @@
+using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Shared;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Country;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.FirstName;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.LastName;
@@ -41,5 +42,5 @@ internal class Director : Entity
         State = EntityState.Modified;
     }
     
-    public void AddPhoto(Photo photo) => Photos.Add(photo);
+    public void AddPhoto(Photo photo) => Photos.Add(photo ?? throw new PhotoCannotBeNullException());
 }
