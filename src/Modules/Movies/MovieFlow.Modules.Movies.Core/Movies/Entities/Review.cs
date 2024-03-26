@@ -9,7 +9,7 @@ internal sealed class Review : Entity
     internal Title Title { get; private set; }
     internal Content Content { get; private set; }
     internal Rating Rating { get; private set; }
-    internal ICollection<Like> Likes { get; } = new List<Like>();
+    internal ICollection<Like> Likes { get; }
     internal int PositiveLikes => Likes.Count(x => x.IsPositive);
     internal int NegativeLikes => Likes.Count(x => !x.IsPositive);
     internal Guid MovieId { get; }
@@ -28,6 +28,7 @@ internal sealed class Review : Entity
         Rating = rating;
         Movie = movie;
         UserId = userId;
+        Likes = [];
         State = entityState;
     }
 
