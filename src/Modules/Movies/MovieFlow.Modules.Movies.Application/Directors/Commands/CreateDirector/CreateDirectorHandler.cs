@@ -29,7 +29,7 @@ internal sealed class CreateDirectorHandler(
             command.Photo.ContentType
         );
         
-        director.AddPhoto(DirectorPhoto.Create(director, photo));
+        director.AddPhoto(photo);
 
         await directorRepository.AddAsync(director, cancellationToken);
         return new CreateDirectorResponse(director.Id);

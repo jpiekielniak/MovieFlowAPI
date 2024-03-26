@@ -7,9 +7,12 @@ internal sealed class Photo : Entity
     public string Alt { get; private set; }
     public string ContentType { get; private set; }
     
-    public ICollection<DirectorPhoto> DirectorPhotos { get; set; }
-    public ICollection<MoviePhoto> MoviePhotos { get; set; }
+    public Guid? MovieId { get; private set; }  
+    public Movie Movie { get; private set; }  
 
+    public Guid? DirectorId { get; private set; } 
+    public Director Director { get; private set; }
+    
     private Photo()
     {
     }

@@ -7,4 +7,8 @@ internal sealed class PhotoReadModel
     public string Url { get; init; }
     public string Alt { get; init; }
     public string ContentType { get; init; }
+    public Guid? MovieId { get; init; }
+    public MovieReadModel Movie { get; init; }
+    public Guid? DirectorId { get; init; }
+    public DirectorReadModel Director { get; init; }
 }

@@ -9,6 +9,5 @@ internal sealed class MovieReadModel
     public DirectorReadModel Director { get; init; }
     public IReadOnlyCollection<GenreReadModel> Genres { get; init; }
     public IReadOnlyCollection<ReviewReadModel> Reviews { get; init; }
-    public IReadOnlyCollection<MoviePhotoReadModel> MoviePhotos { get; init; }
-    public double? Rating => Reviews?.Average(x => x.Rating);
+    public IReadOnlyCollection<PhotoReadModel> Photos { get; init; }
 }

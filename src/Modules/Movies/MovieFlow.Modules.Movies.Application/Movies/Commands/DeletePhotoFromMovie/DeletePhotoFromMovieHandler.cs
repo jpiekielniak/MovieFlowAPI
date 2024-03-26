@@ -31,5 +31,5 @@ internal sealed class DeletePhotoFromMovieHandler(
     }
 
     private static bool IsLastPhoto(Movie movie)
-        => movie.MoviePhotos.Count() == 1;
+        => movie.Photos.Count() == 1;
 }

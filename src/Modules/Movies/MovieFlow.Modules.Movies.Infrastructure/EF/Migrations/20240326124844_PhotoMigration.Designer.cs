@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
 {
     [DbContext(typeof(MoviesWriteDbContext))]
-    [Migration("20240311152550_PhotoMigration")]
+    [Migration("20240326124844_PhotoMigration")]
     partial class PhotoMigration
     {
         /// <inheritdoc />
@@ -81,28 +81,6 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Directors", "movies");
-                });
-
-            modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.DirectorPhoto", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("DirectorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("PhotoId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DirectorId")
-                        .IsUnique();
-
-                    b.HasIndex("PhotoId");
-
-                    b.ToTable("DirectorPhotos", "movies");
                 });
 
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Genre", b =>
@@ -201,27 +179,6 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                     b.ToTable("Movies", "movies");
                 });
 
-            modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.MoviePhoto", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("PhotoId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
-
-                    b.HasIndex("PhotoId");
-
-                    b.ToTable("MoviePhotos", "movies");
-                });
-
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", b =>
                 {
                     b.Property<Guid>("Id")
@@ -239,9 +196,15 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<Guid?>("DirectorId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("State")
                         .HasColumnType("integer");
@@ -255,8 +218,12 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DirectorId");
+
                     b.HasIndex("FileName")
                         .IsUnique();
+
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Photos", "movies");
                 });
@@ -322,25 +289,6 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.DirectorPhoto", b =>
-                {
-                    b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Director", "Director")
-                        .WithOne("Photo")
-                        .HasForeignKey("MovieFlow.Modules.Movies.Core.Movies.Entities.DirectorPhoto", "DirectorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", "Photo")
-                        .WithMany("DirectorPhotos")
-                        .HasForeignKey("PhotoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Director");
-
-                    b.Navigation("Photo");
-                });
-
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Like", b =>
                 {
                     b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Review", "Review")
@@ -363,23 +311,19 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                     b.Navigation("Director");
                 });
 
-            modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.MoviePhoto", b =>
+            modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", b =>
                 {
-                    b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Movie", "Movie")
-                        .WithMany("MoviePhotos")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Director", "Director")
+                        .WithMany("Photos")
+                        .HasForeignKey("DirectorId");
 
-                    b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", "Photo")
-                        .WithMany("MoviePhotos")
-                        .HasForeignKey("PhotoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("MovieFlow.Modules.Movies.Core.Movies.Entities.Movie", "Movie")
+                        .WithMany("Photos")
+                        .HasForeignKey("MovieId");
+
+                    b.Navigation("Director");
 
                     b.Navigation("Movie");
-
-                    b.Navigation("Photo");
                 });
 
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Review", b =>
@@ -397,21 +341,14 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Migrations
                 {
                     b.Navigation("Movies");
 
-                    b.Navigation("Photo");
+                    b.Navigation("Photos");
                 });
 
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Movie", b =>
                 {
-                    b.Navigation("MoviePhotos");
+                    b.Navigation("Photos");
 
                     b.Navigation("Reviews");
-                });
-
-            modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Photo", b =>
-                {
-                    b.Navigation("DirectorPhotos");
-
-                    b.Navigation("MoviePhotos");
                 });
 
             modelBuilder.Entity("MovieFlow.Modules.Movies.Core.Movies.Entities.Review", b =>

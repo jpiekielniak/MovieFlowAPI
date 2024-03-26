@@ -12,7 +12,7 @@ internal static class Extensions
             movie.Id,
             movie.Title,
             movie.Genres.Select(x => x.Name).ToList(),
-            movie.MoviePhotos.Select(x => x.Photo.Url).FirstOrDefault()
+            movie.Photos.Select(x => x.Url).FirstOrDefault()
         );
 
     public static MovieDetailsDto AsMovieDetailsDto(this MovieReadModel movie)
@@ -24,7 +24,7 @@ internal static class Extensions
             movie.Description,
             movie.Genres.Select(x => x.Name).ToList(),
             movie.Director.AsDirectorDto(),
-            movie.MoviePhotos.Select(x => x.Photo.Url).ToList()
+            movie.Photos.Select(x => x.Url).ToList()
         );
 
     private static DirectorDto AsDirectorDto(this DirectorReadModel director)
@@ -32,6 +32,6 @@ internal static class Extensions
             director.Id,
             director.FirstName,
             director.LastName,
-            director.DirectorPhoto.Photo.Url
+            director.Photos.Select(x => x.Url).ToList()
         );
 }

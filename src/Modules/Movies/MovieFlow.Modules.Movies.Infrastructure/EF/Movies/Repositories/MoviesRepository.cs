@@ -23,8 +23,7 @@ internal sealed class MovieRepository(MoviesWriteDbContext dbContext) : IMovieRe
             .Include(x => x.Genres)
             .Include(x => x.Director)
             .Include(x => x.Reviews)
-            .Include(x => x.MoviePhotos)
-                .ThenInclude(x => x.Photo)
+            .Include(x => x.Photos)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
     public async Task CommitAsync(CancellationToken cancellationToken)

@@ -13,15 +13,10 @@ internal sealed class Movie : Entity
     internal Guid DirectorId { get; private set; }
     internal Director Director { get; private set; }
     internal double? Rating => Reviews.Any() ? Reviews.Average(x => x.Rating) : 0;
-    internal List<Genre> Genres { get; set; }
-    internal List<Review> Reviews { get; set; }
-    private HashSet<MoviePhoto> _moviePhotos = [];
+    internal List<Genre> Genres { get; private set; }
+    internal List<Review> Reviews { get; private set; }
+    internal ICollection<Photo> Photos { get; private set; }
     
-    public IEnumerable<MoviePhoto> MoviePhotos
-    {
-        get => _moviePhotos;
-        set => _moviePhotos = [..value];
-    }
 
     private Movie()
     {
@@ -37,7 +32,7 @@ internal sealed class Movie : Entity
         Director = director ?? throw new DirectorCannotBeNullException();
         Genres = genres ?? throw new GenresCannotBeNullException();
         Reviews = [];
-        MoviePhotos = [];
+        Photos = [];
         State = entityState;
     }
 
@@ -56,7 +51,7 @@ internal sealed class Movie : Entity
 
     internal void AddPhoto(Photo photo)
     {
-        var moviePhoto = MoviePhoto.Create(this, photo ?? throw new PhotoCannotBeNullException());
-        _moviePhotos.Add(moviePhoto);
+       // var moviePhoto = MoviePhoto.Create(this, photo ?? throw new PhotoCannotBeNullException());
+        Photos.Add(photo);
     }
 }

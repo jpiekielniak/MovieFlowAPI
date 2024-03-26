@@ -15,8 +15,7 @@ internal sealed class BrowseMoviesHandler(MoviesReadDbContext readDbContext,
             .Movies
             .Include(x => x.Genres)
             .Include(x => x.Director)
-            .Include(x => x.MoviePhotos)
-            .ThenInclude(x => x.Photo)
+            .Include(x => x.Photos)
             .AsQueryable();
 
         movies = movieService.FilterByTitle(movies, query.Title);

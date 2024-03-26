@@ -21,8 +21,7 @@ internal static class DataAccessModule
             .AddScoped<IDirectorRepository, DirectorRepository>()
             .AddScoped<IReviewRepository, ReviewRepository>()
             .AddScoped<ILikeRepository, LikeRepository>()
-            .AddScoped<IPhotoRepository, PhotoRepository>()
-            .AddScoped<IMoviePhotoRepository, MoviePhotoRepository>();
+            .AddScoped<IPhotoRepository, PhotoRepository>();
 
         services
             .AddScoped<IMovieService, MovieService>()

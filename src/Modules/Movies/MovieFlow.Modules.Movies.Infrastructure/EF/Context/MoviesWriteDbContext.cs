@@ -13,8 +13,6 @@ internal class MoviesWriteDbContext : DbContext
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Like> Likes { get; set; }
     public DbSet<Photo> Photos { get; set; }
-    public DbSet<MoviePhoto> MoviePhotos { get; set; }
-    public DbSet<DirectorPhoto> DirectorPhotos { get; set; }
     private readonly IClock _clock;
 
     public MoviesWriteDbContext(DbContextOptions<MoviesWriteDbContext> options, IClock clock)
@@ -29,8 +27,6 @@ internal class MoviesWriteDbContext : DbContext
         modelBuilder.ApplyConfiguration(new ReviewWriteConfiguration());
         modelBuilder.ApplyConfiguration(new LikeWriteConfiguration());
         modelBuilder.ApplyConfiguration(new PhotoWriteConfiguration());
-        modelBuilder.ApplyConfiguration(new MoviePhotoWriteConfiguration());
-        modelBuilder.ApplyConfiguration(new DirectorPhotoWriteConfiguration());
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())

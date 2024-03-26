@@ -114,8 +114,8 @@ public class MovieTests
         movie.AddPhoto(photo);
 
         //Assert
-        movie.MoviePhotos.ShouldNotBeEmpty();
-        movie.MoviePhotos.Count().ShouldBe(1);
+        movie.Photos.ShouldNotBeEmpty();
+        movie.Photos.Count().ShouldBe(1);
     }
 
     [Fact]
@@ -131,8 +131,8 @@ public class MovieTests
 
         //Assert
         exception.ShouldNotBeNull();
-        movie.MoviePhotos.ShouldBeEmpty();
-        movie.MoviePhotos.Count().ShouldBe(0);
+        movie.Photos.ShouldBeEmpty();
+        movie.Photos.Count().ShouldBe(0);
     }
 
     private static Director CreateDirector() => Director.Create("John", "Doe", new DateTime(1970, 04, 25), "USA");

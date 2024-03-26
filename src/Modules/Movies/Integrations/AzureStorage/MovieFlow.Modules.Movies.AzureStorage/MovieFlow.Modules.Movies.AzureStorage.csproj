@@ -14,11 +14,11 @@
       <ProjectReference Include="..\..\..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\MovieFlow.Modules.Movies.AzureStorage.Events\MovieFlow.Modules.Movies.AzureStorage.Events.csproj" />
     </ItemGroup>
-   
+
     <ItemGroup>
-      <None Update="module.movies.development.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+        <None Update="module.movie.development.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

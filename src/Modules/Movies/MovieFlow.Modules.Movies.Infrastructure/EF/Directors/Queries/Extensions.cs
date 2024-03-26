@@ -14,7 +14,7 @@ internal static class Extensions
             director.LastName,
             director.DateOfBirth,
             director.Country,
-            director.DirectorPhoto.Photo.Url
+            director.Photos.Select(x => x.Url).ToList()
         );
 
     public static DirectorDto AsDto(this DirectorReadModel director)
@@ -22,7 +22,7 @@ internal static class Extensions
             director.Id,
             director.FirstName,
             director.LastName,
-            director.DirectorPhoto.Photo.Url
+            director.Photos.Select(x => x.Url).ToList()
         );
 
     public static DirectorMovieDto AsDirectorMovieDto(this MovieReadModel movie)

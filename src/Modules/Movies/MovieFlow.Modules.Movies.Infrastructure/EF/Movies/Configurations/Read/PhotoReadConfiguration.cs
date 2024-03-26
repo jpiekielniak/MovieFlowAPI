@@ -7,7 +7,8 @@ internal sealed class PhotoReadConfiguration : IEntityTypeConfiguration<PhotoRea
     public void Configure(EntityTypeBuilder<PhotoReadModel> builder)
     {
         builder.HasKey(x => x.Id);
-
+        
+      
         builder.ToTable("Photos");
     }
 }
