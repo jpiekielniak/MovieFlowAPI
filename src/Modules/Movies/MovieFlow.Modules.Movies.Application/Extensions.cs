@@ -9,7 +9,8 @@ using MovieFlow.Modules.Movies.Shared;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Movies.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Movies.Infrastructure")]
-
+[assembly: InternalsVisibleTo("MovieFlow.Modules.Movies.Tests.Unit")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace MovieFlow.Modules.Movies.Application;
 
 internal static class Extensions

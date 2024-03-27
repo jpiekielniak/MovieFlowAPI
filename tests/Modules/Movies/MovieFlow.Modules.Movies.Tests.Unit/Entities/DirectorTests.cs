@@ -2,8 +2,6 @@ using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Shared;
 using MovieFlow.Shared.Abstractions.Exceptions;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Country;
-using Shouldly;
-using Xunit;
 using static MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;

@@ -17,7 +17,7 @@ internal sealed class Movie : Entity
     internal List<Genre> Genres { get; private set; }
     internal List<Review> Reviews { get; private set; }
     internal ICollection<Photo> Photos { get; private set; }
-    
+
 
     private Movie()
     {
@@ -51,5 +51,5 @@ internal sealed class Movie : Entity
     }
 
     internal void AddPhoto(Photo photo)
-    => Photos.Add(photo ?? throw new PhotoCannotBeNullException());
+        => Photos.Add(photo ?? throw new PhotoCannotBeNullException());
 }

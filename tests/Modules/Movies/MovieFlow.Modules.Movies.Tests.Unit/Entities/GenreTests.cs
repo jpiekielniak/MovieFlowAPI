@@ -1,6 +1,4 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
-using Shouldly;
-using Xunit;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 

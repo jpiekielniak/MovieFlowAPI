@@ -1,7 +1,5 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Shared.Abstractions.Exceptions;
-using Shouldly;
-using Xunit;
 using static MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
