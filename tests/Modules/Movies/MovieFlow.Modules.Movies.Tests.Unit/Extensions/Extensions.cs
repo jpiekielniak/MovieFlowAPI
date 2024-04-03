@@ -15,4 +15,16 @@ internal static class Extensions
 
     public static Review CreateReview()
         => Review.Create("Title", "content", 5.0, GetValidMovie(), Guid.NewGuid());
+
+    public static FormFile CreateFormFile()
+    {
+        var memoryStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(string.Empty));
+        var formFile = new FormFile(memoryStream, 0, memoryStream.Length, "Photo", "Photo.jpg")
+        {
+            Headers = new HeaderDictionary(),
+            ContentType = string.Empty
+        };
+
+        return formFile;
+    }
 }
