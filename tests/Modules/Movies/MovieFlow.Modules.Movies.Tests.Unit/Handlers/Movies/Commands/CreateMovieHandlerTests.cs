@@ -7,7 +7,7 @@ using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Modules.Newsletters.Shared.Events.CreatedMovie;
 
-namespace MovieFlow.Modules.Movies.Tests.Unit.Handlers.Movies;
+namespace MovieFlow.Modules.Movies.Tests.Unit.Handlers.Movies.Commands;
 
 public class CreateMovieHandlerTests
 {
