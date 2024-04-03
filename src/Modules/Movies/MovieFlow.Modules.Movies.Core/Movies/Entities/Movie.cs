@@ -52,4 +52,7 @@ internal sealed class Movie : Entity
 
     internal void AddPhoto(Photo photo)
         => Photos.Add(photo ?? throw new PhotoCannotBeNullException());
+
+    public void RemovePhoto(Photo photo)
+    => Photos.Remove(photo ?? throw new PhotoCannotBeNullException());
 }

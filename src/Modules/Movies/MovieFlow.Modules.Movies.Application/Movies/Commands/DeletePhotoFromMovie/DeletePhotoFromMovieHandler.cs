@@ -24,6 +24,7 @@ internal sealed class DeletePhotoFromMovieHandler(
             .GetAsync(command.PhotoId, cancellationToken)
             .NotNull(() => new PhotoNotFoundException(command.PhotoId));
 
+        movie.RemovePhoto(photo);
         await photoRepository.DeleteAsync(photo, cancellationToken);
 
         var @event = new PhotoDeletedEvent(photo.FileName);
@@ -31,5 +32,5 @@ internal sealed class DeletePhotoFromMovieHandler(
     }
 
     private static bool IsLastPhoto(Movie movie)
-        => movie.Photos.Count() == 1;
+        => movie.Photos.Count == 1;
 }
