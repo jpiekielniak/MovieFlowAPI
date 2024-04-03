@@ -1,5 +1,5 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
-using static MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions.Extensions;
+using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 
@@ -12,9 +12,7 @@ public class ReviewTests
         const string title = "title";
         const string content = "content";
         const int rating = 5;
-        var director = GetValidDirector();
-        var genre = CreateGenre();
-        var movie = GetValidMovie(director, genre);
+        var movie = GetValidMovie();
 
         //Act
         var review = Review.Create(title, content, rating, movie, Guid.NewGuid());

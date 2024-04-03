@@ -1,6 +1,6 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 
-namespace MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions;
+namespace MovieFlow.Modules.Movies.Tests.Unit.Extensions;
 
 internal static class Extensions
 {
@@ -8,17 +8,11 @@ internal static class Extensions
     public static Genre CreateGenre() => Genre.Create("Genre");
     public static Photo CreatePhoto() => Photo.Create("Photo", "www.movieflow.com/photos/photo", "Photo", "");
 
-    public static Movie GetValidMovie(Director director, Genre genre)
-        => Movie.Create("Kubuś Puchatek", "Test description", 2024, director, [genre]);
+    public static Movie GetValidMovie()
+        => Movie.Create("Kubuś Puchatek", "Test description", 2024, CreateDirector(), [CreateGenre()]);
 
     public static Director GetValidDirector() => Director.Create("John", "Doe", new DateTime(1970, 4, 20), "USA");
 
     public static Review CreateReview()
-    {
-        var genre = CreateGenre();
-        var director = CreateDirector();
-        var movie = GetValidMovie(director, genre);
-        
-        return Review.Create("Title", "content", 5.0, movie, Guid.NewGuid());
-    }
+        => Review.Create("Title", "content", 5.0, GetValidMovie(), Guid.NewGuid());
 }

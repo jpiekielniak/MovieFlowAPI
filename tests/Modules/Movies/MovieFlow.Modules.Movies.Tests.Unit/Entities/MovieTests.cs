@@ -1,6 +1,6 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Shared.Abstractions.Exceptions;
-using static MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions.Extensions;
+using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 
@@ -15,12 +15,8 @@ public class MovieTests
     [Fact]
     public void given_valid_movie_should_succeed()
     {
-        //Arrange
-        var director = CreateDirector();
-        var genre = CreateGenre();
-
         //Act
-        var movie = GetValidMovie(director, genre);
+        var movie = GetValidMovie();
 
         //Assert
         movie.ShouldBeOfType<Movie>();
@@ -99,9 +95,7 @@ public class MovieTests
     public void given_valid_information_to_change_should_succeed()
     {
         //Arrange
-        var director = CreateDirector();
-        var genre = CreateGenre();
-        var movie = GetValidMovie(director, genre);
+        var movie = GetValidMovie();
         const string title = "Kubuś Puchatek 2";
         const string description = "Test description 2";
         const int releaseYear = 2023;
@@ -120,9 +114,7 @@ public class MovieTests
     public void given_valid_photo_to_movie_should_succeed()
     {
         //Arrange
-        var director = CreateDirector();
-        var genre = CreateGenre();
-        var movie = GetValidMovie(director, genre);
+        var movie = GetValidMovie();
         var photo = CreatePhoto();
 
         //Act
@@ -137,9 +129,7 @@ public class MovieTests
     public void given_null_photo_to_movie_should_fail()
     {
         //Arrange
-        var director = CreateDirector();
-        var genre = CreateGenre();
-        var movie = GetValidMovie(director, genre);
+        var movie = GetValidMovie();
 
         //Act
         var exception = Record.Exception(() => movie.AddPhoto(null));
