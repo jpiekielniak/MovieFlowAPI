@@ -2,7 +2,7 @@ using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Shared;
 using MovieFlow.Shared.Abstractions.Exceptions;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Country;
-using static MovieFlow.Modules.Movies.Tests.Unit.Entities.Extensions.Extensions;
+using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 
