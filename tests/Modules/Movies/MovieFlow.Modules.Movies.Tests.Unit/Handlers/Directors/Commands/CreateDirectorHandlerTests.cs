@@ -4,7 +4,7 @@ using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
-namespace MovieFlow.Modules.Movies.Tests.Unit.Handlers.Directors;
+namespace MovieFlow.Modules.Movies.Tests.Unit.Handlers.Directors.Commands;
 
 public class CreateDirectorHandlerTests
 {
