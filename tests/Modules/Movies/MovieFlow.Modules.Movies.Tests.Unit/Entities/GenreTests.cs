@@ -1,11 +1,12 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
+using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 
 public class GenreTests
 {
     [Theory]
-    [MemberData(nameof(GetValidGenreName))]
+    [MemberData(nameof(GetValidGenreName), MemberType = typeof(Extensions.Extensions))]
     public void given_valid_genre_should_succeed(string value)
     {
         //Act
@@ -26,15 +27,6 @@ public class GenreTests
         
         //Assert
         exception.ShouldNotBeNull();
-    }
-
-    public static IEnumerable<object[]> GetValidGenreName()
-    {
-        yield return ["Action"];
-        yield return ["Comedy"];
-        yield return ["Drama"];
-        yield return ["Horror"];
-        yield return ["Romance"];
     }
 
     public static IEnumerable<object[]> GetInvalidGenreName()

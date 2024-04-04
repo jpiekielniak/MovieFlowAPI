@@ -27,4 +27,13 @@ internal static class Extensions
 
         return formFile;
     }
+    
+    public static IEnumerable<object[]> GetValidGenreName()
+    {
+        yield return ["Action"];
+        yield return ["Comedy"];
+        yield return ["Drama"];
+        yield return ["Horror"];
+        yield return ["Romance"];
+    }
 }
