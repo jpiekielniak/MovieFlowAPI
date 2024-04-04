@@ -7,8 +7,7 @@ namespace MovieFlow.Modules.Movies.Application.Movies.Commands.AddPhotoToMovie;
 
 internal sealed class AddPhotoToMovieHandler(
     IAzureStorageService azureStorageService,
-    IMovieRepository movieRepository,
-    IPhotoRepository photoRepository) : IRequestHandler<AddPhotoToMovieCommand>
+    IMovieRepository movieRepository) : IRequestHandler<AddPhotoToMovieCommand>
 {
     public async Task Handle(AddPhotoToMovieCommand command, CancellationToken cancellationToken)
     {
@@ -28,6 +27,6 @@ internal sealed class AddPhotoToMovieHandler(
         );
         
         movie.AddPhoto(photo);
-        await photoRepository.AddAsync(photo, cancellationToken);
+        await movieRepository.UpdateAsync(movie, cancellationToken);
     }
 }

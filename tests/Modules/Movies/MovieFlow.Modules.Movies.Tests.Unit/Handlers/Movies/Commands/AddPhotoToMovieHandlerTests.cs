@@ -1,6 +1,5 @@
 using MovieFlow.Modules.Movies.Application.Movies.Commands.AddPhotoToMovie;
 using MovieFlow.Modules.Movies.AzureStorage.Services;
-using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using NSubstitute.ReturnsExtensions;
@@ -30,7 +29,6 @@ public class AddPhotoToMovieHandlerTests
         await _movieRepository.Received(1).GetAsync(command.MovieId, Arg.Any<CancellationToken>());
         await _azureStorageService.Received(1).UploadImageAsync(command.Photo);
         await _azureStorageService.Received(1).GetImageUrlAsync(command.Photo.FileName);
-        await _photoRepository.Received(1).AddAsync(Arg.Any<Photo>(), Arg.Any<CancellationToken>());
     }
 
     [Fact]
@@ -54,18 +52,15 @@ public class AddPhotoToMovieHandlerTests
     private readonly IRequestHandler<AddPhotoToMovieCommand> _handler;
     private readonly IAzureStorageService _azureStorageService;
     private readonly IMovieRepository _movieRepository;
-    private readonly IPhotoRepository _photoRepository;
 
     public AddPhotoToMovieHandlerTests()
     {
         _azureStorageService = Substitute.For<IAzureStorageService>();
         _movieRepository = Substitute.For<IMovieRepository>();
-        _photoRepository = Substitute.For<IPhotoRepository>();
 
         _handler = new AddPhotoToMovieHandler(
             _azureStorageService,
-            _movieRepository,
-            _photoRepository
+            _movieRepository
         );
     }
 
