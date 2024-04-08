@@ -281,6 +281,6 @@ This project is protected under the [MIT License](https://choosealicense.com/lic
 
 ## 👏 Acknowledgments
 
-- @DevMentors and their project [Confab](https://github.com/devmentors/Confab) for being a source of inspiration for this project.
+- [@DevMentors](https://github.com/devmentors) and their project [Confab](https://github.com/devmentors/Confab) for being a source of inspiration for this project.
 
 ---
