@@ -2,9 +2,7 @@ using MovieFlow.Modules.Movies.Application.Reviews.Commands.AddReview;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using MovieFlow.Shared.Abstractions.Contexts;
-using NSubstitute.ReturnsExtensions;
-using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
+
 namespace MovieFlow.Modules.Movies.Tests.Unit.Handlers.Reviews.Commands;
 
 public class AddReviewHandlerTests

@@ -1,8 +1,6 @@
 using MovieFlow.Modules.Movies.Application.Directors.Commands.ChangeDirectorInformation;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Directors;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using NSubstitute.ReturnsExtensions;
-using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Handlers.Directors.Commands;
 

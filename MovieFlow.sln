@@ -86,6 +86,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Movies", "Movies", "{6A6D25
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Modules.Movies.Tests.Unit", "tests\Modules\Movies\MovieFlow.Modules.Movies.Tests.Unit\MovieFlow.Modules.Movies.Tests.Unit.csproj", "{EE95C642-90A6-49F4-97A6-41CCCF6A9060}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieFlow.Shared.Tests", "src\Shared\MovieFlow.Shared.Tests\MovieFlow.Shared.Tests.csproj", "{1F848029-0756-4BDD-8336-EB582594346A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -200,6 +202,10 @@ Global
 		{EE95C642-90A6-49F4-97A6-41CCCF6A9060}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE95C642-90A6-49F4-97A6-41CCCF6A9060}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE95C642-90A6-49F4-97A6-41CCCF6A9060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F848029-0756-4BDD-8336-EB582594346A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F848029-0756-4BDD-8336-EB582594346A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F848029-0756-4BDD-8336-EB582594346A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F848029-0756-4BDD-8336-EB582594346A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55FCD767-A154-4FD4-8D11-261571F39484} = {4E8256F2-7B10-4C13-BEA3-36533F864BB8}
@@ -243,5 +249,6 @@ Global
 		{9B0DAF7D-6CE6-4096-A401-2CD91B226027} = {8DDCDA7A-42F3-4CE6-992E-9A29D597B0B9}
 		{6A6D25A2-BAFE-4FBC-B128-28BE982063FC} = {9B0DAF7D-6CE6-4096-A401-2CD91B226027}
 		{EE95C642-90A6-49F4-97A6-41CCCF6A9060} = {6A6D25A2-BAFE-4FBC-B128-28BE982063FC}
+		{1F848029-0756-4BDD-8336-EB582594346A} = {46EE2FA7-0F91-4155-8F55-35D068CDF96A}
 	EndGlobalSection
 EndGlobal

@@ -1,8 +1,6 @@
 using MovieFlow.Modules.Movies.Application.Movies.Commands.ChangeMovieInformation;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
-using NSubstitute.ReturnsExtensions;
-using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Handlers.Movies.Commands;
 

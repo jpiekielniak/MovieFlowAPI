@@ -1,6 +1,4 @@
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
-using MovieFlow.Shared.Abstractions.Exceptions;
-using static MovieFlow.Modules.Movies.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Movies.Tests.Unit.Entities;
 
