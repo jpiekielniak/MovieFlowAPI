@@ -3,8 +3,6 @@ using MovieFlow.Modules.Users.Application.Users.Commands.BlockUser;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
-using MovieFlow.Shared.Abstractions.Contexts;
-using MovieFlow.Shared.Abstractions.Time;
 
 namespace MovieFlow.Modules.Users.Tests.Unit.Handlers.Commands;
 
@@ -57,10 +55,10 @@ public class BlockUserHandlerTests
         user.Block();
         _userRepository.GetAsync(command.UserId, Arg.Any<CancellationToken>())
             .Returns(user);
-        
+
         //Act
         var exception = await Record.ExceptionAsync(() => Act(command));
-        
+
         //Assert
         exception.ShouldNotBeNull();
         exception.ShouldBeOfType<UserIsAlreadyBlockedException>();
@@ -78,10 +76,10 @@ public class BlockUserHandlerTests
             .Returns(user);
         _userRepository.UpdateAsync(user, Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
-        
+
         //Act
         await Act(command);
-        
+
         //Assert
         user.IsActive.ShouldBeFalse();
         await _userRepository.Received(1).GetAsync(command.UserId, Arg.Any<CancellationToken>());

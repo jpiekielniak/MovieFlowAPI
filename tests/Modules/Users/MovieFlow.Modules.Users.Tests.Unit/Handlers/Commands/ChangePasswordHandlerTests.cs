@@ -1,12 +1,9 @@
-using Microsoft.AspNetCore.Identity;
 using MovieFlow.Modules.Emails.Shared.Events.Users.ChangePassword;
 using MovieFlow.Modules.Users.Application.Users.Commands.ChangePassword;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
-using MovieFlow.Shared.Abstractions.Contexts;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Password.Exceptions;
-using MovieFlow.Shared.Abstractions.Time;
 
 namespace MovieFlow.Modules.Users.Tests.Unit.Handlers.Commands;
 
@@ -39,7 +36,7 @@ public class ChangePasswordHandlerTests
         await _userRepository.Received(1).UpdateAsync(user, Arg.Any<CancellationToken>());
         await _mediator.Received(1).Publish(Arg.Any<ChangePasswordEvent>(), Arg.Any<CancellationToken>());
     }
-    
+
     [Fact]
     public async Task given_invalid_current_password_should_throw_invalid_password_exception()
     {
@@ -61,12 +58,12 @@ public class ChangePasswordHandlerTests
         await _userRepository.Received(1).GetAsync(_context.Identity.Id, Arg.Any<CancellationToken>());
         await _userRepository.DidNotReceive().UpdateAsync(Arg.Any<User>(), Arg.Any<CancellationToken>());
     }
-    
+
     [Fact]
     public async Task given_invalid_confirm_password_should_throw_passwords_do_not_match_exception()
     {
         // Arrange
-        var command = new ChangePasswordCommand(CurrentPassword, "test","test2");
+        var command = new ChangePasswordCommand(CurrentPassword, "test", "test2");
         var user = CreateUser();
         _context.Identity.Id.Returns(user.Id);
         _userRepository.GetAsync(_context.Identity.Id, Arg.Any<CancellationToken>())
@@ -83,7 +80,7 @@ public class ChangePasswordHandlerTests
         await _userRepository.Received(1).GetAsync(_context.Identity.Id, Arg.Any<CancellationToken>());
         await _userRepository.DidNotReceive().UpdateAsync(Arg.Any<User>(), Arg.Any<CancellationToken>());
     }
-    
+
     private readonly IRequestHandler<ChangePasswordCommand> _handler;
     private readonly IClock _clock;
     private readonly IUserRepository _userRepository;

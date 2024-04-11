@@ -1,10 +1,8 @@
-using Microsoft.AspNetCore.Identity;
 using MovieFlow.Modules.Users.Application.Users.Commands.SignIn;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Modules.Users.Tests.Unit.Helpers;
-using MovieFlow.Shared.Abstractions.Auth;
 
 namespace MovieFlow.Modules.Users.Tests.Unit.Handlers.Commands;
 

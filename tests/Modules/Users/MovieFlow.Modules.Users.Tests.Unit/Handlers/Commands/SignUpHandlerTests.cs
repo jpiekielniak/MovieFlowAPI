@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Identity;
 using MovieFlow.Modules.Emails.Shared.Events.Users.CreateAccount;
 using MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
 using MovieFlow.Modules.Users.Core.Users.Entities;

@@ -3,7 +3,6 @@ using MovieFlow.Modules.Users.Application.Users.Commands.UnblockUser;
 using MovieFlow.Modules.Users.Core.Users.Entities;
 using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
-using MovieFlow.Shared.Abstractions.Time;
 
 namespace MovieFlow.Modules.Users.Tests.Unit.Handlers.Commands;
 

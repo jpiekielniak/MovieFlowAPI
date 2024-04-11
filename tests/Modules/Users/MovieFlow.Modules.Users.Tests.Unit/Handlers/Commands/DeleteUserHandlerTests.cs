@@ -20,15 +20,15 @@ public class DeleteUserHandlerTests
             .Returns(user);
         _userRepository.DeleteAsync(user, Arg.Any<CancellationToken>())
             .Returns(Task.CompletedTask);
-        
+
         //Act
         await Act(command);
-        
+
         //Assert
         await _userRepository.Received(1).GetAsync(command.UserId, Arg.Any<CancellationToken>());
         await _userRepository.Received(1).DeleteAsync(user, Arg.Any<CancellationToken>());
     }
-    
+
     [Fact]
     public async Task given_invalid_userId_should_throw_user_not_found_exception()
     {
@@ -36,10 +36,10 @@ public class DeleteUserHandlerTests
         var command = DeleteUserCommand();
         _userRepository.GetAsync(command.UserId, Arg.Any<CancellationToken>())
             .ReturnsNull();
-        
+
         //Act
         var exception = await Record.ExceptionAsync(() => Act(command));
-        
+
         //Assert
         exception.ShouldNotBeNull();
         exception.ShouldBeOfType<UserNotFoundException>();

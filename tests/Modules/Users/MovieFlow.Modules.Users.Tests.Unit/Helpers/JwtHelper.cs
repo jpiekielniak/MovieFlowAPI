@@ -1,6 +1,3 @@
-using System.IdentityModel.Tokens.Jwt;
-using MovieFlow.Shared.Abstractions.Auth;
-
 namespace MovieFlow.Modules.Users.Tests.Unit.Helpers;
 
 public static class JwtHelper
