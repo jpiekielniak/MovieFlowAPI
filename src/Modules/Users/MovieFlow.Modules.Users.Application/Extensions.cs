@@ -4,6 +4,8 @@ using MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Users.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Users.Infrastructure")]
+[assembly: InternalsVisibleTo("MovieFlow.Modules.Users.Tests.Unit")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace MovieFlow.Modules.Users.Application;
 
