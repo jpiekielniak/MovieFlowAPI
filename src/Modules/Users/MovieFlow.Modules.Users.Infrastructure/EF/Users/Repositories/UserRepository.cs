@@ -17,10 +17,10 @@ internal sealed class UserRepository(UsersWriteDbContext dbContext) : IUserRepos
         await CommitAsync(cancellationToken);
     }
 
-    public async Task<User> GetByEmailAsync(string email)
+    public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken)
         => await _users
             .Include(x => x.Role)
-            .SingleOrDefaultAsync(u => u.Email == email);
+            .SingleOrDefaultAsync(u => u.Email == email, cancellationToken);
 
     public async Task<User> GetAsync(Guid userId, CancellationToken cancellationToken)
         => await _users.SingleOrDefaultAsync(u => u.Id == userId, cancellationToken);

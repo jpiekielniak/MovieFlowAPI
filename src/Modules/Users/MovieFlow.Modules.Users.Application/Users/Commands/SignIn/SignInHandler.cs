@@ -13,7 +13,7 @@ internal sealed class SignInHandler(IUserRepository userRepository,
         CancellationToken cancellationToken)
     {
         var user = await userRepository
-            .GetByEmailAsync(command.Email)
+            .GetByEmailAsync(command.Email, cancellationToken)
             .NotNull(() => new InvalidCredentialsException());
 
         if (!user.IsActive)
