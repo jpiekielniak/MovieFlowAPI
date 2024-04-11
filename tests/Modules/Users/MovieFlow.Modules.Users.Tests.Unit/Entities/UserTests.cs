@@ -1,8 +1,6 @@
 using MovieFlow.Modules.Users.Core.Users.Entities;
-using MovieFlow.Shared.Abstractions.Kernel;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Name.Exceptions;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Password.Exceptions;
-using static MovieFlow.Modules.Users.Tests.Unit.Extensions.Extensions;
 
 namespace MovieFlow.Modules.Users.Tests.Unit.Entities;
 
@@ -44,7 +42,7 @@ public class UserTests
         const string name = null;
         const string email = "example@email.com";
         const string password = "ExamplePassword";
-        var role = new Role();
+        var role = CreateRole();
 
         //Act
         var exception = Record.Exception(() => User.Create(name, email, password, role));

@@ -6,4 +6,7 @@ internal static class Extensions
 {
     public static User CreateUser()
     => User.Create("User123", "example@email.com","Password123", new Role());
+
+    public static Role CreateRole() => new();
+
 }
