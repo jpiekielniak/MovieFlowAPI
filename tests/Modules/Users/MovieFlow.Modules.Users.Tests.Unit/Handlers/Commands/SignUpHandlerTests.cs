@@ -8,7 +8,7 @@ using MovieFlow.Modules.Users.Core.Users.Repositories;
 
 namespace MovieFlow.Modules.Users.Tests.Unit.Handlers.Commands;
 
-public class SingUpHandlerTests
+public class SignUpHandlerTests
 {
     private async Task<SignUpResponse> Act(SignUpCommand command)
         => await _handler.Handle(command, CancellationToken.None);
@@ -96,7 +96,7 @@ public class SingUpHandlerTests
     private readonly IUserRepository _userRepository;
     private readonly IMediator _mediator;
 
-    public SingUpHandlerTests()
+    public SignUpHandlerTests()
     {
         _passwordHasher = Substitute.For<IPasswordHasher<User>>();
         _roleRepository = Substitute.For<IRoleRepository>();
