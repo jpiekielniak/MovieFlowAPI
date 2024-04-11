@@ -12,7 +12,7 @@ internal sealed class EmailSubscription
     {
     }
 
-    private EmailSubscription(string email) => Email = email;
+    private EmailSubscription(Email email) => Email = email;
 
     public static EmailSubscription Create(string email) => new(email);
 }
