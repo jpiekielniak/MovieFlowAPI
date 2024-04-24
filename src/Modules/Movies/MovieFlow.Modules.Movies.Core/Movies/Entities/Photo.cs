@@ -13,6 +13,9 @@ internal sealed class Photo : Entity
     public Guid? DirectorId { get; private set; } 
     public Director Director { get; private set; }
     
+    public Guid? ActorId { get; private set; }
+    public Actor Actor { get; private set; }
+    
     private Photo()
     {
     }

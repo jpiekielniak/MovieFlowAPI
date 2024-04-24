@@ -1,7 +1,7 @@
 using MovieFlow.Modules.Movies.Application.Movies.Queries.GetTheNearestCinemas;
 using MovieFlow.Modules.Movies.GoogleMaps.Services.DTO;
 
-namespace MovieFlow.Modules.Movies.Api.Cinemas.Queries.GetTheNearestCinema;
+namespace MovieFlow.Modules.Movies.Api.Endpoints.Cinemas.Queries.GetTheNearestCinema;
 
 [Route(CinemaEndpoint.Url)]
 internal sealed class GetTheNearestCinemasEndpoint(IMediator mediator) : EndpointBaseAsync

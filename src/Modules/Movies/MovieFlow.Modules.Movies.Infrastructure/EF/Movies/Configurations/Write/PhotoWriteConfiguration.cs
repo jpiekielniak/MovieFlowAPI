@@ -32,6 +32,11 @@ internal sealed class PhotoWriteConfiguration : IEntityTypeConfiguration<Photo>
             .WithMany(d => d.Photos)
             .HasForeignKey(p => p.DirectorId)
             .IsRequired(false);
+
+        builder.HasOne(p => p.Actor)
+            .WithMany(d => d.Photos)
+            .HasForeignKey(p => p.ActorId)
+            .IsRequired(false);
         
         builder.ToTable("Photos");
     }

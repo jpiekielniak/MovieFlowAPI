@@ -1,3 +1,4 @@
+using System.Collections;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Shared;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
@@ -17,6 +18,7 @@ internal sealed class Movie : Entity
     internal List<Genre> Genres { get; private set; }
     internal List<Review> Reviews { get; private set; }
     internal ICollection<Photo> Photos { get; private set; }
+    internal ICollection<Actor> Actors { get; private set; }
 
 
     private Movie()
@@ -34,6 +36,7 @@ internal sealed class Movie : Entity
         Genres = genres ?? throw new GenresCannotBeNullException();
         Reviews = [];
         Photos = [];
+        Actors = [];
         State = entityState;
     }
 
@@ -55,4 +58,7 @@ internal sealed class Movie : Entity
 
     public void RemovePhoto(Photo photo)
     => Photos.Remove(photo ?? throw new PhotoCannotBeNullException());
+    
+    public void AddActor(Actor actor)
+    => Actors.Add(actor ?? throw new ActorCannotBeNullException());
 }
