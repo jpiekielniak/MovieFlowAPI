@@ -11,11 +11,4 @@
         <ProjectReference Include="..\MovieFlow.Modules.Emails.Infrastructure\MovieFlow.Modules.Emails.Infrastructure.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <None Update="module.email.development.json"/>
-        <Content Include="module.email.development.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
-
 </Project>
