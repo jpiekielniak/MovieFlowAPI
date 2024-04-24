@@ -7,6 +7,7 @@ internal sealed class ActorReadModel
     public string LastName { get; init; }
     public DateTime DateOfBirth { get; init; }
     public string Country { get; init; }
+    public int Age => DateTime.Now.Year - DateOfBirth.Year;
     public IReadOnlyCollection<PhotoReadModel> Photos { get; init; }
     public IReadOnlyCollection<MovieReadModel> Movies { get; init; }
 }
