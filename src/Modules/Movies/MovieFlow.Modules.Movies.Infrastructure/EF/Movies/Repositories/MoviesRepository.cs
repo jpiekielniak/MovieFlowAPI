@@ -25,6 +25,7 @@ internal sealed class MovieRepository(MoviesWriteDbContext dbContext) : IMovieRe
             .Include(x => x.Director)
             .Include(x => x.Reviews)
             .Include(x => x.Photos)
+            .Include(x => x.Actors)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
     public async Task CommitAsync(CancellationToken cancellationToken)

@@ -56,7 +56,7 @@ public class AddPhotoToMovieHandlerTests
         _azureStorageService = Substitute.For<IAzureStorageService>();
         _movieRepository = Substitute.For<IMovieRepository>();
 
-        _handler = new AddPhotoToMovieHandler(
+        _handler = new AddActorToMovieHandler(
             _azureStorageService,
             _movieRepository
         );

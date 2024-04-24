@@ -7,12 +7,15 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Repositories;
 internal sealed class ActorRepository(MoviesWriteDbContext dbContext) : IActorRepository
 {
     private readonly DbSet<Actor> _actors = dbContext.Actors;
-    
+
     public async Task AddAsync(Actor actor, CancellationToken cancellationToken)
     {
         await _actors.AddAsync(actor, cancellationToken);
         await CommitAsync(cancellationToken);
     }
+
+    public async Task<Actor> GetAsync(Guid actorId, CancellationToken cancellationToken)
+        => await _actors.SingleOrDefaultAsync(x => x.Id == actorId, cancellationToken);
 
     private async Task CommitAsync(CancellationToken cancellationToken)
         => await dbContext.SaveChangesAsync(cancellationToken);

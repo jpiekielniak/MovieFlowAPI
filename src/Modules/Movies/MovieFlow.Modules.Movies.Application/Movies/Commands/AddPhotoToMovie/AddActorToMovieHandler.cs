@@ -5,7 +5,7 @@ using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 
 namespace MovieFlow.Modules.Movies.Application.Movies.Commands.AddPhotoToMovie;
 
-internal sealed class AddPhotoToMovieHandler(
+internal sealed class AddActorToMovieHandler(
     IAzureStorageService azureStorageService,
     IMovieRepository movieRepository) : IRequestHandler<AddPhotoToMovieCommand>
 {
