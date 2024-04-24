@@ -1,3 +1,5 @@
+using MovieFlow.Modules.Movies.Application.Directors.Commands.DeleteDirector;
+
 namespace MovieFlow.Modules.Movies.Api.Endpoints.Directors.Commands.DeleteDirector;
 
 [Route(DirectorEndpoint.Url)]
