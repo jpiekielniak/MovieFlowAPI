@@ -10,4 +10,5 @@ internal sealed class MovieReadModel
     public IReadOnlyCollection<GenreReadModel> Genres { get; init; }
     public IReadOnlyCollection<ReviewReadModel> Reviews { get; init; }
     public IReadOnlyCollection<PhotoReadModel> Photos { get; init; }
+    public IReadOnlyCollection<ActorReadModel> Actors { get; init; }
 }

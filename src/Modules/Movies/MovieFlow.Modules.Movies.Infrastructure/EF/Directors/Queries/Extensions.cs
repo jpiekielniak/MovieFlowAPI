@@ -22,7 +22,7 @@ internal static class Extensions
             director.Id,
             director.FirstName,
             director.LastName,
-            director.Photos.Select(x => x.Url).ToList()
+            director.Photos.Select(x => x.Url).FirstOrDefault()
         );
 
     public static DirectorMovieDto AsDirectorMovieDto(this MovieReadModel movie)

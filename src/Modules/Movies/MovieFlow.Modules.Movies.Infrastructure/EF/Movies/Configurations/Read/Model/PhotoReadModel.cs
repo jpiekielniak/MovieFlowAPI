@@ -11,4 +11,6 @@ internal sealed class PhotoReadModel
     public MovieReadModel Movie { get; init; }
     public Guid? DirectorId { get; init; }
     public DirectorReadModel Director { get; init; }
+    public Guid? ActorId { get; init; }
+    public ActorReadModel Actor { get; init; }
 }

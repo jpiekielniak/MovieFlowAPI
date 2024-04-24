@@ -10,4 +10,5 @@ internal record MovieDetailsDto(
     string Description,
     List<string> Genres,
     DirectorDto Director,
-    List<string> MoviePhotos);
+    List<ActorDto> Actors,
+    List<string> Photos);
