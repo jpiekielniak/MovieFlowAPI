@@ -6,7 +6,7 @@ namespace MovieFlow.Modules.Newsletters.Tests.Unit.Entities;
 
 public class EmailSubscriptionTests
 {
-    private EmailSubscription Act(Email email)
+    private static EmailSubscription Act(Email email)
         => EmailSubscription.Create(email);
 
     [Fact]
@@ -28,6 +28,20 @@ public class EmailSubscriptionTests
     {
         //Arrange
         const string email = null;
+        
+        //Act
+        var exception = Record.Exception(() => Act(email));
+        
+        //Assert
+        exception.ShouldNotBeNull();
+        exception.ShouldBeAssignableTo<MovieFlowException>();
+    }
+
+    [Fact]
+    public void given_invalid_email_should_fail()
+    {
+        //Arrange
+        const string email = "invalid_email";
         
         //Act
         var exception = Record.Exception(() => Act(email));
