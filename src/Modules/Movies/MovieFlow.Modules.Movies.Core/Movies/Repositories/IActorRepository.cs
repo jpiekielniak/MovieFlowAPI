@@ -6,4 +6,5 @@ internal interface IActorRepository
 {
     Task AddAsync(Actor actor, CancellationToken cancellationToken);
     Task<Actor> GetAsync(Guid actorId, CancellationToken cancellationToken);
+    Task DeleteAsync(Actor actor, CancellationToken cancellationToken);
 }

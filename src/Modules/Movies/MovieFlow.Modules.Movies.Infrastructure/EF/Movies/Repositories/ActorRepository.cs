@@ -15,7 +15,16 @@ internal sealed class ActorRepository(MoviesWriteDbContext dbContext) : IActorRe
     }
 
     public async Task<Actor> GetAsync(Guid actorId, CancellationToken cancellationToken)
-        => await _actors.SingleOrDefaultAsync(x => x.Id == actorId, cancellationToken);
+        => await _actors
+            .Include(x => x.Photos)
+            .Include(x => x.Movies)
+            .SingleOrDefaultAsync(x => x.Id == actorId, cancellationToken);
+
+    public async Task DeleteAsync(Actor actor, CancellationToken cancellationToken)
+    {
+        _actors.Remove(actor);
+        await CommitAsync(cancellationToken);
+    }
 
     private async Task CommitAsync(CancellationToken cancellationToken)
         => await dbContext.SaveChangesAsync(cancellationToken);
