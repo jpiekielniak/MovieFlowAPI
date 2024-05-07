@@ -14,7 +14,7 @@ internal static class Extensions
             actor.LastName,
             actor.Age,
             actor.Country,
-            actor.Photos.Select(x => x.Url).FirstOrDefault(),
+            actor.Photos.FirstOrDefault()?.Url,
             actor.Movies?.Select(x => x.AsMovieDto()).ToList()
         );
 

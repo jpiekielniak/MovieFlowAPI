@@ -14,7 +14,7 @@ internal static class Extensions
             director.LastName,
             director.DateOfBirth,
             director.Country,
-            director.Photos.Select(x => x.Url).ToList()
+            director.Photos.SingleOrDefault()?.Url
         );
 
     public static DirectorDto AsDto(this DirectorReadModel director)
