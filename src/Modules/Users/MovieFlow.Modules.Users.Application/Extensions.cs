@@ -1,6 +1,4 @@
-using MovieFlow.Modules.Users.Application.Users.Commands.ChangePassword;
-using MovieFlow.Modules.Users.Application.Users.Commands.SignIn;
-using MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
+using MovieFlow.Shared.Infrastructure.Validation;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Users.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Users.Infrastructure")]
@@ -15,10 +13,7 @@ internal static class Extensions
     {
         services.AddMediatR(cfg=>cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
-        services
-            .AddScoped<IValidator<ChangePasswordCommand>, ChangePasswordValidator>()
-            .AddScoped<IValidator<SignInCommand>, SignInValidator>()
-            .AddScoped<IValidator<SignUpCommand>, SignUpValidator>();
+        services.AddValidators(Assembly.GetExecutingAssembly());
         
         return services;
     }

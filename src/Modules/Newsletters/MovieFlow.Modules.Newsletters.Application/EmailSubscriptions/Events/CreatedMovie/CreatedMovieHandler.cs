@@ -1,4 +1,3 @@
-using MediatR;
 using MovieFlow.Modules.Emails.Shared.Events.Newsletters.EmailSubscriptions.CreatedMovie;
 using MovieFlow.Modules.Newsletters.Core.Newsletters.Repositories;
 using MovieFlow.Modules.Newsletters.Shared.Events.CreatedMovie;
@@ -13,7 +12,8 @@ internal sealed class CreatedMovieHandler(
     {
         var emails = await emailSubscriptionsRepository.GetAllAsync(cancellationToken);
 
-        var notification = new CreatedMovieEmailSubscriptionEvent(@event.Title, @event.Description, @event.ImageUrl, emails);
+        var notification =
+            new CreatedMovieEmailSubscriptionEvent(@event.Title, @event.Description, @event.ImageUrl, emails);
         await mediator.Publish(notification, cancellationToken);
     }
 }

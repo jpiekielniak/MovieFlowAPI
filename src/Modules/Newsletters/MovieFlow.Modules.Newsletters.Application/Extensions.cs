@@ -1,6 +1,4 @@
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using Microsoft.Extensions.DependencyInjection;
+using MovieFlow.Shared.Infrastructure.Validation;
 
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Newsletters.Api")]
 [assembly: InternalsVisibleTo("MovieFlow.Modules.Newsletters.Infrastructure")]
@@ -13,8 +11,10 @@ internal static class Extensions
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        services.AddMediatR(cfg=>cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-        
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+
+        services.AddValidators(Assembly.GetExecutingAssembly());
+
         return services;
     }
 }

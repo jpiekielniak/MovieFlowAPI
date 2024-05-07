@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\MovieFlow.Shared.Infrastructure\MovieFlow.Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\..\Notifications\Emails\MovieFlow.Modules.Emails.Shared\MovieFlow.Modules.Emails.Shared.csproj" />
       <ProjectReference Include="..\MovieFlow.Modules.Newsletters.Core\MovieFlow.Modules.Newsletters.Core.csproj" />
       <ProjectReference Include="..\MovieFlow.Modules.Newsletters.Shared\MovieFlow.Modules.Newsletters.Shared.csproj" />

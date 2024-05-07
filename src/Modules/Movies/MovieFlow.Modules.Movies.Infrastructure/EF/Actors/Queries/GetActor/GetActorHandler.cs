@@ -1,7 +1,6 @@
 using MovieFlow.Modules.Movies.Application.Actors.Queries.GetActor;
 using MovieFlow.Modules.Movies.Application.Actors.Queries.GetActor.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
-using MovieFlow.Modules.Movies.Infrastructure.EF.Directors.Queries;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Actors.Queries.GetActor;
 

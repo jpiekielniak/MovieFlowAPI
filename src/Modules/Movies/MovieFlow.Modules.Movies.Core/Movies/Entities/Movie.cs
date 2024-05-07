@@ -1,4 +1,3 @@
-using System.Collections;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Shared;
 using MovieFlow.Shared.Abstractions.Kernel.ValueObjects.Description;
@@ -57,8 +56,11 @@ internal sealed class Movie : Entity
         => Photos.Add(photo ?? throw new PhotoCannotBeNullException());
 
     public void RemovePhoto(Photo photo)
-    => Photos.Remove(photo ?? throw new PhotoCannotBeNullException());
-    
+        => Photos.Remove(photo ?? throw new PhotoCannotBeNullException());
+
     public void AddActor(Actor actor)
-    => Actors.Add(actor ?? throw new ActorCannotBeNullException());
+        => Actors.Add(actor ?? throw new ActorCannotBeNullException());
+
+    public void RemoveActor(Actor actor)
+        => Actors.Remove(actor ?? throw new ActorCannotBeNullException());
 }
