@@ -5,9 +5,9 @@ using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Reviews.Queries.GetReviewsGroupedByRating;
 
 internal sealed class GetReviewsGroupedByRatingHandler(MoviesReadDbContext moviesReadDbContext)
-    : IRequestHandler<GetReviewsGroupedByRatingQuery, GetReviewsGroupedByRatingResponse>
+    : IRequestHandler<GetReviewsGroupedByRatingQuery, List<GroupedReviewsDto>>
 {
-    public async Task<GetReviewsGroupedByRatingResponse> Handle(GetReviewsGroupedByRatingQuery query,
+    public async Task<List<GroupedReviewsDto>> Handle(GetReviewsGroupedByRatingQuery query,
         CancellationToken cancellationToken)
     {
         var reviews = await moviesReadDbContext.Reviews
@@ -15,13 +15,11 @@ internal sealed class GetReviewsGroupedByRatingHandler(MoviesReadDbContext movie
             .Where(x => x.MovieId == query.MovieId)
             .GroupBy(x => x.Rating)
             .Select(x => new { Rating = x.Key, Count = x.Count() })
-            .ToListAsync(cancellationToken);
+            .ToDictionaryAsync(x => x.Rating, x => x.Count, cancellationToken);
 
-        var groupedReviews = Enumerable.Range(0, 11)
+        return Enumerable.Range(0, 11)
             .Select(rating =>
-                new GroupedReviewsDto(rating, reviews.FirstOrDefault(x => x.Rating == rating)?.Count ?? 0))
+                new GroupedReviewsDto(rating, reviews.TryGetValue(rating, out var review) ? review : 0))
             .ToList();
-
-        return new GetReviewsGroupedByRatingResponse(groupedReviews);
     }
 }

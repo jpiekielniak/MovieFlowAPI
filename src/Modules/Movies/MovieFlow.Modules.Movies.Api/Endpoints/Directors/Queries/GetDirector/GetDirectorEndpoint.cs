@@ -14,7 +14,7 @@ internal sealed class GetDirectorEndpoint(IMediator mediator) : EndpointBaseAsyn
         Tags = [DirectorEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DirectorDetailsDto))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(void))]
     public override async Task<ActionResult<DirectorDetailsDto>> HandleAsync(
         [FromRoute] Guid directorId,
         CancellationToken cancellationToken = default)

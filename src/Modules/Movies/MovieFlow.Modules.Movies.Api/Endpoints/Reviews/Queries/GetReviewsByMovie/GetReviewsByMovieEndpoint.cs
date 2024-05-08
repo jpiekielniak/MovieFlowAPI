@@ -6,7 +6,7 @@ namespace MovieFlow.Modules.Movies.Api.Endpoints.Reviews.Queries.GetReviewsByMov
 
 [Route(MovieEndpoint.Url)]
 internal sealed class GetReviewsByMovieEndpoint(IMediator mediator) : EndpointBaseAsync
-    .WithRequest<GetReviewsByMovieQuery>
+    .WithRequest<Guid>
     .WithActionResult<List<ReviewDto>>
 {
     [HttpGet("{movieId:guid}/reviews")]
@@ -17,7 +17,10 @@ internal sealed class GetReviewsByMovieEndpoint(IMediator mediator) : EndpointBa
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<ReviewDto>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     public override async Task<ActionResult<List<ReviewDto>>> HandleAsync(
-        [FromRoute] GetReviewsByMovieQuery query,
+        [FromRoute] Guid movieId,
         CancellationToken cancellationToken = default)
-        => Ok(await mediator.Send(query, cancellationToken));
+    {
+        var query = new GetReviewsByMovieQuery(movieId);
+        return Ok(await mediator.Send(query, cancellationToken));
+    }
 }

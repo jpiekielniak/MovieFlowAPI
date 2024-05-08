@@ -25,7 +25,6 @@ internal sealed class AddReviewEndpoint(IMediator mediator) : EndpointBaseAsync
         var command = request.Command with { MovieId = request.MovieId };
         var response = await mediator.Send(command, cancellationToken);
 
-        return Ok(response);
+        return Created($"{MovieEndpoint.Url}/{command.MovieId}/reviews", response);
     }
-        
 }

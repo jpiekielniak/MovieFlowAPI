@@ -12,13 +12,13 @@ internal sealed class GetReviewsByMovieHandler(MoviesReadDbContext readDbContext
         CancellationToken cancellationToken)
     {
         await readDbContext.Movies
-            .SingleOrDefaultAsync(x => x.Id == query.movieId, cancellationToken)
-            .NotNull(() => new MovieNotFoundException(query.movieId));
+            .SingleOrDefaultAsync(x => x.Id == query.MovieId, cancellationToken)
+            .NotNull(() => new MovieNotFoundException(query.MovieId));
 
         var reviews = await readDbContext.Reviews
             .AsNoTracking()
             .Include(x => x.Likes)
-            .Where(x => x.Movie.Id == query.movieId)
+            .Where(x => x.Movie.Id == query.MovieId)
             .Select(x => x.AsDto())
             .ToListAsync(cancellationToken);
 

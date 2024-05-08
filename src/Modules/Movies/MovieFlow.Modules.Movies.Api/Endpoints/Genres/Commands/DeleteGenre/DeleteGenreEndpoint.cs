@@ -17,7 +17,8 @@ internal sealed class DeleteGenreEndpoint(IMediator mediator) : EndpointBaseAsyn
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
-    public override async Task HandleAsync([FromRoute] Guid genreId,
+    public override async Task HandleAsync(
+        [FromRoute] Guid genreId,
         CancellationToken cancellationToken = default)
     {
         var command = new DeleteGenreCommand(genreId);

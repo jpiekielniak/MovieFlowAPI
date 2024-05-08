@@ -17,10 +17,12 @@ internal sealed class CreateActorEndpoint(IMediator mediator) : EndpointBaseAsyn
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
-    public override async Task<ActionResult<CreateActorResponse>> HandleAsync(CreateActorEndpointRequest request,
-        CancellationToken cancellationToken = new())
+    public override async Task<ActionResult<CreateActorResponse>> HandleAsync(
+        CreateActorEndpointRequest request,
+        CancellationToken cancellationToken = default)
     {
         var command = request.Command with { Photo = request.Photo };
-        return await mediator.Send(command, cancellationToken);
+        var response = await mediator.Send(command, cancellationToken);
+        return Created($"{ActorEndpoint.Url}/{response.ActorId}", response);
     }
 }

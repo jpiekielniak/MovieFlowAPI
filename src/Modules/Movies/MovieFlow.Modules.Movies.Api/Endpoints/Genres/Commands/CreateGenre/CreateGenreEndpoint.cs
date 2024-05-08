@@ -19,5 +19,8 @@ internal sealed class CreateGenreEndpoint(IMediator mediator) : EndpointBaseAsyn
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
     public override async Task<ActionResult<CreateGenreResponse>> HandleAsync(CreateGenreCommand command,
         CancellationToken cancellationToken = default)
-        => Ok(await mediator.Send(command, cancellationToken));
+    {
+        var response = await mediator.Send(command, cancellationToken);
+        return Created($"{GenreEndpoint.Url}/{response.GenreId}", response);
+    }
 }

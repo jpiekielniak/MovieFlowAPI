@@ -20,9 +20,13 @@ internal sealed class ChangeReviewInformationValidator : AbstractValidator<Chang
             .InclusiveBetween(1, 10);
 
         RuleFor(x => x.MovieId)
+            .NotEmpty()
+            .NotNull()
             .NotEqual(Guid.Empty);
 
         RuleFor(x => x.ReviewId)
+            .NotEmpty()
+            .NotNull()
             .NotEqual(Guid.Empty);
     }
 }

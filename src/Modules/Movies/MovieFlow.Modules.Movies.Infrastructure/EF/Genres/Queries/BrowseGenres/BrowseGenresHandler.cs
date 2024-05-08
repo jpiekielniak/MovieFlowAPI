@@ -7,7 +7,7 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Genres.Queries.BrowseGenres
 internal sealed class BrowseGenresHandler(MoviesReadDbContext readDbContext)
     : IRequestHandler<BrowseGenresQuery, List<BrowseGenresDto>>
 {
-    public async Task<List<BrowseGenresDto>> Handle(BrowseGenresQuery request, 
+    public async Task<List<BrowseGenresDto>> Handle(BrowseGenresQuery query, 
         CancellationToken cancellationToken)
         => await readDbContext.Genres
             .AsNoTracking()

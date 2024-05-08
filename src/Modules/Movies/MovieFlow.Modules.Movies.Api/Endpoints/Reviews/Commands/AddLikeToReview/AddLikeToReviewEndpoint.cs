@@ -11,10 +11,10 @@ internal sealed class AddLikeToReviewEndpoint(IMediator mediator) : EndpointBase
     [Authorize]
     [HttpPost("{movieId:guid}/reviews/{reviewId:guid}/likes")]
     [SwaggerOperation(
-        Summary = "Adds likes to review.",
+        Summary = "Adds like to review",
         Tags = [ReviewEndpoint.Tag]
     )]
-    [SwaggerResponse(StatusCodes.Status201Created, Type = typeof(void))]
+    [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(void))]
     [SwaggerResponse(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     [SwaggerResponse(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     public override async Task HandleAsync(

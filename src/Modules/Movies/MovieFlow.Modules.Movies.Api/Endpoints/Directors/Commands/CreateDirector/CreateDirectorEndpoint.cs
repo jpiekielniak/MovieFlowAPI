@@ -22,6 +22,7 @@ internal sealed class CreateDirectorEndpoint(IMediator mediator) : EndpointBaseA
         CancellationToken cancellationToken = default)
     {
         var command = request.Command with { Photo = request.Photo };
-        return Ok(await mediator.Send(command, cancellationToken));
+        var response = await mediator.Send(command, cancellationToken);
+        return Created($"{DirectorEndpoint.Url}/{response.DirectorId}", response);
     }
 }

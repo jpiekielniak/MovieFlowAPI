@@ -14,13 +14,13 @@ internal sealed class GetMoviesForDirectorHandler(MoviesReadDbContext readDbCont
         var director = await readDbContext.Directors
             .AsNoTracking()
             .Include(d => d.Movies)
+            .ThenInclude(x => x.Photos)
             .SingleOrDefaultAsync(d => d.Id == query.DirectorId, cancellationToken)
             .NotNull(() => new DirectorNotFoundException(query.DirectorId));
 
-        var movies = director.Movies
+        return director.Movies
             .Select(x => x.AsDirectorMovieDto())
             .ToList();
 
-        return movies;
     }
 }

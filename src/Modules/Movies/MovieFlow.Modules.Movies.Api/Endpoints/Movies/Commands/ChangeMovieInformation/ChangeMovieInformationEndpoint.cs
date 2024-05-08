@@ -17,7 +17,6 @@ internal sealed class ChangeMovieInformationEndpoint(IMediator mediator) : Endpo
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
-    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(void))]
     public override async Task HandleAsync(
         [FromRequestSource] ChangeMovieInformationRequest request,
         CancellationToken cancellationToken = default)

@@ -13,6 +13,6 @@ internal sealed class DeleteActorHandler(IActorRepository actorRepository,
             .NotNull(() => throw new ActorNotFoundException(command.ActorId));
 
         await actorRepository.DeleteAsync(actor, cancellationToken);
-        await photoRepository.DeleteAsync(actor.Photos.First(), cancellationToken);
+        await photoRepository.DeleteAsync(actor.Photos.SingleOrDefault(), cancellationToken);
     }
 }

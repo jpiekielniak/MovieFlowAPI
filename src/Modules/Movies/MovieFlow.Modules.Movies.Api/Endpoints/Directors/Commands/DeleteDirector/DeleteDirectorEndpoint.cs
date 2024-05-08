@@ -10,14 +10,15 @@ internal sealed class DeleteDirectorEndpoint(IMediator mediator) : EndpointBaseA
     [Authorize(Roles = "Admin")]
     [HttpDelete("{directorId:guid}")]
     [SwaggerOperation(
-        Summary = "Deletes a director.",
+        Summary = "Delete a director",
         Tags = [DirectorEndpoint.Tag]
     )]
     [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorsResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(void))]
     [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(void))]
-    public override async Task HandleAsync([FromRoute] Guid directorId,
+    public override async Task HandleAsync(
+        [FromRoute] Guid directorId,
         CancellationToken cancellationToken = default)
     {
         var command = new DeleteDirectorCommand(directorId);

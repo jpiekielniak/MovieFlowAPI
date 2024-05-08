@@ -4,7 +4,8 @@ using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 
 namespace MovieFlow.Modules.Movies.Infrastructure.EF.Movies.Repositories;
 
-internal sealed class PhotoRepository(MoviesWriteDbContext writeDbContext) : IPhotoRepository
+internal sealed class PhotoRepository(MoviesWriteDbContext writeDbContext,
+    IMediator mediator) : IPhotoRepository
 {
     private readonly DbSet<Photo> _photos = writeDbContext.Photos;
 

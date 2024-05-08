@@ -22,9 +22,13 @@ internal static class Extensions
             director.Id,
             director.FirstName,
             director.LastName,
-            director.Photos.Select(x => x.Url).FirstOrDefault()
+            director.Photos.SingleOrDefault()?.Url
         );
 
     public static DirectorMovieDto AsDirectorMovieDto(this MovieReadModel movie)
-        => new(movie.Id, movie.Title);
+        => new(
+            movie.Id,
+            movie.Title,
+            movie.Photos.SingleOrDefault()?.Url
+        );
 }

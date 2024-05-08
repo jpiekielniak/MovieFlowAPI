@@ -1,6 +1,6 @@
 namespace MovieFlow.Modules.Movies.Application.Genres.Commands.CreateGenre;
 
-internal class CreateGenreValidator : AbstractValidator<CreateGenreCommand>
+internal sealed class CreateGenreValidator : AbstractValidator<CreateGenreCommand>
 {
     public CreateGenreValidator()
     {
