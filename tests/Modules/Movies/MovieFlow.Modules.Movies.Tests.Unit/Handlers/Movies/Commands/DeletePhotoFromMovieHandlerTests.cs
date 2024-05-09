@@ -31,7 +31,6 @@ public class DeletePhotoFromMovieHandlerTests
         // Assert
         movie.Photos.Count.ShouldBe(1);
         await _photoRepository.Received(1).DeleteAsync(Arg.Any<Photo>(), Arg.Any<CancellationToken>());
-        await _mediator.Received(1).Publish(Arg.Any<PhotoDeletedEvent>(), Arg.Any<CancellationToken>());
     }
     
     [Fact]
@@ -94,18 +93,15 @@ public class DeletePhotoFromMovieHandlerTests
     private readonly IRequestHandler<DeletePhotoFromMovieCommand> _handler;
     private readonly IMovieRepository _movieRepository;
     private readonly IPhotoRepository _photoRepository;
-    private readonly IMediator _mediator;
 
     public DeletePhotoFromMovieHandlerTests()
     {
         _movieRepository = Substitute.For<IMovieRepository>();
         _photoRepository = Substitute.For<IPhotoRepository>();
-        _mediator = Substitute.For<IMediator>();
 
         _handler = new DeletePhotoFromMovieHandler(
             _movieRepository,
-            _photoRepository,
-            _mediator
+            _photoRepository
         );
     }
 

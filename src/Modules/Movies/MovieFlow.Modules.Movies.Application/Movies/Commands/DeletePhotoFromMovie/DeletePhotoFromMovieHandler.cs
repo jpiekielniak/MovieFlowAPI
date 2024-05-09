@@ -1,4 +1,3 @@
-using MovieFlow.Modules.Movies.AzureStorage.Events.Events.PhotoDeleted;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Movies;
 using MovieFlow.Modules.Movies.Core.Movies.Exceptions.Photos;
@@ -8,8 +7,7 @@ namespace MovieFlow.Modules.Movies.Application.Movies.Commands.DeletePhotoFromMo
 
 internal sealed class DeletePhotoFromMovieHandler(
     IMovieRepository movieRepository,
-    IPhotoRepository photoRepository,
-    IMediator mediator) : IRequestHandler<DeletePhotoFromMovieCommand>
+    IPhotoRepository photoRepository) : IRequestHandler<DeletePhotoFromMovieCommand>
 {
     public async Task Handle(DeletePhotoFromMovieCommand command, CancellationToken cancellationToken)
     {
@@ -26,9 +24,6 @@ internal sealed class DeletePhotoFromMovieHandler(
 
         movie.RemovePhoto(photo);
         await photoRepository.DeleteAsync(photo, cancellationToken);
-
-        var @event = new PhotoDeletedEvent(photo.FileName);
-        await mediator.Publish(@event, cancellationToken);
     }
 
     private static bool IsLastPhoto(Movie movie)

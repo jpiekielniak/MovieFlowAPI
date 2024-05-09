@@ -1,3 +1,4 @@
+using MovieFlow.Modules.Movies.AzureStorage.Events.Events.PhotoDeleted;
 using MovieFlow.Modules.Movies.Core.Movies.Entities;
 using MovieFlow.Modules.Movies.Core.Movies.Repositories;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
@@ -22,6 +23,7 @@ internal sealed class PhotoRepository(MoviesWriteDbContext writeDbContext,
     {
         _photos.Remove(photo);
         await writeDbContext.SaveChangesAsync(cancellationToken);
+        await mediator.Publish(new PhotoDeletedEvent(photo.FileName), cancellationToken);
     }
 
     public async Task UpdateAsync(Photo photo, CancellationToken cancellationToken)
