@@ -32,11 +32,6 @@ internal class UserWriteConfiguration : IEntityTypeConfiguration<User>
             .HasColumnName("Email")
             .IsRequired();
 
-        builder.Property<bool>("EmailConfirmed");
-
-        builder.Property<DateTimeOffset?>("EmailConfirmedAt")
-            .IsRequired(false);
-
         builder.Property<Password>("Password")
             .HasConversion(
                 x => x.Value,

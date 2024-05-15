@@ -29,17 +29,8 @@ internal static class Extensions
         );
 
     private static DirectorDto AsDirectorDto(this DirectorReadModel director)
-        => new(
-            director.Id,
-            director.FirstName,
-            director.LastName,
-            director.Photos.SingleOrDefault()?.Url
-        );
+        => new(director.Id);
 
     private static ActorDto AsActorDto(this ActorReadModel actor)
-        => new(
-            actor.Id,
-            $"{actor.FirstName} {actor.LastName}",
-            actor.Photos.SingleOrDefault()?.Url
-        );
+        => new(actor.Id);
 }

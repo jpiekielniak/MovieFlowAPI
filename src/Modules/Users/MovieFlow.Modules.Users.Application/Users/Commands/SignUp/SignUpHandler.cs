@@ -4,7 +4,6 @@ using MovieFlow.Modules.Users.Core.Users.Exceptions.Roles;
 using MovieFlow.Modules.Users.Core.Users.Exceptions.Users;
 using MovieFlow.Modules.Users.Core.Users.Repositories;
 using MovieFlow.Shared.Abstractions;
-using PasswordGenerator;
 
 namespace MovieFlow.Modules.Users.Application.Users.Commands.SignUp;
 
@@ -29,8 +28,7 @@ internal sealed class SignUpHandler(
         var role = await roleRepository.GetAsync(UserRole, cancellationToken)
             .NotNull(() => new RoleNotFoundException(UserRole));
 
-        var password = new Password(12).Next();
-        var hashPassword = passwordHasher.HashPassword(default, password);
+        var hashPassword = passwordHasher.HashPassword(default, command.Password);
 
         var user = User.Create(
             command.Name,
@@ -40,7 +38,7 @@ internal sealed class SignUpHandler(
 
         await userRepository.AddAsync(user, cancellationToken);
 
-        var notifications = new CreateAccountEvent(user.Email, password);
+        var notifications = new CreateAccountEvent(user.Email);
         await mediator.Publish(notifications, cancellationToken);
 
         return new SignUpResponse(user.Id);

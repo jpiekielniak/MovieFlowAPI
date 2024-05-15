@@ -111,7 +111,7 @@ public class SignUpHandlerTests
     }
 
     private static SignUpCommand SignUpCommand()
-        => new("User123", "example@email.com");
+        => new("User123", "!Haslo123", "example@email.com");
 
     private void SetUpMocksForSignUp(SignUpCommand command, Role role)
     {

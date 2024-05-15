@@ -1,4 +1,5 @@
 using MovieFlow.Modules.Movies.Application.Directors.Queries.BrowseDirectors;
+using MovieFlow.Modules.Movies.Application.Movies.Queries.BrowseMovies.DTO;
 using MovieFlow.Modules.Movies.Application.Shared.DTO;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Context;
 using MovieFlow.Modules.Movies.Infrastructure.EF.Directors.Services;
@@ -8,9 +9,9 @@ namespace MovieFlow.Modules.Movies.Infrastructure.EF.Directors.Queries.BrowseDir
 internal sealed class BrowseDirectorsHandler(
     MoviesReadDbContext readDbContext,
     IDirectorService directorService)
-    : IRequestHandler<BrowseDirectorsQuery, List<DirectorDto>>
+    : IRequestHandler<BrowseDirectorsQuery, List<BrowseDirectorDto>>
 {
-    public async Task<List<DirectorDto>> Handle(BrowseDirectorsQuery query,
+    public async Task<List<BrowseDirectorDto>> Handle(BrowseDirectorsQuery query,
         CancellationToken cancellationToken)
     {
         var directors = readDbContext.Directors
@@ -23,7 +24,7 @@ internal sealed class BrowseDirectorsHandler(
         directors = directorService.FilterByCountry(directors, query.Country);
 
         return await directors
-            .Select(x => x.AsDto())
+            .Select(x => x.AsBrowseDto())
             .ToListAsync(cancellationToken);
     }
 }

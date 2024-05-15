@@ -16,7 +16,7 @@ internal sealed class CreateAccountHandler(IEmailRepository emailRepository,
     public async Task Handle(CreateAccountEvent @event,
         CancellationToken cancellationToken)
     {
-        var model = new CreateAccountModel(@event.Email, @event.Password, Subject);
+        var model = new CreateAccountModel(@event.Email, Subject);
         var renderedView = await razorViewRenderer.RenderViewToStringAsync(PathView, model);
         var email = Email.Create(
             @event.Email,

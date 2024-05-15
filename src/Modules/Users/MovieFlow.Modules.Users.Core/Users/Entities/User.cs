@@ -9,8 +9,6 @@ internal sealed class User : Entity
 {
     public Name Name { get; private set; }
     public Email Email { get; private set; }
-    private bool EmailConfirmed { get; set; } = false;
-    private DateTimeOffset? EmailConfirmedAt { get; set; }
     public Password Password { get; private set; }
     private DateTimeOffset? LastChangePasswordAt { get; set; }
     public bool IsActive { get; private set; } = true;
